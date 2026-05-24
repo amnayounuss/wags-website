@@ -1,52 +1,66 @@
+'use client';
+import React from 'react';
+
 export default function Clients() {
+  const clientsList = [
+    { name: 'Reeq Alnahl' },
+    { name: 'Breehant Roastery' },
+    { name: 'Okawa' },
+    { name: 'Camel Step' },
+    { name: 'Order (اوردر)' },
+    { name: 'Zarafa' },
+    { name: 'CST' },
+    { name: 'Namq (نمق)' },
+    { name: 'Landscape Contracting' },
+    { name: 'Peacock Cafe' },
+    { name: 'AAB Group' },
+    { name: 'Placemakers Factory' },
+    { name: 'Kuf Roasters' },
+    { name: 'Perfect Pick' },
+    { name: 'Anoosh' },
+    { name: 'CST Partner' },
+  ];
+
+  // Duplicate for seamless marquee
+  const tickerItems = [...clientsList, ...clientsList, ...clientsList];
+
   return (
     <>
-      <section id="clients">
-  <div className="container">
-    <div className="clients-header reveal">
-      <div className="section-label">Our Clients</div>
-      <h2 className="section-heading">Trusted by <span className="grad">50+ Businesses</span></h2>
-      <p className="section-sub">Successful projects across retail, F&B, contracting, manufacturing, and more.</p>
-    </div>
-  </div>
-  <div className="ticker-wrapper reveal" style={{"marginTop":"48px"}}>
-    <div className="ticker-track">
-      <div className="client-badge"><div className="client-avatar">RA</div><span className="client-name">Reeq Alnahl</span></div>
-      <div className="client-badge"><div className="client-avatar">BR</div><span className="client-name">Breehant Roastery</span></div>
-      <div className="client-badge"><div className="client-avatar">OK</div><span className="client-name">Okawa</span></div>
-      <div className="client-badge"><div className="client-avatar">CS</div><span className="client-name">Camel Step</span></div>
-      <div className="client-badge"><div className="client-avatar">OR</div><span className="client-name">Order (اوردر)</span></div>
-      <div className="client-badge"><div className="client-avatar">ZA</div><span className="client-name">Zarafa</span></div>
-      <div className="client-badge"><div className="client-avatar">CS</div><span className="client-name">CST</span></div>
-      <div className="client-badge"><div className="client-avatar">NQ</div><span className="client-name">Namq (نمق)</span></div>
-      <div className="client-badge"><div className="client-avatar">LC</div><span className="client-name">Landscape Contracting</span></div>
-      <div className="client-badge"><div className="client-avatar">PC</div><span className="client-name">Peacock Cafe</span></div>
-      <div className="client-badge"><div className="client-avatar">AB</div><span className="client-name">AAB Group</span></div>
-      <div className="client-badge"><div className="client-avatar">PF</div><span className="client-name">Placemakers Factory</span></div>
-      <div className="client-badge"><div className="client-avatar">KR</div><span className="client-name">Kuf Roasters</span></div>
-      <div className="client-badge"><div className="client-avatar">PP</div><span className="client-name">Perfect Pick</span></div>
-      <div className="client-badge"><div className="client-avatar">AN</div><span className="client-name">Anoosh</span></div>
-      <div className="client-badge"><div className="client-avatar">CP</div><span className="client-name">CST Partner</span></div>
-      
-      <div className="client-badge"><div className="client-avatar">RA</div><span className="client-name">Reeq Alnahl</span></div>
-      <div className="client-badge"><div className="client-avatar">BR</div><span className="client-name">Breehant Roastery</span></div>
-      <div className="client-badge"><div className="client-avatar">OK</div><span className="client-name">Okawa</span></div>
-      <div className="client-badge"><div className="client-avatar">CS</div><span className="client-name">Camel Step</span></div>
-      <div className="client-badge"><div className="client-avatar">OR</div><span className="client-name">Order (اوردر)</span></div>
-      <div className="client-badge"><div className="client-avatar">ZA</div><span className="client-name">Zarafa</span></div>
-      <div className="client-badge"><div className="client-avatar">CS</div><span className="client-name">CST</span></div>
-      <div className="client-badge"><div className="client-avatar">NQ</div><span className="client-name">Namq (نمق)</span></div>
-      <div className="client-badge"><div className="client-avatar">LC</div><span className="client-name">Landscape Contracting</span></div>
-      <div className="client-badge"><div className="client-avatar">PC</div><span className="client-name">Peacock Cafe</span></div>
-      <div className="client-badge"><div className="client-avatar">AB</div><span className="client-name">AAB Group</span></div>
-      <div className="client-badge"><div className="client-avatar">PF</div><span className="client-name">Placemakers Factory</span></div>
-      <div className="client-badge"><div className="client-avatar">KR</div><span className="client-name">Kuf Roasters</span></div>
-      <div className="client-badge"><div className="client-avatar">PP</div><span className="client-name">Perfect Pick</span></div>
-      <div className="client-badge"><div className="client-avatar">AN</div><span className="client-name">Anoosh</span></div>
-      <div className="client-badge"><div className="client-avatar">CP</div><span className="client-name">CST Partner</span></div>
-    </div>
-  </div>
-</section>
+      <section id="clients" style={{ padding: '80px 0', position: 'relative' }}>
+        <div className="container">
+          <div style={{ textAlign: 'center', marginBottom: '40px' }}>
+            <p style={{ fontSize: '18px', color: '#fff', fontWeight: 600, fontFamily: 'Sora', margin: 0 }}>
+              Trusted by 50+ businesses across retail, F&B, contracting, and more
+            </p>
+          </div>
+        </div>
+
+        <div className="ticker-wrapper" style={{ marginTop: '30px' }}>
+          <div className="ticker-track" style={{ gap: '100px', paddingRight: '100px' }}>
+            {tickerItems.map((c, i) => (
+              <div 
+                key={i} 
+                style={{ 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  color: 'rgba(255, 255, 255, 0.6)',
+                  transition: 'color 0.3s ease',
+                  cursor: 'default',
+                  whiteSpace: 'nowrap'
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.color = '#fff';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.color = 'rgba(255, 255, 255, 0.6)';
+                }}
+              >
+                <span style={{ fontSize: '24px', fontWeight: 700, fontFamily: 'Sora', letterSpacing: '-0.02em' }}>{c.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
     </>
   );
 }

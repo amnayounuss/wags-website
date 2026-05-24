@@ -32,5 +32,8 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-
 WAGS_Revamp (1).html
+
+# unused files
+components/CTABand.tsx
+app/globals.backup.css

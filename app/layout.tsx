@@ -1,11 +1,16 @@
 
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import './globals.css'
+import './premium.css'
 
 export const metadata: Metadata = {
   title: 'WAGS Tech — Odoo ERP Solutions in Saudi Arabia',
   description: 'Tailored Odoo ERP implementations, ZATCA-compliant systems, and custom modules for Saudi Arabian businesses.',
-  viewport: 'width=device-width, initial-scale=1.0',
+}
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
 }
 
 export default function RootLayout({
