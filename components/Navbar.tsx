@@ -5,7 +5,7 @@ export default function Navbar() {
   <div className="nav-shell">
     <div className="nav-inner">
       <a href="#hero" className="nav-logo">
-        <div className="nav-logo-mark">W</div>
+        <img src="/logo.svg" alt="WAGS Tech Logo" style={{ width: '38px', height: '38px', objectFit: 'contain' }} />
         <span className="nav-logo-text">WAGS Tech</span>
       </a>
       <div className="nav-links">
