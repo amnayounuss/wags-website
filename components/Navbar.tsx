@@ -1,5 +1,6 @@
 'use client';
 import React, { useState, useEffect } from 'react';
+import { FaBars, FaTimes } from 'react-icons/fa';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,71 +15,58 @@ export default function Navbar() {
 
   return (
     <>
-      <nav id="navbar" style={{ position: 'fixed', top: 0, left: 0, right: 0, zIndex: 1000, background: 'rgba(2, 4, 10, 0.75)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', borderBottom: '1px solid rgba(255,255,255,0.04)', transition: 'background 0.3s ease' }}>
-        <style dangerouslySetInnerHTML={{__html: `
-          .nav-container { padding: 0 2vw; margin: 0 auto; }
-          @media (max-width: 1024px) {
-            #desktop-links, #desktop-cta { display: none !important; }
-            #hamburger-btn { display: flex !important; }
-          }
-          @media (max-width: 640px) {
-            .nav-container { padding: 0 20px; }
-          }
-        `}} />
-        <div className="nav-container" style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', height: '80px', maxWidth: '100%', width: '100%' }}>
-          
-          {/* Brand Logo */}
-          <a href="/" style={{ display: 'flex', alignItems: 'center', gap: '14px', textDecoration: 'none' }} onClick={() => setIsOpen(false)}>
-            <img src="/logo.svg" alt="WAGS Tech Logo" style={{ width: '42px', height: '42px', objectFit: 'contain' }} />
-            <span style={{ fontSize: '22px', fontWeight: 800, fontFamily: 'Sora', color: '#fff', letterSpacing: '-0.02em' }}>WAGS Tech</span>
-          </a>
-          
-          {/* Desktop Links */}
-          <div id="desktop-links" style={{ display: 'flex', gap: '28px', alignItems: 'center', flexWrap: 'nowrap', whiteSpace: 'nowrap' }}>
-            <a href="#about" style={{ fontSize: '14px', fontWeight: 500, color: 'rgba(255,255,255,0.6)', textDecoration: 'none', transition: 'color 0.3s' }} onMouseEnter={e=>e.currentTarget.style.color='#fff'} onMouseLeave={e=>e.currentTarget.style.color='rgba(255,255,255,0.6)'}>About</a>
-            <a href="#why" style={{ fontSize: '14px', fontWeight: 500, color: 'rgba(255,255,255,0.6)', textDecoration: 'none', transition: 'color 0.3s' }} onMouseEnter={e=>e.currentTarget.style.color='#fff'} onMouseLeave={e=>e.currentTarget.style.color='rgba(255,255,255,0.6)'}>Why Us</a>
-            <a href="#integrations" style={{ fontSize: '14px', fontWeight: 500, color: 'rgba(255,255,255,0.6)', textDecoration: 'none', transition: 'color 0.3s' }} onMouseEnter={e=>e.currentTarget.style.color='#fff'} onMouseLeave={e=>e.currentTarget.style.color='rgba(255,255,255,0.6)'}>Integrations</a>
-            <a href="#process" style={{ fontSize: '14px', fontWeight: 500, color: 'rgba(255,255,255,0.6)', textDecoration: 'none', transition: 'color 0.3s' }} onMouseEnter={e=>e.currentTarget.style.color='#fff'} onMouseLeave={e=>e.currentTarget.style.color='rgba(255,255,255,0.6)'}>Process</a>
-            <a href="#services" style={{ fontSize: '14px', fontWeight: 500, color: 'rgba(255,255,255,0.6)', textDecoration: 'none', transition: 'color 0.3s' }} onMouseEnter={e=>e.currentTarget.style.color='#fff'} onMouseLeave={e=>e.currentTarget.style.color='rgba(255,255,255,0.6)'}>Services</a>
-            <a href="#clients" style={{ fontSize: '14px', fontWeight: 500, color: 'rgba(255,255,255,0.6)', textDecoration: 'none', transition: 'color 0.3s' }} onMouseEnter={e=>e.currentTarget.style.color='#fff'} onMouseLeave={e=>e.currentTarget.style.color='rgba(255,255,255,0.6)'}>Clients</a>
-          </div>
+      <nav id="navbar" className="glass-navbar fixed top-5 left-1/2 -translate-x-1/2 z-[1000] w-[calc(100vw-8vw)] max-w-[1420px] rounded-[24px] bg-gradient-to-br from-[rgba(2,4,10,0.35)] to-[rgba(2,4,10,0.15)] backdrop-blur-[24px] backdrop-saturate-[2] shadow-[0_10px_40px_-10px_rgba(0,0,0,0.5),inset_0_-1px_1px_rgba(255,255,255,0.05)] transition-all duration-300 ease-in-out">
+        <div className="flex items-center justify-between h-[80px] w-full px-5 sm:px-8">
 
-          {/* CTA & Hamburger */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-            <a href="#contact" id="desktop-cta" style={{ padding: '10px 24px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '100px', fontSize: '14px', fontWeight: 600, color: '#fff', textDecoration: 'none', transition: 'all 0.3s' }} onMouseEnter={e=>{e.currentTarget.style.background='rgba(0, 240, 255, 0.1)'; e.currentTarget.style.borderColor='rgba(0, 240, 255, 0.3)'; e.currentTarget.style.color='#00f0ff'}} onMouseLeave={e=>{e.currentTarget.style.background='rgba(255,255,255,0.03)'; e.currentTarget.style.borderColor='rgba(255,255,255,0.08)'; e.currentTarget.style.color='#fff'}}>Book a Call</a>
-            <button id="hamburger-btn" className={isOpen ? 'hamburger active' : 'hamburger'} onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu" style={{ display: 'none', flexDirection: 'column', gap: '5px', background: 'none', border: 'none', cursor: 'pointer', padding: '4px', zIndex: 101 }}>
-              <span style={{ display: 'block', width: '24px', height: '2px', background: '#fff', borderRadius: '4px', transition: 'all 0.3s', transformOrigin: 'center', transform: isOpen ? 'translateY(7px) rotate(45deg)' : 'none' }}></span>
-              <span style={{ display: 'block', width: '24px', height: '2px', background: '#fff', borderRadius: '4px', transition: 'all 0.3s', opacity: isOpen ? 0 : 1 }}></span>
-              <span style={{ display: 'block', width: '24px', height: '2px', background: '#fff', borderRadius: '4px', transition: 'all 0.3s', transformOrigin: 'center', transform: isOpen ? 'translateY(-7px) rotate(-45deg)' : 'none' }}></span>
-            </button>
-          </div>
-          
-        </div>
+              {/* Brand Logo */}
+              <a href="/" className="flex items-center gap-3.5 no-underline" onClick={() => setIsOpen(false)}>
+                <img src="/logo.svg" alt="WAGS Tech Logo" className="w-[42px] h-[42px] object-contain" />
+                <span className="text-[22px] font-extrabold font-sora text-white tracking-[-0.02em]">WAGS Tech</span>
+              </a>
+
+              {/* Desktop Links */}
+              <div id="desktop-links" className="hidden lg:flex gap-7 items-center flex-nowrap whitespace-nowrap">
+                <a href="#about" className="text-[14px] font-medium text-white/60 no-underline transition-colors duration-300 hover:text-white">About</a>
+                <a href="#why" className="text-[14px] font-medium text-white/60 no-underline transition-colors duration-300 hover:text-white">Why Us</a>
+                <a href="#integrations" className="text-[14px] font-medium text-white/60 no-underline transition-colors duration-300 hover:text-white">Integrations</a>
+                <a href="#process" className="text-[14px] font-medium text-white/60 no-underline transition-colors duration-300 hover:text-white">Process</a>
+                <a href="#services" className="text-[14px] font-medium text-white/60 no-underline transition-colors duration-300 hover:text-white">Services</a>
+                <a href="#clients" className="text-[14px] font-medium text-white/60 no-underline transition-colors duration-300 hover:text-white">Clients</a>
+              </div>
+
+              {/* CTA & Hamburger */}
+              <div className="flex items-center gap-4">
+                <a href="#contact" id="desktop-cta" className="hidden lg:flex py-2.5 px-6 bg-white/5 border border-white/10 rounded-full text-[14px] font-semibold text-white no-underline transition-all duration-300 hover:bg-[rgba(0,240,255,0.1)] hover:border-[rgba(0,240,255,0.3)] hover:text-[#00f0ff]">Book a Call</a>
+                <button id="hamburger-btn" className={`hamburger flex lg:hidden flex-col justify-center items-center gap-1.5 bg-transparent border-none cursor-pointer p-1 z-[101] text-white`} onClick={() => setIsOpen(!isOpen)} aria-label="Toggle menu">
+                  {isOpen ? <FaTimes size={24} /> : <FaBars size={24} />}
+                </button>
+              </div>
+            </div>
       </nav>
 
       {/* Mobile Backdrop */}
-      <div 
-        style={{ position: 'fixed', top: 0, left: 0, right: 0, bottom: 0, background: 'rgba(0, 0, 0, 0.5)', backdropFilter: 'blur(4px)', WebkitBackdropFilter: 'blur(4px)', zIndex: 1001, opacity: isOpen ? 1 : 0, visibility: isOpen ? 'visible' : 'hidden', transition: 'all 0.3s ease' }} 
+      <div
+        className={`fixed inset-0 bg-black/50 backdrop-blur-sm z-[1001] transition-all duration-300 ease-in-out ${isOpen ? 'opacity-100 visible' : 'opacity-0 hidden'}`}
         onClick={() => setIsOpen(false)}
       ></div>
 
       {/* Mobile Drawer (Right Side) */}
-      <div style={{ position: 'fixed', top: 0, right: 0, bottom: 0, width: '80%', maxWidth: '320px', background: '#ffffff', borderLeft: '1px solid rgba(0,0,0,0.05)', boxShadow: '-10px 0 30px rgba(0,0,0,0.5)', zIndex: 1002, display: 'flex', flexDirection: 'column', padding: '30px', gap: '24px', transform: isOpen ? 'translateX(0)' : 'translateX(100%)', transition: 'transform 0.4s cubic-bezier(0.22, 1, 0.36, 1)' }}>
-        
+      <div className={`fixed top-0 right-0 bottom-0 w-4/5 max-w-[320px] bg-white border-l border-black/5 shadow-[-10px_0_30px_rgba(0,0,0,0.5)] z-[1002] flex flex-col p-[30px] gap-6 transition-transform duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] ${isOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+
         {/* Close Button */}
-        <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '10px' }}>
-          <button onClick={() => setIsOpen(false)} style={{ background: 'rgba(0,0,0,0.05)', border: '1px solid rgba(0,0,0,0.1)', color: '#000', width: '36px', height: '36px', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', cursor: 'pointer' }}>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        <div className="flex justify-end mb-2.5">
+          <button onClick={() => setIsOpen(false)} className="bg-black/5 border border-black/10 text-black w-9 h-9 rounded-full flex items-center justify-center cursor-pointer">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18" /><line x1="6" y1="6" x2="18" y2="18" /></svg>
           </button>
         </div>
 
-        <a href="#about" onClick={() => setIsOpen(false)} style={{ fontSize: '18px', fontWeight: 600, color: '#0f172a', textDecoration: 'none', fontFamily: 'Sora', padding: '10px 0' }}>About</a>
-        <a href="#why" onClick={() => setIsOpen(false)} style={{ fontSize: '18px', fontWeight: 600, color: '#0f172a', textDecoration: 'none', fontFamily: 'Sora', padding: '10px 0' }}>Why Us</a>
-        <a href="#integrations" onClick={() => setIsOpen(false)} style={{ fontSize: '18px', fontWeight: 600, color: '#0f172a', textDecoration: 'none', fontFamily: 'Sora', padding: '10px 0' }}>Integrations</a>
-        <a href="#process" onClick={() => setIsOpen(false)} style={{ fontSize: '18px', fontWeight: 600, color: '#0f172a', textDecoration: 'none', fontFamily: 'Sora', padding: '10px 0' }}>Process</a>
-        <a href="#services" onClick={() => setIsOpen(false)} style={{ fontSize: '18px', fontWeight: 600, color: '#0f172a', textDecoration: 'none', fontFamily: 'Sora', padding: '10px 0' }}>Services</a>
-        
-        <a href="#contact" onClick={() => setIsOpen(false)} style={{ marginTop: '20px', fontSize: '16px', padding: '16px', background: 'linear-gradient(135deg, #00E5C7 0%, #00B8E6 100%)', color: '#03241F', borderRadius: '12px', fontWeight: 700, textDecoration: 'none', textAlign: 'center', boxShadow: '0 8px 20px -6px rgba(0, 229, 199, 0.4)' }}>Book a Call</a>
+        <a href="#about" onClick={() => setIsOpen(false)} className="text-[18px] font-semibold text-slate-900 no-underline font-sora py-2.5">About</a>
+        <a href="#why" onClick={() => setIsOpen(false)} className="text-[18px] font-semibold text-slate-900 no-underline font-sora py-2.5">Why Us</a>
+        <a href="#integrations" onClick={() => setIsOpen(false)} className="text-[18px] font-semibold text-slate-900 no-underline font-sora py-2.5">Integrations</a>
+        <a href="#process" onClick={() => setIsOpen(false)} className="text-[18px] font-semibold text-slate-900 no-underline font-sora py-2.5">Process</a>
+        <a href="#services" onClick={() => setIsOpen(false)} className="text-[18px] font-semibold text-slate-900 no-underline font-sora py-2.5">Services</a>
+
+        <a href="#contact" onClick={() => setIsOpen(false)} className="mt-5 text-[16px] p-4 bg-gradient-to-br from-[#00E5C7] to-[#00B8E6] text-[#03241F] rounded-xl font-bold no-underline text-center shadow-[0_8px_20px_-6px_rgba(0,229,199,0.4)]">Book a Call</a>
       </div>
     </>
   );

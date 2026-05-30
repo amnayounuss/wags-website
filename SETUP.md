@@ -1,4 +1,4 @@
-# 🚀 Quick Start Guide
+C:\Users\PC\Downloads\new wags\SETUP.md# 🚀 Quick Start Guide
 
 ## Step 1: Install Dependencies
 

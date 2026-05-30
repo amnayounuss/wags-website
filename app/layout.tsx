@@ -1,7 +1,6 @@
 
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
-import './premium.css'
 
 export const metadata: Metadata = {
   title: 'WAGS Tech — Odoo ERP Solutions in Saudi Arabia',

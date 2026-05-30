@@ -2,17 +2,10 @@
 (function() {
 
 try {
-  const progressBar = document.getElementById('scroll-progress');
   const backToTop = document.getElementById('back-to-top');
-  if (progressBar && backToTop) {
-    const progressRing = backToTop.querySelector('circle');
-    const ringLen = 126;
+  if (backToTop) {
     window.addEventListener('scroll', () => {
       const scroll = window.scrollY;
-      const total = document.documentElement.scrollHeight - window.innerHeight;
-      const pct = total > 0 ? scroll / total : 0;
-      progressBar.style.width = (pct * 100) + '%';
-      if(progressRing) progressRing.style.strokeDashoffset = ringLen * (1 - pct);
       backToTop.classList.toggle('visible', scroll > 500);
     });
     backToTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));

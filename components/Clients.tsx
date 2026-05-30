@@ -26,41 +26,28 @@ export default function Clients() {
 
   return (
     <>
-      <section id="clients" style={{ padding: '80px 0', position: 'relative' }}>
+      <section id="clients" className="py-20 relative">
         <div className="container">
-          <div style={{ textAlign: 'center', marginBottom: '40px' }}>
-            <p style={{ fontSize: '18px', color: '#fff', fontWeight: 600, fontFamily: 'Sora', margin: 0 }}>
+          <div className="text-center mb-10">
+            <p className="text-[18px] text-white font-semibold font-sora m-0">
               Trusted by 50+ businesses across retail, F&B, contracting, and more
             </p>
           </div>
         </div>
 
-        <div className="ticker-wrapper" style={{ marginTop: '30px' }}>
-          <div className="ticker-track" style={{ gap: '100px', paddingRight: '100px' }}>
+        <div className="ticker-wrapper mt-[30px]">
+          <div className="ticker-track gap-[100px] pr-[100px]">
             {tickerItems.map((c, i) => (
-              <div 
-                key={i} 
-                style={{ 
-                  display: 'flex', 
-                  alignItems: 'center', 
-                  color: 'rgba(255, 255, 255, 0.6)',
-                  transition: 'color 0.3s ease',
-                  cursor: 'default',
-                  whiteSpace: 'nowrap'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.color = '#fff';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.color = 'rgba(255, 255, 255, 0.6)';
-                }}
+              <div
+                key={i}
+                className="flex items-center text-white/60 transition-colors duration-300 cursor-default whitespace-nowrap hover:text-white"
               >
-                <span style={{ fontSize: '24px', fontWeight: 700, fontFamily: 'Sora', letterSpacing: '-0.02em' }}>{c.name}</span>
+              <span className="text-[24px] font-bold font-sora tracking-[-0.02em]">{c.name}</span>
               </div>
             ))}
-          </div>
         </div>
-      </section>
+      </div>
+    </section >
     </>
   );
 }

@@ -1,87 +1,63 @@
 'use client';
 import React from 'react';
+import { Briefcase, ShieldCheck, Users, Globe, LayoutGrid, Zap } from 'lucide-react';
 
 export default function WhyChoose() {
   const features = [
     {
       title: "Tailored Odoo Solutions",
       desc: "Every ERP is fully customized to your industry, workflow, and business size — no one-size-fits-all systems.",
-      icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="16"/><line x1="10" y1="14" x2="14" y2="14"/></svg>
+      icon: <Briefcase size={24} strokeWidth={2} />
     },
     {
       title: "ZATCA Compliant",
       desc: "Full compliance with Saudi regulations including VAT, e-invoicing, and all ZATCA Phase 2 standards.",
-      icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="M9 12l2 2 4-4"/></svg>
+      icon: <ShieldCheck size={24} strokeWidth={2} />
     },
     {
       title: "Long-term Partnership",
       desc: "Training, ongoing support, and continuous system improvement post go-live.",
-      icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      icon: <Users size={24} strokeWidth={2} />
     },
     {
       title: "Local Expertise",
       desc: "Deep knowledge of the Saudi market, VAT regulations, and business culture.",
-      icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+      icon: <Globe size={24} strokeWidth={2} />
     },
     {
       title: "Dedicated Team",
       desc: "Specialized ERP consultants, developers, and engineers on your project.",
-      icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><rect x="2" y="2" width="9" height="9" rx="1.5"/><rect x="13" y="2" width="9" height="9" rx="1.5"/><rect x="13" y="13" width="9" height="9" rx="1.5"/><rect x="2" y="13" width="9" height="9" rx="1.5"/></svg>
+      icon: <LayoutGrid size={24} strokeWidth={2} />
     },
     {
       title: "Fast Deployment",
       desc: "Structured implementation plans ensure on-time go-live with minimal business disruption.",
-      icon: <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M13 2L3 14h7l-1 8 10-12h-7l1-8z"/></svg>
+      icon: <Zap size={24} strokeWidth={2} />
     }
   ];
 
   return (
     <>
-      <section id="why" style={{ padding: '100px 0', position: 'relative' }}>
+      <section id="why" className="py-[100px] relative">
         <div className="container">
-          
-          <div style={{ textAlign: 'center', marginBottom: '80px' }}>
-            <div className="section-label" style={{ display: 'inline-block', marginBottom: '24px', background: 'rgba(0, 240, 255, 0.1)', border: '1px solid rgba(0, 240, 255, 0.3)', color: '#00f0ff', padding: '6px 16px', borderRadius: '100px', fontSize: '13px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}>Why Choose Us</div>
-            <h2 style={{ fontSize: 'clamp(36px, 5vw, 56px)', lineHeight: 1.1, marginBottom: '24px', fontWeight: 800, fontFamily: 'Sora', color: '#fff' }}>Why Partner with <span style={{ background: 'linear-gradient(135deg, #00f0ff, #8b5cf6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>WAGS?</span></h2>
-            <p style={{ fontSize: '18px', color: 'rgba(255,255,255,0.7)', lineHeight: 1.6, maxWidth: '600px', margin: '0 auto' }}>We don't just provide an ERP system — we build long-term partnerships that help your business grow in an ever-changing environment.</p>
+
+          <div className="text-center mb-[80px]">
+            <div className="section-label inline-block mb-6 bg-[rgba(0,240,255,0.1)] border border-[rgba(0,240,255,0.3)] text-[#00f0ff] py-[6px] px-4 rounded-full text-[13px] font-bold tracking-[0.1em] uppercase">Why Choose Us</div>
+            <h2 className="text-[clamp(36px,5vw,56px)] leading-[1.1] mb-6 font-extrabold font-sora text-white">Why Partner with <span className="bg-gradient-to-br from-[#00f0ff] to-[#8b5cf6] bg-clip-text text-transparent">WAGS?</span></h2>
+            <p className="text-[18px] text-white/70 leading-[1.6] max-w-[600px] mx-auto">We don't just provide an ERP system — we build long-term partnerships that help your business grow in an ever-changing environment.</p>
           </div>
 
-          <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'center', gap: '30px' }}>
+          <div className="flex flex-wrap justify-center gap-[30px]">
             {features.map((feature, i) => (
-              <div 
-                key={i} 
-                style={{ 
-                  flex: '1 1 280px',
-                  maxWidth: '420px',
-                  background: 'rgba(8, 10, 15, 0.65)', 
-                  backdropFilter: 'blur(20px)', 
-                  WebkitBackdropFilter: 'blur(20px)', 
-                  border: '1px solid rgba(255, 255, 255, 0.04)', 
-                  borderTop: '1px solid rgba(0, 240, 255, 0.15)', 
-                  borderRadius: '24px', 
-                  padding: '40px', 
-                  boxShadow: '0 20px 40px -10px rgba(0,0,0,0.8)',
-                  transition: 'all 0.3s cubic-bezier(0.16, 1, 0.3, 1)',
-                  cursor: 'pointer'
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-8px)';
-                  e.currentTarget.style.borderTop = '1px solid rgba(0, 240, 255, 0.6)';
-                  e.currentTarget.style.boxShadow = '0 30px 60px -10px rgba(0, 240, 255, 0.15)';
-                  e.currentTarget.style.background = 'rgba(12, 15, 25, 0.8)';
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.borderTop = '1px solid rgba(0, 240, 255, 0.15)';
-                  e.currentTarget.style.boxShadow = '0 20px 40px -10px rgba(0,0,0,0.8)';
-                  e.currentTarget.style.background = 'rgba(8, 10, 15, 0.65)';
-                }}
+              <div
+                key={i}
+                className="flex-1 min-w-[280px] max-w-[420px] bg-[rgba(8,10,15,0.65)] backdrop-blur-[20px] border border-white/5 border-t-[rgba(0,240,255,0.15)] rounded-[24px] p-10 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.8)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] cursor-pointer hover:-translate-y-2 hover:border-t-[rgba(0,240,255,0.6)] hover:shadow-[0_30px_60px_-10px_rgba(0,240,255,0.15)] hover:bg-[rgba(12,15,25,0.8)]"
               >
-                <div style={{ width: '52px', height: '52px', borderRadius: '16px', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', display: 'flex', alignItems: 'center', justifyContent: 'center', color: '#00f0ff', marginBottom: '24px' }}>
+                <div className="w-[52px] h-[52px] rounded-2xl bg-white/5 border border-white/5 flex items-center justify-center text-[#00f0ff] mb-6">
                   {feature.icon}
                 </div>
-                <h3 style={{ fontSize: '20px', fontWeight: 700, color: '#fff', marginBottom: '16px', fontFamily: 'Sora' }}>{feature.title}</h3>
-                <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>{feature.desc}</p>
+                <h3 className="text-[20px] font-bold text-white mb-4 font-sora">{feature.title}</h3>
+                <p className="text-[15px] text-white/60 leading-[1.6]">{feature.desc}</p>
               </div>
             ))}
           </div>

@@ -4,68 +4,40 @@ import React from 'react';
 export default function About() {
   return (
     <>
-      <section id="about" style={{ padding: '100px 0', position: 'relative' }}>
+      <section id="about" className="py-[100px] relative">
         <div className="container">
           <div className="about-grid">
-            
+
             {/* Left Side - Text */}
             <div className="about-text">
-              <div className="section-label" style={{ display: 'inline-block', marginBottom: '24px', background: 'rgba(0, 240, 255, 0.1)', border: '1px solid rgba(0, 240, 255, 0.3)', color: '#00f0ff', padding: '6px 16px', borderRadius: '100px', fontSize: '13px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase' }}>Introduction</div>
-              <h2 style={{ fontSize: 'clamp(36px, 5vw, 56px)', lineHeight: 1.1, marginBottom: '24px', fontWeight: 800, fontFamily: 'Sora', color: '#fff' }}>Who We <span style={{ background: 'linear-gradient(135deg, #00f0ff, #8b5cf6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Are</span></h2>
-              <p style={{ fontSize: '18px', color: 'rgba(255,255,255,0.7)', lineHeight: 1.7, marginBottom: '24px' }}>WAGS is a leading provider of ERP implementation and customized Odoo modules, delivering cutting-edge solutions designed to streamline business operations and boost efficiency across Saudi Arabia.</p>
-              <p style={{ fontSize: '18px', color: 'rgba(255,255,255,0.7)', lineHeight: 1.7 }}>We believe every organization has unique needs. Our seasoned team brings deep industry knowledge — enabling smart, flexible solutions that support growth and drive successful digital transformation.</p>
+              <div className="section-label inline-block mb-6 bg-[rgba(0,240,255,0.1)] border border-[rgba(0,240,255,0.3)] text-[#00f0ff] py-[6px] px-4 rounded-full text-[13px] font-bold tracking-[0.1em] uppercase">Introduction</div>
+              <h2 className="text-[clamp(36px,5vw,56px)] leading-[1.1] mb-6 font-extrabold font-sora text-white">Who We <span className="bg-gradient-to-br from-[#00f0ff] to-[#8b5cf6] bg-clip-text text-transparent">Are</span></h2>
+              <p className="text-[18px] text-white/70 leading-[1.7] mb-6">WAGS is a leading provider of ERP implementation and customized Odoo modules, delivering cutting-edge solutions designed to streamline business operations and boost efficiency across Saudi Arabia.</p>
+              <p className="text-[18px] text-white/70 leading-[1.7]">We believe every organization has unique needs. Our seasoned team brings deep industry knowledge — enabling smart, flexible solutions that support growth and drive successful digital transformation.</p>
             </div>
-            
+
             {/* Right Side - Bento Grid */}
             <div className="about-bento">
-              
+
               {/* Vision */}
-              <div style={{ 
-                gridColumn: '1 / -1', 
-                background: 'rgba(8, 10, 15, 0.65)', 
-                backdropFilter: 'blur(20px)', 
-                WebkitBackdropFilter: 'blur(20px)', 
-                border: '1px solid rgba(255, 255, 255, 0.04)', 
-                borderTop: '1px solid rgba(139, 92, 246, 0.3)', 
-                borderRadius: '24px', 
-                padding: '40px', 
-                boxShadow: '0 20px 40px -10px rgba(0,0,0,0.8)' 
-              }}>
-                <div style={{ fontSize: '12px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#8b5cf6', marginBottom: '12px' }}>Vision</div>
-                <h3 style={{ fontSize: '24px', fontWeight: 700, color: '#fff', marginBottom: '16px', fontFamily: 'Sora' }}>Premier ERP Provider in the Region</h3>
-                <p style={{ fontSize: '16px', color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>To be recognized for our commitment to innovation, client success, and technical excellence — leading digital transformation across KSA and beyond.</p>
+              <div className="col-span-full bg-[rgba(8,10,15,0.65)] backdrop-blur-[20px] border border-white/5 border-t-[rgba(139,92,246,0.3)] rounded-[24px] p-10 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.8)]">
+                <div className="text-[12px] font-bold tracking-[0.15em] uppercase text-[#8b5cf6] mb-3">Vision</div>
+                <h3 className="text-[24px] font-bold text-white mb-4 font-sora">Premier ERP Provider in the Region</h3>
+                <p className="text-[16px] text-white/60 leading-[1.6]">To be recognized for our commitment to innovation, client success, and technical excellence — leading digital transformation across KSA and beyond.</p>
               </div>
 
               {/* Mission */}
-              <div style={{ 
-                background: 'rgba(8, 10, 15, 0.65)', 
-                backdropFilter: 'blur(20px)', 
-                WebkitBackdropFilter: 'blur(20px)', 
-                border: '1px solid rgba(255, 255, 255, 0.04)', 
-                borderTop: '1px solid rgba(0, 240, 255, 0.2)', 
-                borderRadius: '24px', 
-                padding: '32px 24px', 
-                boxShadow: '0 20px 40px -10px rgba(0,0,0,0.8)' 
-              }}>
-                <div style={{ fontSize: '12px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#00f0ff', marginBottom: '12px' }}>Mission</div>
-                <h3 style={{ fontSize: '20px', fontWeight: 700, color: '#fff', marginBottom: '16px', fontFamily: 'Sora' }}>Partnerships That Drive Growth</h3>
-                <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>Through deep collaboration and local expertise, we ensure every implementation delivers measurable results.</p>
+              <div className="bg-[rgba(8,10,15,0.65)] backdrop-blur-[20px] border border-white/5 border-t-[rgba(0,240,255,0.2)] rounded-[24px] py-8 px-6 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.8)]">
+                <div className="text-[12px] font-bold tracking-[0.15em] uppercase text-[#00f0ff] mb-3">Mission</div>
+                <h3 className="text-[20px] font-bold text-white mb-4 font-sora">Partnerships That Drive Growth</h3>
+                <p className="text-[15px] text-white/60 leading-[1.6]">Through deep collaboration and local expertise, we ensure every implementation delivers measurable results.</p>
               </div>
 
               {/* Value */}
-              <div style={{ 
-                background: 'rgba(8, 10, 15, 0.65)', 
-                backdropFilter: 'blur(20px)', 
-                WebkitBackdropFilter: 'blur(20px)', 
-                border: '1px solid rgba(255, 255, 255, 0.04)', 
-                borderTop: '1px solid rgba(244, 63, 94, 0.2)', 
-                borderRadius: '24px', 
-                padding: '32px 24px', 
-                boxShadow: '0 20px 40px -10px rgba(0,0,0,0.8)' 
-              }}>
-                <div style={{ fontSize: '12px', fontWeight: 700, letterSpacing: '0.15em', textTransform: 'uppercase', color: '#f43f5e', marginBottom: '12px' }}>Value</div>
-                <h3 style={{ fontSize: '20px', fontWeight: 700, color: '#fff', marginBottom: '16px', fontFamily: 'Sora' }}>Innovation</h3>
-                <p style={{ fontSize: '15px', color: 'rgba(255,255,255,0.6)', lineHeight: 1.6 }}>Continuously advancing to meet evolving business needs and industry standards.</p>
+              <div className="bg-[rgba(8,10,15,0.65)] backdrop-blur-[20px] border border-white/5 border-t-[rgba(244,63,94,0.2)] rounded-[24px] py-8 px-6 shadow-[0_20px_40px_-10px_rgba(0,0,0,0.8)]">
+                <div className="text-[12px] font-bold tracking-[0.15em] uppercase text-[#f43f5e] mb-3">Value</div>
+                <h3 className="text-[20px] font-bold text-white mb-4 font-sora">Innovation</h3>
+                <p className="text-[15px] text-white/60 leading-[1.6]">Continuously advancing to meet evolving business needs and industry standards.</p>
               </div>
 
             </div>
