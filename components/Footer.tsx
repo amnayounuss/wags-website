@@ -1,4 +1,5 @@
 'use client';
+import Link from 'next/link';
 import { FaLinkedin, FaTwitter, FaInstagram } from 'react-icons/fa';
 import { useLanguage } from '@/context/LanguageContext';
 
@@ -50,8 +51,8 @@ export default function Footer() {
             <div className={`flex justify-between items-center flex-wrap gap-5 pt-8 border-t border-white/5`}>
               <div className="text-[14px] text-white/40">{t('footer.copy')}</div>
               <div className={`flex gap-6 flex-wrap`}>
-                <a href="/privacy" className="text-white/60 text-[14px] no-underline transition-colors duration-300 hover:text-white">{t('footer.privacy')}</a>
-                <a href="#" className="text-white/60 text-[14px] no-underline transition-colors duration-300 hover:text-white">{t('footer.terms')}</a>
+                <Link href="/privacy" className="text-white/60 text-[14px] no-underline transition-colors duration-300 hover:text-white">{t('footer.privacy')}</Link>
+                <Link href="#" className="text-white/60 text-[14px] no-underline transition-colors duration-300 hover:text-white">{t('footer.terms')}</Link>
               </div>
             </div>
 
