@@ -8,10 +8,10 @@ export default function Hero() {
 
   return (
     <>
-      <section id="hero" className="min-h-screen flex items-center relative pt-[180px] pb-[100px] overflow-hidden bg-[#02040a] bg-[radial-gradient(ellipse_at_top_center,_var(--tw-gradient-stops))] from-[rgba(10,23,48,0.8)] via-[#02040a] to-[#02040a]">
+      <section id="hero" className="min-h-screen flex items-center relative pt-[160px] md:pt-[180px] pb-[60px] md:pb-[100px] overflow-hidden bg-[#02040a] bg-[radial-gradient(ellipse_at_top_center,_var(--tw-gradient-stops))] from-[rgba(10,23,48,0.8)] via-[#02040a] to-[#02040a]">
 
         {/* Spotlight Effect */}
-        <div className="absolute top-0 left-1/4 w-full h-[800px] bg-gradient-to-b from-[rgba(0,240,255,0.06)] to-transparent -rotate-45 transform origin-top-left pointer-events-none mix-blend-screen"></div>
+        <div className="absolute top-0 left-1/4 w-full h-[500px] md:h-[800px] bg-gradient-to-b from-[rgba(0,240,255,0.06)] to-transparent -rotate-45 transform origin-top-left pointer-events-none mix-blend-screen"></div>
 
         {/* Tech Grid Background - Brighter & Wider */}
         <div className="absolute inset-0 pointer-events-none z-0"
@@ -23,29 +23,29 @@ export default function Hero() {
         </div>
 
         {/* Abstract Rotating Rings - More Prominent */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border-2 border-[rgba(0,240,255,0.05)] rounded-full animate-[spin_40s_linear_infinite] pointer-events-none"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[1000px] border border-[rgba(139,92,246,0.08)] border-dashed rounded-full animate-[spin_70s_linear_infinite_reverse] pointer-events-none"></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1400px] h-[1400px] border border-[rgba(0,240,255,0.03)] border-dotted rounded-full animate-[spin_100s_linear_infinite] pointer-events-none"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[600px] h-[300px] md:h-[600px] border-2 border-[rgba(0,240,255,0.05)] rounded-full animate-[spin_40s_linear_infinite] pointer-events-none"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] md:w-[1000px] h-[600px] md:h-[1000px] border border-[rgba(139,92,246,0.08)] border-dashed rounded-full animate-[spin_70s_linear_infinite_reverse] pointer-events-none"></div>
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] md:w-[1400px] h-[900px] md:h-[1400px] border border-[rgba(0,240,255,0.03)] border-dotted rounded-full animate-[spin_100s_linear_infinite] pointer-events-none"></div>
 
         {/* Floating Ambient Glows - Brighter & Larger */}
-        <div className="absolute top-[5%] left-[5%] w-[600px] h-[600px] bg-[#00f0ff] opacity-[0.12] rounded-full blur-[130px] pointer-events-none mix-blend-screen animate-[float-1_10s_ease-in-out_infinite]"></div>
-        <div className="absolute bottom-[0%] right-[0%] w-[700px] h-[700px] bg-[#8b5cf6] opacity-[0.15] rounded-full blur-[150px] pointer-events-none mix-blend-screen animate-[float-2_15s_ease-in-out_infinite]"></div>
+        <div className="absolute top-[5%] left-[5%] w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-[#00f0ff] opacity-[0.12] rounded-full blur-[130px] pointer-events-none mix-blend-screen animate-[float-1_10s_ease-in-out_infinite]"></div>
+        <div className="absolute bottom-[0%] right-[0%] w-[400px] md:w-[700px] h-[400px] md:h-[700px] bg-[#8b5cf6] opacity-[0.15] rounded-full blur-[150px] pointer-events-none mix-blend-screen animate-[float-2_15s_ease-in-out_infinite]"></div>
 
-        <div className="container relative z-10 flex flex-col items-center pt-10">
+        <div className="container relative z-10 flex flex-col items-center pt-5 md:pt-10">
 
           {/* Centered Content */}
           <div className="relative z-20 flex flex-col items-center text-center w-full max-w-[1200px] mx-auto px-4">
 
             {/* Badge */}
-            <div className="fade-up-1 inline-flex items-center justify-center gap-3 py-1.5 px-4 bg-[#0a101d] rounded-full border border-white/5 mb-8 shadow-sm">
-              <span className="text-[11px] font-bold tracking-[0.15em] uppercase text-white/50 font-sora">Odoo ERP &nbsp;·&nbsp; ZATCA &nbsp;·&nbsp; KSA</span>
+            <div className="fade-up-1 inline-flex items-center justify-center gap-3 py-1.5 px-4 bg-[#0a101d] rounded-full border border-white/5 mb-6 md:mb-8 shadow-sm">
+              <span className="text-[10px] md:text-[11px] font-bold tracking-[0.15em] uppercase text-white/50 font-sora">Odoo ERP &nbsp;·&nbsp; ZATCA &nbsp;·&nbsp; KSA</span>
             </div>
 
             {/* Title */}
-            <h1 className="fade-up-2 text-center text-[clamp(28px,4vw,60px)] xl:text-[72px] font-extrabold font-sora text-white leading-[1.1] tracking-[-0.03em] mb-6 w-full">
-              <span className="md:whitespace-nowrap">Empowering Business with</span>
+            <h1 className="fade-up-2 text-center text-[clamp(32px,6vw,60px)] xl:text-[72px] font-extrabold font-sora text-white leading-[1.2] md:leading-[1.1] tracking-[-0.03em] mb-4 md:mb-6 w-full">
+              <span className="block md:inline md:whitespace-nowrap">Empowering Business with</span>
               <br className="hidden md:block" />
-              <span className="mt-2 md:mt-0 md:inline md:whitespace-nowrap">
+              <span className="block mt-2 md:mt-0 md:inline md:whitespace-nowrap">
                 <span className="relative bg-gradient-to-r from-[#00f0ff] via-[#3b82f6] to-[#8b5cf6] bg-clip-text text-transparent animate-gradient-x">
                   Smart ERP
                 </span>
@@ -54,13 +54,13 @@ export default function Hero() {
             </h1>
 
             {/* Subtitle */}
-            <p className="fade-up-3 text-center text-[18px] lg:text-[20px] leading-[1.6] text-white/50 max-w-[1000px] mx-auto mb-10 font-medium">
+            <p className="fade-up-3 text-center text-[16px] md:text-[18px] lg:text-[20px] leading-[1.6] text-white/50 max-w-[1000px] mx-auto mb-8 md:mb-10 font-medium px-2">
               We build tailored Odoo ERP systems that streamline operations, ensure ZATCA compliance,{" "}
               and drive lasting growth for businesses across Saudi Arabia.
             </p>
 
             {/* Actions */}
-            <div className="fade-up-4 flex flex-col sm:flex-row gap-4 items-center justify-center mb-16">
+            <div className="fade-up-4 flex flex-col sm:flex-row gap-4 items-center justify-center mb-12 md:mb-16 w-full sm:w-auto px-4">
               <a href="#contact" className="group relative w-full sm:w-auto inline-flex items-center justify-center gap-3 py-4 px-8 bg-white text-black rounded-full text-[16px] font-bold no-underline transition-all duration-300 hover:bg-[#00f0ff] hover:text-black hover:shadow-[0_0_30px_rgba(0,240,255,0.4)] overflow-hidden">
                 <span className="relative z-10 flex items-center gap-2">
                   Contact us <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
@@ -72,7 +72,7 @@ export default function Hero() {
             </div>
 
             {/* Trust Indicators */}
-            <div className="fade-up-4 flex items-center justify-center gap-4 opacity-70 mb-12">
+            <div className="fade-up-4 flex flex-col sm:flex-row items-center justify-center gap-4 opacity-70 mb-10 md:mb-12">
               <div className="text-[13px] text-white/60">
                 Trusted by <strong className="text-white">50+</strong> businesses in KSA
               </div>
@@ -89,81 +89,83 @@ export default function Hero() {
                 ))}
               </div>
             </div>
-          </div>          {/* Centered Massive Dashboard Visual */}
-          <div className="relative w-full max-w-[1200px] mx-auto z-20 flex justify-center fade-up-5 mt-4">
+          </div>
+
+          {/* Centered Massive Dashboard Visual */}
+          <div className="relative w-full max-w-[1200px] mx-auto z-20 flex justify-center fade-up-5 mt-4 px-2 md:px-4">
 
             {/* Massive Glow Behind Dashboard (mimicking reference image) */}
-            <div className="absolute top-1/2 left-1/2 w-full max-w-[800px] h-[300px] bg-[#5b32f6] opacity-30 rounded-full blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
+            <div className="absolute top-1/2 left-1/2 w-full max-w-[800px] h-[300px] bg-[#5b32f6] opacity-20 md:opacity-30 rounded-full blur-[80px] md:blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
 
             {/* Main Dashboard UI - Flat and Centered */}
-            <div className="relative w-full h-[600px] rounded-t-[16px] z-10 flex flex-col overflow-hidden bg-[#0a0f1a] border border-[#2a2d3d] border-b-0 shadow-[0_-20px_80px_rgba(0,0,0,0.8)]">
+            <div className="relative w-full h-auto min-h-[400px] md:h-[600px] rounded-t-[12px] md:rounded-t-[16px] z-10 flex flex-col overflow-hidden bg-[#0a0f1a] border border-[#2a2d3d] border-b-0 shadow-[0_-10px_40px_rgba(0,0,0,0.6)] md:shadow-[0_-20px_80px_rgba(0,0,0,0.8)]">
 
               {/* macOS style Header */}
-              <div className="h-10 border-b border-[#2a2d3d] flex items-center px-4 bg-[#121622]">
-                <div className="flex gap-2">
-                  <div className="w-3 h-3 rounded-full bg-[#ff5f56]"></div>
-                  <div className="w-3 h-3 rounded-full bg-[#ffbd2e]"></div>
-                  <div className="w-3 h-3 rounded-full bg-[#27c93f]"></div>
+              <div className="h-8 md:h-10 border-b border-[#2a2d3d] flex items-center px-3 md:px-4 bg-[#121622] shrink-0">
+                <div className="flex gap-1.5 md:gap-2">
+                  <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#ff5f56]"></div>
+                  <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#ffbd2e]"></div>
+                  <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#27c93f]"></div>
                 </div>
-                <div className="mx-auto flex items-center gap-2 bg-[#02040a] px-8 py-1 rounded border border-[#2a2d3d]">
-                  <Lock size={12} className="text-white/40" />
-                  <span className="text-[10px] font-semibold text-white/40 tracking-wider uppercase">wags.cloud/dashboard</span>
+                <div className="mx-auto flex items-center gap-2 bg-[#02040a] px-4 md:px-8 py-1 rounded border border-[#2a2d3d]">
+                  <Lock size={10} className="text-white/40 md:w-3 md:h-3" />
+                  <span className="text-[9px] md:text-[10px] font-semibold text-white/40 tracking-wider uppercase truncate max-w-[120px] md:max-w-none">wags.cloud/dashboard</span>
                 </div>
               </div>
 
               {/* Dashboard Body */}
-              <div className="flex flex-1 p-6 gap-6 relative z-10 bg-[#0d121c]">
+              <div className="flex flex-1 p-3 md:p-6 gap-4 md:gap-6 relative z-10 bg-[#0d121c] overflow-hidden">
 
                 {/* Subtle Grid Background inside Dashboard */}
                 <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.05] pointer-events-none"></div>
 
-                {/* Sidebar Mini */}
-                <div className="w-16 flex flex-col gap-4 items-center pt-2 z-10">
-                  <div className="w-12 h-12 rounded-xl bg-gradient-to-br from-[#5b32f6]/80 to-[#4a24d6]/80 flex items-center justify-center text-white border border-[#5b32f6] shadow-[0_0_15px_rgba(91,50,246,0.4)] relative cursor-pointer">
-                    <div className="absolute left-[-10px] top-1/2 -translate-y-1/2 w-1 h-6 bg-[#5b32f6] rounded-r-full"></div>
-                    <BarChart3 size={22} />
+                {/* Sidebar Mini - Hidden on small mobile */}
+                <div className="hidden sm:flex w-12 md:w-16 flex-col gap-3 md:gap-4 items-center pt-2 z-10 shrink-0">
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br from-[#5b32f6]/80 to-[#4a24d6]/80 flex items-center justify-center text-white border border-[#5b32f6] shadow-[0_0_15px_rgba(91,50,246,0.4)] relative cursor-pointer">
+                    <div className="absolute left-[-10px] top-1/2 -translate-y-1/2 w-1 h-5 md:h-6 bg-[#5b32f6] rounded-r-full"></div>
+                    <BarChart3 size={18} className="md:w-[22px] md:h-[22px]" />
                   </div>
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center text-white/30 hover:text-white transition-all cursor-pointer hover:bg-white/5 border border-transparent">
-                    <Database size={22} />
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center text-white/30 hover:text-white transition-all cursor-pointer hover:bg-white/5 border border-transparent">
+                    <Database size={18} className="md:w-[22px] md:h-[22px]" />
                   </div>
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center text-white/30 hover:text-white transition-all cursor-pointer hover:bg-white/5 border border-transparent">
-                    <Activity size={22} />
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center text-white/30 hover:text-white transition-all cursor-pointer hover:bg-white/5 border border-transparent">
+                    <Activity size={18} className="md:w-[22px] md:h-[22px]" />
                   </div>
-                  <div className="w-12 h-12 rounded-xl flex items-center justify-center text-white/30 hover:text-white transition-all cursor-pointer hover:bg-white/5 border border-transparent">
-                    <ShieldCheck size={22} />
+                  <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center text-white/30 hover:text-white transition-all cursor-pointer hover:bg-white/5 border border-transparent">
+                    <ShieldCheck size={18} className="md:w-[22px] md:h-[22px]" />
                   </div>
                 </div>
 
                 {/* Main Content Area */}
-                <div className="flex-1 flex flex-col gap-6 pr-4 z-10">
+                <div className="flex-1 flex flex-col gap-4 md:gap-6 pr-0 md:pr-4 z-10 w-full overflow-hidden">
                   {/* Top Stats */}
-                  <div className="grid grid-cols-3 gap-6">
-                    <div className="bg-[#151926] border border-[#2a2d3d] rounded-xl p-6 relative overflow-hidden group cursor-default shadow-sm hover:border-[#5b32f6]/50 transition-colors">
-                      <div className="text-[12px] text-white/50 mb-1 font-semibold tracking-wide">Monthly Revenue</div>
-                      <div className="text-[28px] font-extrabold text-white font-sora tracking-tight">SAR 4.2M</div>
-                      <div className="text-[13px] text-[#27c93f] flex items-center gap-1.5 mt-2 font-medium"><TrendingUp size={16} /> +24.5%</div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-6">
+                    <div className="bg-[#151926] border border-[#2a2d3d] rounded-xl p-4 md:p-6 relative overflow-hidden group cursor-default shadow-sm hover:border-[#5b32f6]/50 transition-colors">
+                      <div className="text-[11px] md:text-[12px] text-white/50 mb-1 font-semibold tracking-wide">Monthly Revenue</div>
+                      <div className="text-[20px] md:text-[28px] font-extrabold text-white font-sora tracking-tight">SAR 4.2M</div>
+                      <div className="text-[12px] md:text-[13px] text-[#27c93f] flex items-center gap-1.5 mt-1 md:mt-2 font-medium"><TrendingUp size={14} className="md:w-4 md:h-4" /> +24.5%</div>
                     </div>
-                    <div className="bg-[#151926] border border-[#2a2d3d] rounded-xl p-6 relative overflow-hidden group cursor-default shadow-sm hover:border-[#5b32f6]/50 transition-colors">
-                      <div className="text-[12px] text-white/50 mb-1 font-semibold tracking-wide">Active Operations</div>
-                      <div className="text-[28px] font-extrabold text-white font-sora tracking-tight">1,284</div>
-                      <div className="text-[13px] text-[#5b32f6] flex items-center gap-1.5 mt-2 font-medium"><Activity size={16} /> Live Sync</div>
+                    <div className="bg-[#151926] border border-[#2a2d3d] rounded-xl p-4 md:p-6 relative overflow-hidden group cursor-default shadow-sm hover:border-[#5b32f6]/50 transition-colors hidden sm:block">
+                      <div className="text-[11px] md:text-[12px] text-white/50 mb-1 font-semibold tracking-wide">Active Operations</div>
+                      <div className="text-[20px] md:text-[28px] font-extrabold text-white font-sora tracking-tight">1,284</div>
+                      <div className="text-[12px] md:text-[13px] text-[#5b32f6] flex items-center gap-1.5 mt-1 md:mt-2 font-medium"><Activity size={14} className="md:w-4 md:h-4" /> Live Sync</div>
                     </div>
-                    <div className="bg-[#151926] border border-[#2a2d3d] rounded-xl p-6 relative overflow-hidden group cursor-default shadow-sm hover:border-[#5b32f6]/50 transition-colors">
-                      <div className="text-[12px] text-white/50 mb-1 font-semibold tracking-wide">Total Users</div>
-                      <div className="text-[28px] font-extrabold text-white font-sora tracking-tight">8,492</div>
-                      <div className="text-[13px] text-[#27c93f] flex items-center gap-1.5 mt-2 font-medium"><Check size={16} /> Verified</div>
+                    <div className="bg-[#151926] border border-[#2a2d3d] rounded-xl p-4 md:p-6 relative overflow-hidden group cursor-default shadow-sm hover:border-[#5b32f6]/50 transition-colors hidden md:block">
+                      <div className="text-[11px] md:text-[12px] text-white/50 mb-1 font-semibold tracking-wide">Total Users</div>
+                      <div className="text-[20px] md:text-[28px] font-extrabold text-white font-sora tracking-tight">8,492</div>
+                      <div className="text-[12px] md:text-[13px] text-[#27c93f] flex items-center gap-1.5 mt-1 md:mt-2 font-medium"><Check size={14} className="md:w-4 md:h-4" /> Verified</div>
                     </div>
                   </div>
 
                   {/* Chart Area */}
-                  <div className="flex-1 bg-[#151926] border border-[#2a2d3d] rounded-xl p-6 relative flex flex-col shadow-sm">
-                    <div className="flex justify-between items-center mb-6 z-10">
-                      <div className="text-[15px] text-white font-bold tracking-wide flex items-center gap-2">
+                  <div className="flex-1 min-h-[200px] bg-[#151926] border border-[#2a2d3d] rounded-xl p-4 md:p-6 relative flex flex-col shadow-sm">
+                    <div className="flex flex-row justify-between items-center mb-4 md:mb-6 z-10">
+                      <div className="text-[13px] md:text-[15px] text-white font-bold tracking-wide flex items-center gap-2">
                         Growth Analytics
                       </div>
-                      <div className="flex gap-2">
-                        <div className="text-[12px] py-1.5 px-4 bg-[#121622] border border-[#2a2d3d] rounded-md text-white/60 hover:text-white cursor-pointer transition-colors font-medium">This Month</div>
-                        <div className="text-[12px] py-1.5 px-4 bg-[#5b32f6]/10 border border-[#5b32f6]/30 rounded-md text-[#5b32f6] font-semibold cursor-pointer">This Year</div>
+                      <div className="flex gap-1 md:gap-2">
+                        <div className="text-[10px] md:text-[12px] py-1 md:py-1.5 px-2 md:px-4 bg-[#121622] border border-[#2a2d3d] rounded-md text-white/60 hover:text-white cursor-pointer transition-colors font-medium">This Month</div>
+                        <div className="text-[10px] md:text-[12px] py-1 md:py-1.5 px-2 md:px-4 bg-[#5b32f6]/10 border border-[#5b32f6]/30 rounded-md text-[#5b32f6] font-semibold cursor-pointer">This Year</div>
                       </div>
                     </div>
                     <div className="flex-1 relative w-full mt-2">
@@ -213,8 +215,8 @@ export default function Hero() {
 
             </div>
 
-            {/* Floating Element 1: ZATCA - Adjusted for flat layout */}
-            <div className="absolute top-[10%] right-[-2%] bg-[#121622] border border-[#2a2d3d] rounded-xl p-3 flex items-center gap-3 shadow-xl z-30">
+            {/* Floating Element 1: ZATCA - Hidden on mobile, visible on lg */}
+            <div className="hidden lg:flex absolute top-[10%] right-[-2%] bg-[#121622] border border-[#2a2d3d] rounded-xl p-3 items-center gap-3 shadow-xl z-30">
               <div className="w-10 h-10 rounded-lg bg-[#5b32f6]/10 flex items-center justify-center text-[#5b32f6]">
                 <ShieldCheck size={20} />
               </div>
@@ -224,8 +226,8 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Floating Element 2: POS */}
-            <div className="absolute bottom-[25%] left-[-2%] bg-[#121622] border border-[#2a2d3d] rounded-xl p-3 flex items-center gap-3 shadow-xl z-30">
+            {/* Floating Element 2: POS - Hidden on mobile, visible on lg */}
+            <div className="hidden lg:flex absolute bottom-[25%] left-[-2%] bg-[#121622] border border-[#2a2d3d] rounded-xl p-3 items-center gap-3 shadow-xl z-30">
               <div className="w-10 h-10 rounded-lg bg-[#27c93f]/10 flex items-center justify-center text-[#27c93f]">
                 <CreditCard size={20} />
               </div>
