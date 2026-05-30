@@ -96,7 +96,6 @@ try {
 } catch(e) { console.error('Error in navbar:', e); }
 
 try {
-  const reveals = document.querySelectorAll('.reveal');
   const revealObserver = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) {
@@ -105,7 +104,13 @@ try {
       }
     });
   }, { threshold: 0.08 });
-  reveals.forEach(r => revealObserver.observe(r));
+  
+  window.reinitReveals = () => {
+    document.querySelectorAll('.reveal').forEach(r => revealObserver.observe(r));
+  };
+  
+  // Initial run
+  window.reinitReveals();
 } catch(e) { console.error('Error in reveals:', e); }
 
 try {

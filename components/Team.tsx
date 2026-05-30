@@ -2,29 +2,33 @@
 import React from 'react';
 import Image from 'next/image';
 import { Mail } from 'lucide-react';
+import { useLanguage } from '@/context/LanguageContext';
 
 export default function Team() {
+  const { t, language } = useLanguage();
+  const isAr = language === 'ar';
+
   const team = [
     {
-      name: "Abdul Latif",
-      title: "Chief Executive Officer",
-      bio: "Leads the company vision, strategy, and client relationships across the region.",
+      name: isAr ? "عبد اللطيف" : "Abdul Latif",
+      title: t('team.al.title'),
+      bio: t('team.al.bio'),
       email: "Aw@wags.sa",
       initials: "AL",
       image: null
     },
     {
-      name: "Haroon Hayat",
-      title: "Chief Operating Officer",
-      bio: "Oversees day-to-day operations, project delivery, and team performance.",
+      name: isAr ? "هارون حياة" : "Haroon Hayat",
+      title: t('team.hh.title'),
+      bio: t('team.hh.bio'),
       email: "haroon@wags.sa",
       initials: "HH",
       image: "/haroon-bhai.png"
     },
     {
-      name: "Syed Danish",
-      title: "Chief Technology Officer",
-      bio: "Drives technical architecture, ERP customization, and platform innovation.",
+      name: isAr ? "سيد دانش" : "Syed Danish",
+      title: t('team.sd.title'),
+      bio: t('team.sd.bio'),
       email: "danish@wags.sa",
       initials: "SD",
       image: "/danish-bhai.png"
@@ -33,16 +37,16 @@ export default function Team() {
 
   return (
     <>
-      <section id="team" className="py-[120px] relative">
+      <section id="team" className={`py-[120px] relative ${isAr ? 'font-cairo' : 'font-sora'}`}>
         <div className="container">
 
           <div className="text-center mb-[80px]">
-            <div className="section-label inline-block mb-6 bg-[rgba(0,240,255,0.1)] border border-[rgba(0,240,255,0.3)] text-[#00f0ff] py-[6px] px-4 rounded-full text-[13px] font-bold tracking-[0.1em] uppercase">Our Team</div>
-            <h2 className="text-[clamp(36px,5vw,56px)] leading-[1.1] mb-6 font-extrabold font-sora text-white">Meet the <span className="bg-gradient-to-br from-[#00f0ff] to-[#8b5cf6] bg-clip-text text-transparent">Leadership</span></h2>
-            <p className="text-[18px] text-white/70 leading-[1.6] max-w-[600px] mx-auto">The people behind every successful WAGS implementation.</p>
+            <div className="section-label inline-block mb-6 bg-[rgba(0,240,255,0.1)] border border-[rgba(0,240,255,0.3)] text-[#00f0ff] py-[6px] px-4 rounded-full text-[13px] font-bold tracking-[0.1em] uppercase">{t('team.label')}</div>
+            <h2 className={`text-[clamp(36px,5vw,56px)] leading-[1.1] mb-6 font-extrabold text-white ${isAr ? 'font-cairo' : 'font-sora'}`}>{t('team.title1')}<span className="bg-gradient-to-br from-[#00f0ff] to-[#8b5cf6] bg-clip-text text-transparent">{t('team.title2')}</span></h2>
+            <p className="text-[18px] text-white/70 leading-[1.6] max-w-[600px] mx-auto">{t('team.sub')}</p>
           </div>
 
-          <div className="flex flex-wrap justify-center gap-[30px]">
+          <div className={`flex flex-wrap justify-center gap-[30px]`}>
             {team.map((member, i) => (
               <div
                 key={i}
@@ -57,14 +61,14 @@ export default function Team() {
                   )}
                 </div>
 
-                <h3 className="text-[22px] font-extrabold text-white mb-2 font-sora tracking-[-0.02em]">{member.name}</h3>
+                <h3 className={`text-[22px] font-extrabold text-white mb-2 tracking-[-0.02em] ${isAr ? 'font-cairo' : 'font-sora'}`}>{member.name}</h3>
                 <div className="text-[13px] font-bold text-[#00f0ff] tracking-[0.05em] uppercase mb-4">{member.title}</div>
 
                 <p className="text-[15px] text-white/60 leading-[1.6] flex-grow mb-6">{member.bio}</p>
 
                 <div className="h-[1px] w-full bg-white/5 mb-6"></div>
 
-                <a href={`mailto:${member.email}`} className="inline-flex items-center gap-2 text-white/80 text-[14px] font-semibold no-underline transition-colors duration-300 hover:text-white">
+                <a href={`mailto:${member.email}`} className={`inline-flex items-center gap-2 text-white/80 text-[14px] font-semibold no-underline transition-colors duration-300 hover:text-white`}>
                   <Mail size={16} strokeWidth={2} />
                   {member.email}
                 </a>

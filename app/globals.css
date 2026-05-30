@@ -4,6 +4,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.disable-transitions,
+.disable-transitions * {
+  transition: none !important;
+  animation: none !important;
+}
 
 *,
 *::before,
@@ -32,6 +37,10 @@
 html,
 body {
   width: 100%;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -2117,7 +2126,7 @@ section {
 .int-step:not(:last-child)::before {
   content: '';
   position: absolute;
-  left: 25px;
+  inset-inline-start: 25px;
   top: 54px;
   bottom: -6px;
   width: 2px;
@@ -2229,6 +2238,11 @@ section {
   transition: opacity .5s ease, transform .5s cubic-bezier(.22, 1, .36, 1)
 }
 
+[dir="rtl"] .step-item,
+.dir-rtl .step-item {
+  transform: translateX(12px);
+}
+
 .step-item svg {
   flex-shrink: 0;
   color: var(--teal)
@@ -2273,6 +2287,11 @@ section {
   transition: all .25s;
   opacity: 0;
   transform: translateX(-12px)
+}
+
+[dir="rtl"] .step-link,
+.dir-rtl .step-link {
+  transform: translateX(12px);
 }
 
 .int-step.active .step-link {
@@ -3953,3 +3972,11 @@ footer::before {
 .fade-up-2 { opacity: 0; animation: fade-up-reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.2s; }
 .fade-up-3 { opacity: 0; animation: fade-up-reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.3s; }
 .fade-up-4 { opacity: 0; animation: fade-up-reveal 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards 0.4s; }
+
+/* ─── HERO ─── */
+.hero-grid-bg {
+  background-image: linear-gradient(rgba(0, 240, 255, 0.08) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 240, 255, 0.08) 1px, transparent 1px);
+  background-size: 40px 40px;
+  -webkit-mask-image: radial-gradient(ellipse at 50% 40%, black 30%, transparent 80%);
+  mask-image: radial-gradient(ellipse at 50% 40%, black 30%, transparent 80%);
+}
