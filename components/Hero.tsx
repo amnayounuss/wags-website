@@ -63,8 +63,8 @@ export default function Hero() {
                   {t('hero.contact')} <ArrowRight size={18} className={`transition-transform ${language === 'ar' ? 'group-hover:-translate-x-1 rotate-180' : 'group-hover:translate-x-1'}`} />
                 </span>
               </a>
-              <a href="#process" className={`group w-full sm:w-auto inline-flex items-center justify-center gap-3 py-4 px-8 bg-[rgba(255,255,255,0.03)] text-white rounded-full border border-white/10 text-[16px] font-semibold no-underline transition-all duration-300 hover:bg-[rgba(255,255,255,0.08)] hover:border-white/20 backdrop-blur-md ${language === 'ar' ? 'font-cairo' : ''}`}>
-                <Play size={16} className={`text-[#00f0ff] fill-[#00f0ff]/20 transition-transform group-hover:scale-110 ${language === 'ar' ? 'rotate-180' : ''}`} /> {t('hero.process')}
+              <a href="#process" className={`group w-full sm:w-auto inline-flex items-center justify-center gap-3 py-4 px-8 bg-[rgba(255,255,255,0.03)] text-white rounded-full border border-white/10 text-[16px] font-semibold no-underline transition-all duration-300 hover:bg-[rgba(255,255,255,0.08)] hover:border-white/20 backdrop-blur-md ${language === 'ar' ? 'font-cairo flex-row-reverse' : ''}`}>
+                <Play size={16} className="text-[#00f0ff] fill-[#00f0ff]/20 transition-transform group-hover:scale-110" /> {t('hero.process')}
               </a>
             </div>
 
@@ -110,7 +110,7 @@ export default function Hero() {
                 </div>
                 <div className={`mx-auto flex items-center gap-2 bg-[#02040a] px-4 md:px-8 py-1 rounded border border-[#2a2d3d]`}>
                   <Lock size={10} className="text-white/40 md:w-3 md:h-3" />
-                  <span className="text-[9px] md:text-[10px] font-semibold text-white/40 tracking-wider uppercase truncate max-w-[120px] md:max-w-none">wags.cloud/dashboard</span>
+                  <span className="text-[9px] md:text-[10px] font-semibold text-white/40 tracking-wider lowercase truncate max-w-[150px] md:max-w-none">https://www.odoodashboards.com</span>
                 </div>
               </div>
 

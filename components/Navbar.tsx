@@ -52,7 +52,7 @@ export default function Navbar() {
               <div className="absolute inset-0 bg-[#00f0ff] blur-[16px] opacity-0 group-hover:opacity-50 transition-opacity duration-500 rounded-full"></div>
               <img src="/logo.svg" alt="WAGS Tech Logo" className="w-[36px] h-[36px] sm:w-[40px] sm:h-[40px] object-contain relative z-10 transition-transform duration-500 group-hover:scale-105 group-hover:rotate-3" />
             </div>
-            <span className="text-[20px] font-extrabold font-sora text-white tracking-[-0.02em] transition-all duration-300 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-[#00f0ff]">WAGS Tech</span>
+            <span className={`${language === 'ar' ? 'text-[26px] font-cairo' : 'text-[20px] font-sora'} font-extrabold text-white tracking-[-0.02em] transition-all duration-300 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-r group-hover:from-white group-hover:to-[#00f0ff]`}>{language === 'ar' ? 'واجز تك' : 'WAGS Tech'}</span>
           </Link>
 
           {/* Desktop Links (Center) */}

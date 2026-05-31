@@ -24,7 +24,7 @@ export default function Footer() {
                 <div className={`flex items-center gap-4 mb-6`}>
                   <img src="/logo.svg" alt="WAGS Tech Logo" className="w-[44px] h-[44px] object-contain" />
                   <div className={isAr ? 'text-right' : ''}>
-                    <div className={`text-[22px] font-extrabold text-white tracking-[-0.02em] leading-[1.2] ${isAr ? 'font-cairo' : 'font-sora'}`}>WAGS Tech EST.</div>
+                    <div className={`${isAr ? 'text-[30px] font-cairo' : 'text-[22px] font-sora'} font-extrabold text-white tracking-[-0.02em] leading-[1.2]`}>{isAr ? 'واجز تك' : 'WAGS Tech EST.'}</div>
                     <div className="text-[13px] text-[#00f0ff] font-semibold tracking-[0.05em]">{isAr ? 'حلول أودو وتقنية المعلومات' : 'Odoo ERP & IT Solutions'}</div>
                   </div>
                 </div>
