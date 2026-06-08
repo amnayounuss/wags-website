@@ -29,7 +29,7 @@ export default function Process() {
                   <Search size={24} strokeWidth={2} />
                 </div>
                 <h4 className="text-[22px] mb-3 text-slate-900 font-bold w-full" style={{ textAlign: isAr ? 'right' : 'left', margin: 0, padding: 0 }}>{t('process.s1.title')}</h4>
-                <p className="text-slate-600 leading-[1.6] text-[15px] w-full mt-2" style={{ textAlign: isAr ? 'right' : 'left', margin: 0, padding: 0 }}>{t('process.s1.desc')}</p>
+                {/* <p className="text-slate-600 leading-[1.6] text-[15px] w-full mt-2" style={{ textAlign: isAr ? 'right' : 'left', margin: 0, padding: 0 }}>{t('process.s1.desc')}</p> */}
               </div>
             </div>
 
@@ -41,7 +41,7 @@ export default function Process() {
                   <Layers size={24} strokeWidth={2} />
                 </div>
                 <h4 className="text-[22px] mb-3 text-slate-900 font-bold w-full" style={{ textAlign: isAr ? 'right' : 'left', margin: 0, padding: 0 }}>{t('process.s2.title')}</h4>
-                <p className="text-slate-600 leading-[1.6] text-[15px] w-full mt-2" style={{ textAlign: isAr ? 'right' : 'left', margin: 0, padding: 0 }}>{t('process.s2.desc')}</p>
+                {/* <p className="text-slate-600 leading-[1.6] text-[15px] w-full mt-2" style={{ textAlign: isAr ? 'right' : 'left', margin: 0, padding: 0 }}>{t('process.s2.desc')}</p> */}
               </div>
             </div>
 
@@ -53,7 +53,7 @@ export default function Process() {
                   <CheckCircle size={24} strokeWidth={2} />
                 </div>
                 <h4 className="text-[22px] mb-3 text-slate-900 font-bold w-full" style={{ textAlign: isAr ? 'right' : 'left', margin: 0, padding: 0 }}>{t('process.s3.title')}</h4>
-                <p className="text-slate-600 leading-[1.6] text-[15px] w-full mt-2" style={{ textAlign: isAr ? 'right' : 'left', margin: 0, padding: 0 }}>{t('process.s3.desc')}</p>
+                {/* <p className="text-slate-600 leading-[1.6] text-[15px] w-full mt-2" style={{ textAlign: isAr ? 'right' : 'left', margin: 0, padding: 0 }}>{t('process.s3.desc')}</p> */}
               </div>
             </div>
 
@@ -65,7 +65,7 @@ export default function Process() {
                   <DollarSign size={24} strokeWidth={2} />
                 </div>
                 <h4 className="text-[22px] mb-3 text-slate-900 font-bold w-full" style={{ textAlign: isAr ? 'right' : 'left', margin: 0, padding: 0 }}>{t('process.s4.title')}</h4>
-                <p className="text-slate-600 leading-[1.6] text-[15px] w-full mt-2" style={{ textAlign: isAr ? 'right' : 'left', margin: 0, padding: 0 }}>{t('process.s4.desc')}</p>
+                {/* <p className="text-slate-600 leading-[1.6] text-[15px] w-full mt-2" style={{ textAlign: isAr ? 'right' : 'left', margin: 0, padding: 0 }}>{t('process.s4.desc')}</p> */}
               </div>
             </div>
 

@@ -188,8 +188,6 @@ export default function Integrations() {
                       <div className="step-detail">
                         <div className="step-list w-full max-w-[340px]">
                           <div className={`step-item justify-between`}><span className="flex items-center gap-1.5"><CheckCircle size={16} strokeWidth={2.5} className="text-[#07B98F] flex-shrink-0" />{isAr ? 'الفوترة الإلكترونية لهيئة الزكاة' : 'ZATCA E-Invoicing'}</span><div className="w-[100px] flex-shrink-0" /></div>
-                          <div className={`step-item justify-between`}><span className="flex items-center gap-1.5"><CheckCircle size={16} strokeWidth={2.5} className="text-[#07B98F] flex-shrink-0" />{isAr ? 'الامتثال لضريبة القيمة المضافة 15%' : 'VAT Compliance 15%'}</span><div className="w-[100px] flex-shrink-0" /></div>
-                          <div className={`step-item justify-between`}><span className="flex items-center gap-1.5"><CheckCircle size={16} strokeWidth={2.5} className="text-[#07B98F] flex-shrink-0" />{isAr ? 'يورباي (نيوليب)' : 'URpay (NeoLeap)'}</span><div className="w-[100px] flex-shrink-0" /></div>
                           <div className={`step-item justify-between`}><span className="flex items-center gap-1.5"><CheckCircle size={16} strokeWidth={2.5} className="text-[#07B98F] flex-shrink-0" />{isAr ? 'منصة نيوليب' : 'NeoLeap Platform'}</span><div className="w-[100px] flex-shrink-0" /></div>
                         </div>
                       </div>
