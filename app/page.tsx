@@ -37,6 +37,7 @@ export default function Page() {
       <About />
       <WhyChoose />
       <Process />
+      <CTABand />
       <Services />
       <Integrations />
       <Team />

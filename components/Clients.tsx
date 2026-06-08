@@ -32,10 +32,10 @@ export default function Clients() {
 
   return (
     <>
-      <section id="clients" className={`py-20 relative ${isAr ? 'font-cairo' : 'font-sora'}`}>
+      <section id="clients" className={`py-[40px] md:py-[60px] relative ${isAr ? 'font-cairo' : 'font-sora'}`}>
         <div className="container">
           <div className="text-center mb-10">
-            <p className={`text-[14px] sm:text-[15px] text-white/50 font-medium m-0 tracking-wide ${isAr ? 'font-cairo' : 'font-sora'}`}>
+            <p className={`text-[14px] sm:text-[15px] text-slate-500 font-medium m-0 tracking-wide ${isAr ? 'font-cairo' : 'font-sora'}`}>
               {t('clients.title')}
             </p>
           </div>
