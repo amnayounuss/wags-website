@@ -1,22 +1,22 @@
 'use client';
 import React, { useState } from 'react';
-import { CreditCard, LineChart, Users, FileText, Activity, Settings, Truck, ShoppingBag, Banknote, Briefcase, ShoppingCart, ShieldCheck, Plane, LayoutDashboard, Globe, Package, Send, Layers, Database, MonitorSmartphone, Smartphone, Gift, Star, LayoutGrid, Clock, Tv, SmartphoneNfc, Terminal, Wallet } from 'lucide-react';
+import { CreditCard, LineChart, Users, FileText, Activity, Settings, Truck, ShoppingBag, Banknote, Briefcase, ShoppingCart, ShieldCheck, Plane, LayoutDashboard, Globe, Package, Send, Layers, Database, MonitorSmartphone, Smartphone, Gift, Star, LayoutGrid, Clock, Tv, SmartphoneNfc, Terminal, Wallet, Scan, Eye } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
-
+ 
 export default function Services() {
   const [activeFilter, setActiveFilter] = useState('all');
   const { t, language } = useLanguage();
   const isAr = language === 'ar';
-
+ 
   const filters = [
-    { id: 'all', label: t('services.filter.all'), count: 29 },
+    { id: 'all', label: t('services.filter.all'), count: 31 },
     { id: 'sales', label: t('services.filter.sales'), count: 4 },
-    { id: 'pos', label: t('services.filter.pos'), count: 13 },
+    { id: 'pos', label: t('services.filter.pos'), count: 15 },
     { id: 'finance', label: t('services.filter.finance'), count: 4 },
     { id: 'ops', label: t('services.filter.ops'), count: 5 },
     { id: 'people', label: t('services.filter.people'), count: 3 },
   ];
-
+ 
   const servicesList = [
     { id: 'pos', title: isAr ? 'بوابة إدارة الطلبات' : 'Order Management Portal', icon: <Layers size={24} strokeWidth={2} />, desc: isAr ? 'مركز العمليات لتجارب العملاء - التحكم في برامج الولاء وتطبيق الاستلام ونظام قائمة الانتظار والحجوزات من مكان واحد. مبني على نظام واجس.' : 'The operations hub for customer-facing experiences — control loyalty programs, the Pickup App, and the Waitlist & Reservations system from one place. Built on top of WAGS SaaS, focused on order-side and engagement features.', featured: true, iconColor: '#00f0ff' },
     { id: 'pos', title: isAr ? 'نظام واجس (إدارة نقاط البيع)' : 'WAGS SaaS (POS Management)', icon: <Database size={24} strokeWidth={2} />, desc: isAr ? 'المصدر المركزي لجميع العمليات. إدارة قائمة تطبيق نقاط البيع وشاشات العرض والأسعار والفروع والإعدادات الأساسية.' : 'The central source of truth that powers the entire system. Manage the POS App menu, Menu Portal (Signage) content, pricing, branches, and core configuration here — the master data layer that the Order Management Portal and all connected apps build on.', featured: true, iconColor: '#8b5cf6' },
@@ -31,6 +31,8 @@ export default function Services() {
     { id: 'pos', title: isAr ? 'نقاط البيع الذكية (Nearpay)' : 'Soft-POS (Nearpay)', icon: <SmartphoneNfc size={24} strokeWidth={2} />, desc: isAr ? 'يحول الهاتف أو الجهاز اللوحي إلى جهاز دفع بدون تلامس عبر Nearpay - اقبل الدفع باللمس بدون أجهزة إضافية.' : 'Turns a phone or tablet into a contactless payment terminal via Nearpay — accept tap-to-pay with no extra hardware.', featured: false, iconColor: '#00f0ff' },
     { id: 'pos', title: isAr ? 'تكامل الدفع (Neoleap N910)' : 'Payment Integration (Neoleap N910)', icon: <Terminal size={24} strokeWidth={2} />, desc: isAr ? 'تكامل أصلي مع جهاز Neoleap N910 للمدفوعات السريعة والآمنة بالبطاقات والمدفوعات بدون تلامس.' : 'Native integration with the Neoleap N910 terminal for secure, fast card and contactless payments at checkout.', featured: false, iconColor: '#8b5cf6' },
     { id: 'pos', title: isAr ? 'ميسر' : 'Moyasser', icon: <Wallet size={24} strokeWidth={2} />, desc: isAr ? 'تكامل بوابة الدفع عبر الإنترنت الذي يدعم الدفع الآمن في تطبيق الاستلام وشاشات العرض - يتيح للعملاء الدفع رقمياً للطلبات الذاتية.' : 'Online payment gateway integration powering secure checkout in the Pickup App and Menu Portal (Signage) — lets customers pay digitally for self-service and on-screen orders.', featured: false, iconColor: '#fbbf24' },
+    { id: 'pos', title: isAr ? 'التعرف الذكي على اللوحات (Drive-Through)' : 'Drive-Through Plate Recognition', icon: <Scan size={24} strokeWidth={2} />, desc: isAr ? 'نظام التعرف التلقائي على لوحات السيارات لخدمة السيارات، للتعرف الفوري على العملاء الأوفياء ومزامنة طلباتهم لتسريع الدفع.' : 'Automated license plate recognition for drive-through lanes, instantly identifying returning customers and syncing order histories for faster checkout.', featured: false, iconColor: '#38bdf8' },
+    { id: 'pos', title: isAr ? 'كاميرات الذكاء الاصطناعي والخرائط الحرارية' : 'AI Camera Ticket Generation & Heatmap', icon: <Eye size={24} strokeWidth={2} />, desc: isAr ? 'تتبع طوابير الانتظار بكاميرات الذكاء الاصطناعي وتوليد التذاكر تلقائياً مع خرائط حرارية لتحليل حركة العملاء بالصالة.' : 'AI-powered queue tracking and automatic support ticket generation paired with foot-traffic density heatmaps to optimize floor layout and speed of service.', featured: false, iconColor: '#00f0ff' },
     { id: 'finance', title: isAr ? 'المحاسبة' : 'Accounting', icon: <LineChart size={24} strokeWidth={2} />, desc: isAr ? 'دفتر أستاذ عام، عملات متعددة، معالجة ضريبة القيمة المضافة، وتقارير مالية جاهزة للتدقيق.' : 'Full general ledger, multi-currency, VAT handling, and audit-ready financial reports tailored for KSA.', featured: true, iconColor: '#8b5cf6' },
     { id: 'people', title: isAr ? 'الموارد البشرية والرواتب' : 'HR & Payroll', icon: <Users size={24} strokeWidth={2} />, desc: isAr ? 'رواتب متوافقة مع نظام التأمينات، نهاية الخدمة، تتبع الإجازات، وتنبيهات انتهاء الإقامات.' : 'Saudi-compliant payroll with GOSI, end-of-service, leave tracking, attendance, and document expiry alerts.', featured: true, iconColor: '#fbbf24' },
     { id: 'ops', title: isAr ? 'نظام التذاكر' : 'Ticketing System', icon: <FileText size={24} strokeWidth={2} />, desc: isAr ? 'نظام مكتب المساعدة لإدارة استفسارات العملاء وطلبات الدعم الداخلي بكفاءة.' : 'Helpdesk and support ticketing system to manage customer inquiries and internal support requests efficiently.', featured: false, iconColor: '#f43f5e' },

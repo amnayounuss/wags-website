@@ -92,16 +92,13 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Centered Massive Dashboard Visual */}
+          {/* Centered Massive Dashboard Visual - Commented out as requested
           <div className="relative w-full max-w-[1200px] mx-auto z-20 flex justify-center fade-up-5 mt-4 px-2 md:px-4">
 
-            {/* Massive Glow Behind Dashboard - Mint/Turquoise */}
             <div className="absolute top-1/2 left-1/2 w-full max-w-[800px] h-[300px] bg-[#3ECEB0] opacity-35 md:opacity-40 rounded-full blur-[80px] md:blur-[120px] -translate-x-1/2 -translate-y-1/2 pointer-events-none"></div>
 
-            {/* Main Dashboard UI - Flat and Centered */}
             <div className={`relative w-full h-auto min-h-[400px] md:h-[600px] rounded-t-[12px] md:rounded-t-[16px] z-10 flex flex-col overflow-hidden bg-[#060b13] border border-[#1b2336] border-b-0 shadow-[0_-10px_40px_rgba(0,0,0,0.6)] md:shadow-[0_-20px_80px_rgba(0,0,0,0.8)] ${language === 'ar' ? 'font-cairo' : 'font-sora'}`}>
 
-              {/* macOS style Header */}
               <div className={`h-8 md:h-10 border-b border-[#1b2336] flex items-center px-3 md:px-4 bg-[#0c121e] shrink-0`}>
                 <div className={`flex gap-1.5 md:gap-2`}>
                   <div className="w-2.5 h-2.5 md:w-3 md:h-3 rounded-full bg-[#ff5f56]"></div>
@@ -114,13 +111,10 @@ export default function Hero() {
                 </div>
               </div>
 
-              {/* Dashboard Body */}
               <div className={`flex flex-1 p-3 md:p-6 gap-4 md:gap-6 relative z-10 bg-[#060b13] overflow-hidden`}>
 
-                {/* Subtle Grid Background inside Dashboard */}
                 <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.05] pointer-events-none"></div>
 
-                {/* Sidebar Mini - Hidden on small mobile */}
                 <div className="hidden sm:flex w-12 md:w-16 flex-col gap-3 md:gap-4 items-center pt-2 z-10 shrink-0">
                   <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br from-[#07B98F]/80 to-[#3ECEB0]/80 flex items-center justify-center text-white border border-[#07B98F] shadow-[0_0_15px_rgba(7,185,143,0.4)] relative cursor-pointer">
                     <div className={`absolute ${language === 'ar' ? 'right-[-10px] rounded-l-full' : 'left-[-10px] rounded-r-full'} top-1/2 -translate-y-1/2 w-1 h-5 md:h-6 bg-[#07B98F]`}></div>
@@ -137,9 +131,7 @@ export default function Hero() {
                   </div>
                 </div>
 
-                {/* Main Content Area */}
                 <div className={`flex-1 flex flex-col gap-4 md:gap-6 ${language === 'ar' ? 'pl-0 md:pl-4' : 'pr-0 md:pr-4'} z-10 w-full overflow-hidden`}>
-                  {/* Top Stats */}
                   <div className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 md:gap-6 ${language === 'ar' ? 'dir-rtl' : ''}`}>
                     <div className="bg-[#0c121e] border border-[#1b2336] rounded-xl p-4 md:p-6 relative overflow-hidden group cursor-default shadow-sm hover:border-[#07B98F]/50 transition-colors">
                       <div className={`text-[11px] md:text-[12px] text-white/50 mb-1 font-semibold tracking-wide ${language === 'ar' ? 'text-right' : ''}`}>{t('hero.dashboard.revenue')}</div>
@@ -158,7 +150,6 @@ export default function Hero() {
                     </div>
                   </div>
 
-                  {/* Chart Area */}
                   <div className="flex-1 min-h-[200px] bg-[#0c121e] border border-[#1b2336] rounded-xl p-4 md:p-6 relative flex flex-col shadow-sm">
                     <div className={`flex flex-row justify-between items-center mb-4 md:mb-6 z-10`}>
                       <div className={`text-[13px] md:text-[15px] text-white font-bold tracking-wide flex items-center gap-2`}>
@@ -181,15 +172,12 @@ export default function Hero() {
                             <stop offset="100%" stopColor="#07B98F" stopOpacity="0.0" />
                           </linearGradient>
                         </defs>
-                        {/* Grid lines */}
                         {[25, 50, 75, 100].map(y => (
                           <line key={y} x1="0" y1={y} x2="400" y2={y} stroke="rgba(255,255,255,0.03)" strokeWidth="1" />
                         ))}
 
-                        {/* Area Fill */}
                         <path d="M0,100 C60,100 100,50 180,70 C260,90 300,20 400,30 L400,120 L0,120 Z" fill="url(#areaGrad)" />
 
-                        {/* Animated Line */}
                         <path
                           d="M0,100 C60,100 100,50 180,70 C260,90 300,20 400,30"
                           fill="none"
@@ -198,7 +186,6 @@ export default function Hero() {
                           strokeLinecap="round"
                         />
 
-                        {/* Data Points */}
                         {mounted && (
                           <>
                             <circle cx="100" cy="50" r="4" fill="#060b13" stroke="#07B98F" strokeWidth="2" />
@@ -215,7 +202,6 @@ export default function Hero() {
 
             </div>
 
-            {/* Floating Element 1: ZATCA - Hidden on mobile, visible on lg */}
             <div className={`hidden lg:flex absolute top-[10%] ${language === 'ar' ? 'left-[-2%]' : 'right-[-2%]'} bg-[#0c121e] border border-[#1b2336] rounded-xl p-3 items-center gap-3 shadow-xl z-30 ${language === 'ar' ? 'font-cairo text-right' : ''}`}>
               <div className="w-10 h-10 rounded-lg bg-[#07B98F]/10 flex items-center justify-center text-[#07B98F]">
                 <ShieldCheck size={20} />
@@ -226,7 +212,6 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Floating Element 2: POS - Hidden on mobile, visible on lg */}
             <div className={`hidden lg:flex absolute bottom-[25%] ${language === 'ar' ? 'right-[-2%]' : 'left-[-2%]'} bg-[#0c121e] border border-[#1b2336] rounded-xl p-3 items-center gap-3 shadow-xl z-30 ${language === 'ar' ? 'font-cairo text-right' : ''}`}>
               <div className="w-10 h-10 rounded-lg bg-[#3ECEB0]/10 flex items-center justify-center text-[#3ECEB0]">
                 <CreditCard size={20} />
@@ -238,6 +223,7 @@ export default function Hero() {
             </div>
 
           </div>
+          */}
         </div>
       </section>
     </>
