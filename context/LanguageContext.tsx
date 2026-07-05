@@ -19,13 +19,15 @@ const translations = {
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export const LanguageProvider = ({ children }: { children: React.ReactNode }) => {
-  const [language, setLanguage] = useState<Language>('en');
+  const [language, setLanguage] = useState<Language>('ar');
 
   useEffect(() => {
-    // Load preference from localStorage or default to 'en'
+    // Load preference from localStorage or default to 'ar'
     const savedLang = localStorage.getItem('language') as Language;
     if (savedLang && (savedLang === 'en' || savedLang === 'ar')) {
       setLanguage(savedLang);
+    } else {
+      localStorage.setItem('language', 'ar');
     }
   }, []);
 
