@@ -483,7 +483,7 @@ section {
   z-index: 100;
   transition: all .35s cubic-bezier(.4, 0, .2, 1);
   width: calc(100% - 8vw);
-  max-width: 1536px
+  max-width: calc(1536px - 8vw);
 }
 
 .nav-shell {
@@ -3440,7 +3440,7 @@ svg {
 
   #navbar {
     top: 12px;
-    width: calc(100% - 24px)
+    width: calc(100% - 60px)
   }
 
   .nav-shell {
@@ -3611,8 +3611,8 @@ section,
    ========================================== */
 nav#navbar {
     top: 32px !important;
-    width: 90% !important;
-    max-width: 1100px !important;
+    width: calc(100% - 8vw) !important;
+    max-width: calc(1536px - 8vw) !important;
     left: 50% !important;
     transform: translateX(-50%) !important;
     border-radius: 100px !important;

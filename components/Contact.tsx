@@ -2,6 +2,7 @@
 import React from 'react';
 import { Mail, MapPin, ArrowRight, MessageCircle } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
+import { FaWhatsapp } from 'react-icons/fa';
 
 export default function Contact() {
   const { t, language } = useLanguage();
@@ -10,7 +11,7 @@ export default function Contact() {
   return (
     <>
       <section id="contact" className={`py-[60px] md:py-[80px] relative overflow-hidden ${isAr ? 'font-cairo text-right' : 'font-sora'}`}>
-        
+
         <div className="container relative z-10">
           {/* Single Massive Card (Light Theme) */}
           <div className="bg-white/75 backdrop-blur-[40px] border border-slate-200/50 border-t-[#07B98F]/30 rounded-[32px] p-[clamp(24px,6vw,60px)] shadow-[0_20px_50px_rgba(0,0,0,0.02),_inset_0_1px_0_rgba(255,255,255,0.6)] grid grid-cols-[repeat(auto-fit,minmax(min(100%,320px),1fr))] gap-[clamp(30px,6vw,60px)] items-center">
@@ -36,11 +37,11 @@ export default function Contact() {
                 </div>
                 <div className={`flex items-center gap-4 p-5 bg-slate-900/5 border border-slate-200/60 rounded-[20px]`}>
                   <div className="w-12 h-12 rounded-[14px] bg-[#25D366]/15 text-[#25D366] flex items-center justify-center">
-                    <MessageCircle size={24} strokeWidth={2.5} />
+                    <FaWhatsapp size={24} strokeWidth={2.5} />
                   </div>
                   <div className="flex flex-col">
                     <span className="text-[12px] text-slate-500 font-semibold tracking-wider uppercase mb-0.5">{isAr ? 'واتساب' : 'WhatsApp'}</span>
-                    <span className="text-[16px] font-medium text-slate-900" dir="ltr">+966 5X XXX XXXX</span>
+                    <span className="text-[16px] font-medium text-slate-900" dir="ltr">+966 57 357 6073</span>
                   </div>
                 </div>
               </div>
