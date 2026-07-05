@@ -11,13 +11,13 @@ export default function Team() {
 
   const team = [
     {
-      name: isAr ? "عبد اللطيف" : "Abdul Latif",
+      name: isAr ? "عبد اللطيف الوشيقري" : "Abdullatif Alwshigry",
       title: t('team.al.title'),
       bio: t('team.al.bio'),
       email: "Aw@wags.sa",
       linkedin: "http://linkedin.com/in/abdullatif-alwshigry-msc-ba77a646/",
       initials: "AL",
-      image: null
+      image: "/Abdullatif-Alwshigry.jpg"
     },
     {
       name: isAr ? "هارون حياة" : "Haroon Hayat",
