@@ -1,5 +1,4 @@
 'use client';
-import { useEffect } from 'react';
 import Navbar from '@/components/Navbar'
 import Hero from '@/components/Hero'
 import Clients from '@/components/Clients'
@@ -12,19 +11,12 @@ import Team from '@/components/Team'
 import CTABand from '@/components/CTABand'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
+import SiteScripts from '@/components/SiteScripts'
 
 export default function Page() {
-  useEffect(() => {
-    const script = document.createElement('script');
-    script.src = '/scripts/main.js?v=' + new Date().getTime();
-    document.body.appendChild(script);
-    return () => {
-      document.body.removeChild(script);
-    }
-  }, []);
-
   return (
     <>
+      <SiteScripts />
       <button id='back-to-top' aria-label='Back to top'>
         <svg width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='currentColor' strokeWidth='2.5' strokeLinecap='round'><path d='M18 15l-6-6-6 6' /></svg>
       </button>
