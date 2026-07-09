@@ -79,10 +79,10 @@ export default function Hero() {
               </div>
               <div className={`flex ${language === 'ar' ? '-space-x-2 space-x-reverse' : '-space-x-2'}`}>
                 {[
-                  { name: 'Camel Step', url: '/client-camelstep.png' },
-                  { name: 'Peacock Roaster', url: '/client-peacock.png' },
-                  { name: 'Codeco', url: '/client-codeco.png' },
-                  { name: 'Anoosh', url: '/client-anoosh.png' }
+                  { name: 'Camel Step', url: '/icons/camelstep.png' },
+                  { name: 'Peacock Roaster', url: '/icons/peacock.png' },
+                  { name: 'Codeco', url: '/icons/codeco.png' },
+                  { name: 'Anoosh', url: '/icons/anoosh.png' }
                 ].map((client, i) => (
                   <div key={i} className="w-8 h-8 shrink-0 rounded-full border-2 border-white bg-white overflow-hidden flex items-center justify-center shadow-sm" title={client.name}>
                     <img src={client.url} alt={client.name} className="w-full h-full object-contain p-1" />

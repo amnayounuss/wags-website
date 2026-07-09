@@ -22,7 +22,7 @@ export default function Footer() {
               {/* Brand */}
               <div className="max-w-[400px]">
                 <div className={`flex items-center gap-4 mb-6`}>
-                  <img src="/logo.svg" alt="WAGS Tech Logo" className="w-[44px] h-[44px] object-contain" />
+                  <img src="/icons/logo.svg" alt="WAGS Tech Logo" className="w-[44px] h-[44px] object-contain" />
                   <div className={isAr ? 'text-right' : ''}>
                     <div className={`${isAr ? 'text-[30px] font-cairo' : 'text-[22px] font-sora'} font-extrabold text-white tracking-[-0.02em] leading-[1.2]`}>{isAr ? 'واجز تك' : 'WAGS Tech EST.'}</div>
                     <div className="text-[13px] text-[#07B98F] font-semibold tracking-[0.05em]">{isAr ? 'حلول أودو وتقنية المعلومات' : 'Odoo ERP & IT Solutions'}</div>
