@@ -13,7 +13,7 @@ export default function About() {
         {/* Abstract Background Enhancements */}
         <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-[#07B98F]/5 rounded-full blur-[120px] pointer-events-none -translate-y-1/3 translate-x-1/3"></div>
         <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-[#3ECEB0]/5 rounded-full blur-[100px] pointer-events-none translate-y-1/3 -translate-x-1/3"></div>
-        <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.02] pointer-events-none mix-blend-multiply"></div>
+        <div className="absolute inset-0 opacity-[0.02] pointer-events-none mix-blend-multiply" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='40'%20height='40'%3E%3Cpath%20d='M40%200H0V40'%20fill='none'%20stroke='%23000'%20stroke-width='1'/%3E%3C/svg%3E\")" }}></div>
 
         <div className="container relative z-10">
           <div className="flex flex-col lg:flex-row items-center gap-[80px] lg:gap-[120px]">

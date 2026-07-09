@@ -1,5 +1,6 @@
 'use client';
 import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
 import { Check, CreditCard, Activity, ArrowRight, Zap, Database, BarChart3, TrendingUp, ShieldCheck, Play, Lock } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
 
@@ -85,7 +86,7 @@ export default function Hero() {
                   { name: 'Anoosh', url: '/icons/anoosh.png' }
                 ].map((client, i) => (
                   <div key={i} className="w-8 h-8 shrink-0 rounded-full border-2 border-white bg-white overflow-hidden flex items-center justify-center shadow-sm" title={client.name}>
-                    <img src={client.url} alt={client.name} className="w-full h-full object-contain p-1" />
+                    <Image src={client.url} alt={client.name} width={32} height={32} className="w-full h-full object-contain p-1" />
                   </div>
                 ))}
               </div>
@@ -113,7 +114,7 @@ export default function Hero() {
 
               <div className={`flex flex-1 p-3 md:p-6 gap-4 md:gap-6 relative z-10 bg-[#060b13] overflow-hidden`}>
 
-                <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.05] pointer-events-none"></div>
+                <div className="absolute inset-0 opacity-[0.05] pointer-events-none" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='40'%20height='40'%3E%3Cpath%20d='M40%200H0V40'%20fill='none'%20stroke='%23000'%20stroke-width='1'/%3E%3C/svg%3E\")" }}></div>
 
                 <div className="hidden sm:flex w-12 md:w-16 flex-col gap-3 md:gap-4 items-center pt-2 z-10 shrink-0">
                   <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-gradient-to-br from-[#07B98F]/80 to-[#3ECEB0]/80 flex items-center justify-center text-white border border-[#07B98F] shadow-[0_0_15px_rgba(7,185,143,0.4)] relative cursor-pointer">

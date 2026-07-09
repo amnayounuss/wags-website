@@ -1,5 +1,6 @@
 'use client';
 import React from 'react';
+import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
 
 export default function Clients() {
@@ -48,7 +49,7 @@ export default function Clients() {
                 key={i}
                 className="flex items-center justify-center opacity-70 hover:opacity-100 transition-opacity duration-300"
               >
-                <img src={c.logo} alt={c.name} className={`h-[32px] md:h-[40px] w-auto object-contain max-w-[180px] ${c.invert ? 'brightness-0 invert' : ''}`} />
+                <Image src={c.logo} alt={c.name} width={180} height={40} className={`h-[32px] md:h-[40px] w-auto object-contain max-w-[180px] ${c.invert ? 'brightness-0 invert' : ''}`} />
               </div>
             ))}
           </div>

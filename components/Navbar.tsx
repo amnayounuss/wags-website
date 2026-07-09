@@ -1,6 +1,7 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { FaBars, FaTimes, FaGlobe } from 'react-icons/fa';
 import { useLanguage } from '@/context/LanguageContext';
 
@@ -50,7 +51,7 @@ export default function Navbar() {
           <Link href="/" className="flex items-center gap-3 no-underline group z-50 relative" onClick={() => setIsOpen(false)}>
             <div className="relative">
               <div className="absolute inset-0 bg-[#07B98F] blur-[16px] opacity-0 group-hover:opacity-50 transition-opacity duration-500 rounded-full"></div>
-              <img src="/icons/logo.svg" alt="WAGS Tech Logo" className="w-[36px] h-[36px] sm:w-[40px] sm:h-[40px] object-contain relative z-10 transition-transform duration-500 group-hover:scale-105 group-hover:rotate-3" />
+              <Image src="/icons/logo.svg" alt="WAGS Tech Logo" width={40} height={40} className="w-[36px] h-[36px] sm:w-[40px] sm:h-[40px] object-contain relative z-10 transition-transform duration-500 group-hover:scale-105 group-hover:rotate-3" />
             </div>
             <span className={`${language === 'ar' ? 'text-[26px] font-cairo' : 'text-[20px] font-sora'} font-extrabold tracking-[-0.02em] transition-all duration-300 ${isScrolled ? 'text-white' : 'text-slate-900'} group-hover:text-[#07B98F]`}>{language === 'ar' ? 'واجز تك' : 'WAGS Tech'}</span>
           </Link>
