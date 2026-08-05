@@ -1,100 +1,84 @@
 'use client';
-import React from 'react';
-import { Mail, MapPin, ArrowRight, MessageCircle } from 'lucide-react';
+import React, { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
-import { FaWhatsapp } from 'react-icons/fa';
 
 export default function Contact() {
   const { t, language } = useLanguage();
   const isAr = language === 'ar';
+  const font = isAr ? 'font-arabic' : 'font-inter';
+  const [sent, setSent] = useState(false);
+
+  // Reference: font-family Inter, 14px/normal, padding 13px 16px, radius 12px, bg #F4F0F3
+  const field =
+    `w-full bg-[#F4F0F3] border border-wg-line rounded-[12px] px-4 py-[13px] text-wg-text text-[14px] leading-[normal] outline-none transition-colors duration-200 focus:border-wg-teal placeholder:text-wg-muted ${font}`;
 
   return (
-    <>
-      <section id="contact" className={`py-[60px] md:py-[80px] relative overflow-hidden ${isAr ? 'font-cairo text-right' : 'font-sora'}`}>
+    <section id="contact" className={`relative z-[2] !py-[64px] sm:!py-[80px] tablet:!py-[120px] ${font}`}>
+      <div className="max-w-[1180px] mx-auto px-5 sm:px-6 lg:px-8 relative z-[2]">
+        <div className="reveal relative overflow-hidden bg-wg-panel border border-wg-line rounded-[20px] sm:rounded-[28px] p-6 sm:p-8 lg:p-14 grid grid-cols-1 tablet:grid-cols-[1fr_1.1fr] gap-8 sm:gap-10 tablet:gap-12 lg:gap-14 shadow-[0_20px_60px_rgba(20,10,20,0.06)]">
 
-        <div className="container relative z-10">
-          {/* Single Massive Card (Light Theme) */}
-          <div className="bg-white/75 backdrop-blur-[40px] border border-slate-200/50 border-t-[#07B98F]/30 rounded-[32px] p-[clamp(24px,6vw,60px)] shadow-[0_20px_50px_rgba(0,0,0,0.02),_inset_0_1px_0_rgba(255,255,255,0.6)] grid grid-cols-[repeat(auto-fit,minmax(min(100%,320px),1fr))] gap-[clamp(30px,6vw,60px)] items-center">
+          {/* purple blur blob (reference ::before) */}
+          <div className="pointer-events-none absolute w-[300px] h-[300px] -top-20 -right-20 bg-wg-purple opacity-[0.14] blur-[100px] rounded-full" />
 
-            {/* Left Side: Info (Light Theme) */}
-            <div className={`contact-info ${isAr ? 'order-1 md:order-2' : ''}`}>
-              <div className="section-label inline-block mb-6 bg-[#07B98F]/10 border border-[#07B98F]/25 text-[#07B98F] py-[6px] px-4 rounded-full text-[13px] font-bold tracking-[0.1em] uppercase">{t('contact.label')}</div>
-              <h2 className={`text-[clamp(32px,8vw,56px)] leading-[1.1] mb-6 font-extrabold text-slate-900 ${isAr ? 'font-cairo' : 'font-sora'}`}>{t('contact.title1')} <span className="bg-gradient-to-br from-[#07B98F] to-[#3ECEB0] bg-clip-text text-transparent">{t('contact.title2')}</span>{isAr ? '' : <br />}{t('contact.title3')}</h2>
-              <p className="text-[16px] text-slate-600 leading-[1.6] mb-10 max-w-[400px]">{t('contact.sub')}</p>
+          {/* Left: info */}
+          <div className="relative z-[2]">
+            {/* Reference: Space Grotesk 700, 32px / 48px, letter-spacing normal */}
+            <h2 className={`${isAr ? 'font-arabic' : 'font-grotesk'} text-[26px] leading-[38px] sm:text-[30px] sm:leading-[44px] tablet:text-[32px] tablet:leading-[48px] font-bold text-wg-text mb-4 tracking-normal`}>
+              {t('contact.title')}
+            </h2>
+            {/* Reference: Inter 400, 16px / 24px, --muted */}
+            <p className="text-wg-muted mb-6 sm:mb-[26px] text-[15px] sm:text-[16px] leading-[24px]">{t('contact.sub')}</p>
 
-              <div className="flex flex-col gap-4">
-                <div className={`flex items-center gap-4 p-5 bg-slate-900/5 border border-slate-200/60 rounded-[20px]`}>
-                  <div className="w-12 h-12 rounded-[14px] bg-[#07B98F]/10 text-[#07B98F] flex items-center justify-center">
-                    <Mail size={24} strokeWidth={2} />
-                  </div>
-                  <span className="text-[16px] font-medium text-slate-900">info@wags.sa</span>
-                </div>
-                <div className={`flex items-center gap-4 p-5 bg-slate-900/5 border border-slate-200/60 rounded-[20px]`}>
-                  <div className="w-12 h-12 rounded-[14px] bg-[#07B98F]/10 text-[#07B98F] flex items-center justify-center">
-                    <MapPin size={24} strokeWidth={2} />
-                  </div>
-                  <span className="text-[16px] font-medium text-slate-900">{isAr ? 'التعاون، الرياض' : 'Taawun Area, Riyadh'}</span>
-                </div>
-                <div className={`flex items-center gap-4 p-5 bg-slate-900/5 border border-slate-200/60 rounded-[20px]`}>
-                  <div className="w-12 h-12 rounded-[14px] bg-[#25D366]/15 text-[#25D366] flex items-center justify-center">
-                    <FaWhatsapp size={24} strokeWidth={2.5} />
-                  </div>
-                  <div className="flex flex-col">
-                    <span className="text-[12px] text-slate-500 font-semibold tracking-wider uppercase mb-0.5">{isAr ? 'واتساب' : 'WhatsApp'}</span>
-                    <span className="text-[16px] font-medium text-slate-900" dir="ltr">+966 57 357 6073</span>
-                  </div>
-                </div>
-              </div>
+            {/* Reference: Inter 400, 14px / 21px, --text */}
+            <div className="flex gap-3 items-center text-wg-text text-[14px] leading-[21px] mb-[14px]">
+              <span className="w-2 h-2 rounded-full bg-wg-teal shrink-0" />
+              <span dir="ltr">info@wags.sa</span>
             </div>
-
-            {/* Right Side: Form (Dark Theme as requested) */}
-            <div className={`w-full bg-[#050B1A]/95 backdrop-blur-xl border border-slate-700/50 rounded-[28px] p-6 md:p-10 shadow-[0_20px_40px_rgba(0,0,0,0.2),_inset_0_1px_0_rgba(255,255,255,0.02)] ${isAr ? 'order-2 md:order-1' : ''}`}>
-              <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-5 mb-5">
-                <div>
-                  <label className={`block text-[14px] font-bold text-slate-300 mb-2 ${isAr ? 'text-right' : ''}`} htmlFor="name">{t('contact.form.name')}</label>
-                  <input type="text" id="name" className={`w-full bg-[#0A1329] border border-slate-700/80 text-white rounded-[16px] px-5 py-3.5 focus:outline-none focus:border-[#07B98F] focus:ring-1 focus:ring-[#07B98F] transition-all placeholder-slate-600 shadow-inner ${isAr ? 'text-right' : ''}`} placeholder={isAr ? 'مثال: أحمد الرشيدي' : 'e.g. Ahmed Al-Rashidi'} />
-                </div>
-                <div>
-                  <label className={`block text-[14px] font-bold text-slate-300 mb-2 ${isAr ? 'text-right' : ''}`} htmlFor="company">{t('contact.form.company')}</label>
-                  <input type="text" id="company" className={`w-full bg-[#0A1329] border border-slate-700/80 text-white rounded-[16px] px-5 py-3.5 focus:outline-none focus:border-[#07B98F] focus:ring-1 focus:ring-[#07B98F] transition-all placeholder-slate-600 shadow-inner ${isAr ? 'text-right' : ''}`} placeholder={isAr ? 'مثال: شركة التقدم' : 'e.g. Acme Corp'} />
-                </div>
-              </div>
-              <div className="grid grid-cols-[repeat(auto-fit,minmax(200px,1fr))] gap-5 mb-5">
-                <div>
-                  <label className={`block text-[14px] font-bold text-slate-300 mb-2 ${isAr ? 'text-right' : ''}`} htmlFor="email">{t('contact.form.email')}</label>
-                  <input type="email" id="email" className={`w-full bg-[#0A1329] border border-slate-700/80 text-white rounded-[16px] px-5 py-3.5 focus:outline-none focus:border-[#07B98F] focus:ring-1 focus:ring-[#07B98F] transition-all placeholder-slate-600 shadow-inner ${isAr ? 'text-right' : ''}`} placeholder="ahmed@company.sa" />
-                </div>
-                <div>
-                  <label className={`block text-[14px] font-bold text-slate-300 mb-2 ${isAr ? 'text-right' : ''}`} htmlFor="phone">{t('contact.form.phone')}</label>
-                  <input type="tel" id="phone" className={`w-full bg-[#0A1329] border border-slate-700/80 text-white rounded-[16px] px-5 py-3.5 focus:outline-none focus:border-[#07B98F] focus:ring-1 focus:ring-[#07B98F] transition-all placeholder-slate-600 shadow-inner ${isAr ? 'text-right' : ''}`} placeholder="+966 5x xxx xxxx" dir="ltr" />
-                </div>
-              </div>
-              <div className="mb-5">
-                <label className={`block text-[14px] font-bold text-slate-300 mb-2 ${isAr ? 'text-right' : ''}`} htmlFor="service">{t('contact.form.service')}</label>
-                <div className="relative">
-                  <select id="service" className={`w-full bg-[#0A1329] border border-slate-700/80 text-white rounded-[16px] px-5 py-3.5 focus:outline-none focus:border-[#07B98F] focus:ring-1 focus:ring-[#07B98F] transition-all shadow-inner appearance-none cursor-pointer ${isAr ? 'text-right' : ''}`} defaultValue="">
-                    <option value="" disabled className="text-slate-500">{isAr ? 'اختر خدمة...' : 'Select a service...'}</option>
-                    <option className="text-white bg-[#0A1329]">{isAr ? 'تطبيق نظام ERP' : 'ERP Implementation'}</option>
-                    <option className="text-white bg-[#0A1329]">{isAr ? 'تكامل نقاط البيع' : 'POS Integration'}</option>
-                    <option className="text-white bg-[#0A1329]">{isAr ? 'الامتثال لهيئة الزكاة' : 'ZATCA Compliance'}</option>
-                    <option className="text-white bg-[#0A1329]">{isAr ? 'أخرى' : 'Other'}</option>
-                  </select>
-                  <div className={`absolute inset-y-0 ${isAr ? 'left-4' : 'right-4'} flex items-center pointer-events-none`}>
-                    <svg className="w-5 h-5 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
-                  </div>
-                </div>
-              </div>
-              <div className="mb-8">
-                <label className={`block text-[14px] font-bold text-slate-300 mb-2 ${isAr ? 'text-right' : ''}`} htmlFor="message">{t('contact.form.details')}</label>
-                <textarea id="message" className={`w-full bg-[#0A1329] border border-slate-700/80 text-white rounded-[16px] px-5 py-3.5 focus:outline-none focus:border-[#07B98F] focus:ring-1 focus:ring-[#07B98F] transition-all placeholder-slate-600 shadow-inner resize-none ${isAr ? 'text-right' : ''}`} placeholder={isAr ? 'صف متطلباتك باختصار...' : 'Briefly describe your requirements...'} rows={4}></textarea>
-              </div>
-              <button className={`w-full bg-gradient-to-r from-[#07B98F] to-[#3ECEB0] hover:from-[#06a680] hover:to-[#35b89d] text-white font-bold py-4 px-8 rounded-[16px] shadow-[0_10px_25px_rgba(7,185,143,0.3)] transition-all duration-300 hover:shadow-[0_15px_35px_rgba(7,185,143,0.4)] hover:-translate-y-1 flex items-center justify-center gap-3`}>
-                {t('contact.form.btn')} <ArrowRight size={20} strokeWidth={3} className={isAr ? 'rotate-180' : ''} />
-              </button>
+            <div className="flex gap-3 items-center text-wg-text text-[14px] leading-[21px] mb-[14px]">
+              <span className="w-2 h-2 rounded-full bg-wg-teal shrink-0" />
+              <span>{t('contact.address')}</span>
+            </div>
+            <div className="flex gap-3 items-center text-wg-text text-[14px] leading-[21px] mb-[14px]">
+              <span className="w-2 h-2 rounded-full bg-wg-teal shrink-0" />
+              <span>
+                {t('contact.whatsapp')} <span dir="ltr">+966 57 357 6073</span>
+              </span>
             </div>
           </div>
+
+          {/* Right: form */}
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              setSent(true);
+            }}
+            className="relative z-[2] grid grid-cols-1 sm:grid-cols-2 gap-[14px]"
+          >
+            <input type="text" required placeholder={t('contact.form.name')} className={field} />
+            <input type="text" placeholder={t('contact.form.company')} className={field} />
+            <input type="email" required placeholder={t('contact.form.email')} className={field} />
+            <input type="tel" placeholder={t('contact.form.phone')} className={field} dir={isAr ? 'rtl' : 'ltr'} />
+
+            <select className={`${field} sm:col-span-2 cursor-pointer`} defaultValue="">
+              <option value="">{t('contact.form.service')}</option>
+              <option>{t('contact.opt.erp')}</option>
+              <option>{t('contact.opt.pos')}</option>
+              <option>{t('contact.opt.zatca')}</option>
+              <option>{t('contact.opt.other')}</option>
+            </select>
+
+            <textarea placeholder={t('contact.form.details')} className={`${field} sm:col-span-2 h-[90px] resize-none`} />
+
+            <button
+              type="submit"
+              className={`sm:col-span-2 inline-flex items-center justify-center gap-2 bg-wg-teal text-[#0B0710] font-semibold text-[14px] leading-[normal] py-[11px] px-[22px] rounded-full border-none cursor-pointer transition-[transform,box-shadow] duration-[250ms] ease-[cubic-bezier(.2,.8,.2,1)] hover:-translate-y-[2px] hover:shadow-[0_8px_24px_rgba(0,217,192,.35)] ${font}`}
+            >
+              {sent ? t('contact.form.sent') : t('contact.form.send')}
+            </button>
+          </form>
+
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 }

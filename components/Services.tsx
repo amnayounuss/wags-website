@@ -7,7 +7,13 @@ export default function Services() {
   const [activeFilter, setActiveFilter] = useState('all');
   const { t, language } = useLanguage();
   const isAr = language === 'ar';
- 
+  const font = isAr ? 'font-arabic' : 'font-inter';
+  const heading = isAr ? 'font-arabic' : 'font-grotesk';
+
+  // Reference card look: white panel, hairline border, radius 16, teal hover lift
+  const card =
+    'bg-wg-panel border border-wg-line rounded-[16px] shadow-[0_2px_18px_rgba(20,10,20,0.04)] transition-[transform,border-color,box-shadow] duration-300 hover:-translate-y-[5px] hover:border-wg-teal hover:shadow-[0_14px_30px_rgba(0,168,150,.14)]';
+
   const filters = [
     { id: 'all', label: t('services.filter.all'), count: 31 },
     { id: 'sales', label: t('services.filter.sales'), count: 4 },
@@ -55,136 +61,84 @@ export default function Services() {
 
   return (
     <>
-      <section id="services" className={`py-[60px] md:py-[80px] ${isAr ? 'font-cairo' : 'font-sora'}`}>
-        <div className="container">
+      <section id="services" className={`relative z-[2] py-[64px] sm:py-[80px] tablet:py-[120px] text-wg-text ${font}`}>
+        <div className="max-w-[1180px] mx-auto px-5 sm:px-6 lg:px-8 relative z-[2]">
 
-          <div className="text-center mb-[60px]">
-            <div className="section-label inline-block mb-6 bg-[#07B98F]/10 border border-[#07B98F]/25 text-[#07B98F] py-[6px] px-4 rounded-full text-[13px] font-bold tracking-[0.1em] uppercase">{t('services.label')}</div>
-            <h2 className={`text-[clamp(36px,5vw,56px)] leading-[1.1] mb-6 font-extrabold text-slate-900 ${isAr ? 'font-cairo' : 'font-sora'}`}>{t('services.title1')}<span className="bg-gradient-to-br from-[#07B98F] to-[#3ECEB0] bg-clip-text text-transparent">{t('services.title2')}</span></h2>
-            <p className="text-[18px] text-slate-600 leading-[1.6] max-w-[600px] mx-auto">{t('services.sub')}</p>
+          {/* section-head: max-w 640, mb 56 */}
+          <div className="reveal max-w-[640px] mb-8 sm:mb-[56px]">
+            <div className={`text-[12px] font-semibold leading-[18px] text-wg-teal mb-[14px] ${isAr ? 'tracking-normal' : 'tracking-[0.14em] uppercase'}`}>
+              {t('services.kicker')}
+            </div>
+            <h2 className={`${heading} text-[clamp(26px,4vw,44px)] font-semibold leading-[1.35] sm:leading-[1.5] tracking-[-0.01em] text-wg-text`}>
+              {t('services.head')}
+            </h2>
+            <p className="mt-[14px] text-[15px] sm:text-[16px] leading-[24px] text-wg-muted">{t('services.blurb')}</p>
           </div>
 
-          {/* Filters */}
-          <div className="flex flex-wrap justify-center gap-3 mb-[60px]">
+          {/* services-tabs: pills, gap 10, mb 34 — count first, then label (reference) */}
+          <div className="reveal flex flex-wrap gap-2 sm:gap-2.5 mb-7 sm:mb-[34px]">
             {filters.map((f, i) => (
               <button
                 key={i}
                 onClick={() => setActiveFilter(f.id)}
-                className={`py-2.5 px-5 rounded-full text-[14px] font-semibold flex items-center gap-2 cursor-pointer transition-all duration-300 border ${activeFilter === f.id ? 'bg-[#07B98F] border-[#07B98F] text-white shadow-[0_8px_20px_rgba(7,185,143,0.2)]' : 'bg-slate-900/5 border-slate-900/10 text-slate-600 hover:bg-slate-900/10 hover:text-slate-900'}`}
+                className={`py-2 px-4 sm:py-[9px] sm:px-[18px] rounded-full border text-[12.5px] sm:text-[13px] cursor-pointer transition-[border-color,background-color,color] duration-200 ${
+                  activeFilter === f.id
+                    ? 'border-wg-teal bg-[rgba(0,168,150,.06)] text-wg-text'
+                    : 'border-wg-line text-wg-muted hover:border-wg-teal hover:text-wg-text'
+                }`}
               >
-                {f.label}
-                <span className={`py-0.5 px-2 rounded-full text-[12px] ${activeFilter === f.id ? 'bg-white/20 text-white' : 'bg-slate-900/10 text-slate-700'}`}>
-                  {f.count}
-                </span>
+                <b className="font-semibold text-wg-text" dir="ltr">{f.count}</b> {f.label}
               </button>
             ))}
           </div>
 
-          {/* Grid */}
-          <div className={`flex flex-wrap justify-start gap-[30px] ${isAr ? 'dir-rtl' : ''}`}>
-            {activeFilter === 'all' ? (
-              filters.filter(f => f.id !== 'all').map((f, i, arr) => {
-                const totalItems = arr.length;
-                const isFirstOfLastTwo = (totalItems % 3 === 2) && (i === totalItems - 2);
-                const marginClass = isFirstOfLastTwo ? (isAr ? 'lg:mr-[calc(16.6666%+5px)]' : 'lg:ml-[calc(16.6666%+5px)]') : '';
-                
-                const getIconInfo = (id: string) => {
-                  switch(id) {
-                    case 'sales': return { icon: <ShoppingCart size={32} strokeWidth={2} />, color: '#38bdf8' };
-                    case 'pos': return { icon: <MonitorSmartphone size={32} strokeWidth={2} />, color: '#fbbf24' };
-                    case 'finance': return { icon: <LineChart size={32} strokeWidth={2} />, color: '#8b5cf6' };
-                    case 'ops': return { icon: <Settings size={32} strokeWidth={2} />, color: '#00f0ff' };
-                    case 'people': return { icon: <Users size={32} strokeWidth={2} />, color: '#f43f5e' };
-                    default: return { icon: <Layers size={32} strokeWidth={2} />, color: '#07B98F' };
-                  }
-                };
-                const { icon, color } = getIconInfo(f.id);
-                return (
-                  <div
-                    key={i}
-                    onClick={() => setActiveFilter(f.id)}
-                    className={`w-full md:w-[calc(50%-15px)] lg:w-[calc(33.333%-20px)] ${marginClass} bg-white/75 backdrop-blur-[20px] border border-slate-200/50 rounded-[24px] p-8 relative overflow-hidden transition-all duration-400 ease-in-out cursor-pointer flex flex-col items-center justify-center text-center shadow-[0_15px_35px_rgba(0,0,0,0.02),_inset_0_1px_0_rgba(255,255,255,0.6)] hover:-translate-y-1.5 hover:bg-white hover:shadow-[0_20px_40px_rgba(7,185,143,0.06)] group`}
-                    style={{ borderTopColor: 'rgba(15,23,42,0.06)' }}
-                    onMouseEnter={(e) => {
-                      e.currentTarget.style.borderTopColor = color;
-                      e.currentTarget.style.boxShadow = `0 20px 40px -10px ${color}20`;
-                      const iconDiv = e.currentTarget.querySelector('.service-icon') as HTMLElement;
-                      if (iconDiv) {
-                        iconDiv.style.backgroundColor = color;
-                        iconDiv.style.color = '#ffffff';
-                        iconDiv.style.transform = 'scale(1.1)';
-                      }
-                    }}
-                    onMouseLeave={(e) => {
-                      e.currentTarget.style.borderTopColor = 'rgba(15,23,42,0.06)';
-                      e.currentTarget.style.boxShadow = 'none';
-                      const iconDiv = e.currentTarget.querySelector('.service-icon') as HTMLElement;
-                      if (iconDiv) {
-                        iconDiv.style.backgroundColor = `${color}15`;
-                        iconDiv.style.color = color;
-                        iconDiv.style.transform = 'scale(1)';
-                      }
-                    }}
-                  >
-                    <div className="service-icon w-14 h-14 shrink-0 rounded-[16px] border flex items-center justify-center mb-6 transition-all duration-500 shadow-inner" style={{ backgroundColor: `${color}15`, color: color, borderColor: `${color}30` }}>
-                      {icon}
-                    </div>
-                    <h3 className={`text-[24px] font-extrabold text-slate-900 mb-2 tracking-[-0.02em] ${isAr ? 'font-cairo' : 'font-sora'}`}>{f.label}</h3>
-                  </div>
-                );
-              })
-            ) : (
-              filteredServices.map((s, i, arr) => {
-                const totalItems = arr.length;
-                const isFirstOfLastTwo = (totalItems % 3 === 2) && (i === totalItems - 2);
-                const marginClass = isFirstOfLastTwo ? (isAr ? 'lg:mr-[calc(16.6666%+5px)]' : 'lg:ml-[calc(16.6666%+5px)]') : '';
-                return (
-                <div
+          {/* services-grid: 5 category cards, gap 16 (reference) */}
+          {activeFilter === 'all' ? (
+            <div className="grid grid-cols-2 sm:grid-cols-3 tablet:grid-cols-5 gap-3 sm:gap-4">
+              {filters.filter(f => f.id !== 'all').map((f, i) => (
+                // svc-card: padding 22px 18px, centered
+                <button
                   key={i}
-                  className={`w-full md:w-[calc(50%-15px)] lg:w-[calc(33.333%-20px)] ${marginClass} bg-white/75 backdrop-blur-[20px] border border-slate-200/50 rounded-[24px] p-8 relative overflow-hidden transition-all duration-400 ease-in-out cursor-default flex flex-col shadow-[0_15px_35px_rgba(0,0,0,0.02),_inset_0_1px_0_rgba(255,255,255,0.6)] hover:-translate-y-1.5 hover:bg-white hover:shadow-[0_20px_40px_rgba(7,185,143,0.06)] ${isAr ? 'text-right' : ''}`}
-                  style={{
-                    borderTopColor: 'rgba(15,23,42,0.06)'
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderTopColor = s.iconColor;
-                    e.currentTarget.style.boxShadow = `0 20px 40px -10px ${s.iconColor}20`;
-                    const iconDiv = e.currentTarget.querySelector('.service-icon') as HTMLElement;
-                    if (iconDiv) {
-                      iconDiv.style.backgroundColor = s.iconColor;
-                      iconDiv.style.color = '#ffffff';
-                      iconDiv.style.transform = 'scale(1.1)';
-                    }
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderTopColor = 'rgba(15,23,42,0.06)';
-                    e.currentTarget.style.boxShadow = 'none';
-                    const iconDiv = e.currentTarget.querySelector('.service-icon') as HTMLElement;
-                    if (iconDiv) {
-                      iconDiv.style.backgroundColor = `${s.iconColor}15`;
-                      iconDiv.style.color = s.iconColor;
-                      iconDiv.style.transform = 'scale(1)';
-                    }
-                  }}
+                  onClick={() => setActiveFilter(f.id)}
+                  className={`${card} px-4 py-5 sm:px-[18px] sm:py-[22px] text-center cursor-pointer`}
                 >
-  
-                  {/* Header */}
-                  <div className={`flex justify-between items-start mb-6`}>
-                    <div className="service-icon w-14 h-14 shrink-0 rounded-[16px] border flex items-center justify-center transition-all duration-500 shadow-inner" style={{ backgroundColor: `${s.iconColor}15`, color: s.iconColor, borderColor: `${s.iconColor}30` }}>
+                  {/* n: Space Grotesk 700, 26px, --purple-bright */}
+                  <div className="font-grotesk text-[22px] leading-[33px] sm:text-[26px] sm:leading-[39px] font-bold text-wg-purple-bright" dir="ltr">
+                    {String(f.count).padStart(2, '0')}
+                  </div>
+                  {/* t: Inter 13px, --muted, mt 6 */}
+                  <div className="text-[13px] leading-[19.5px] text-wg-muted mt-1.5">{f.label}</div>
+                </button>
+              ))}
+            </div>
+          ) : (
+            <div className="grid grid-cols-1 sm:grid-cols-2 tablet:grid-cols-3 gap-3 sm:gap-4">
+              {filteredServices.map((s, i) => (
+                // No `reveal` here: these cards are swapped in on click, after the
+                // scroll-reveal observer has already run, so they'd stay at opacity 0.
+                <div key={i} className={`${card} p-[22px] flex flex-col ${isAr ? 'text-right' : ''}`}>
+
+                  <div className="flex justify-between items-start gap-3 mb-[18px]">
+                    {/* ico: 44px, radius 12, purple → teal gradient (reference idiom) */}
+                    <div className="w-11 h-11 shrink-0 rounded-[12px] bg-gradient-to-br from-wg-purple to-wg-teal flex items-center justify-center text-white">
                       {s.icon}
                     </div>
                     {s.featured && (
-                      <span className="py-1.5 px-3 rounded-full text-[11px] font-bold tracking-[0.05em] uppercase" style={{ backgroundColor: `${s.iconColor}15`, color: s.iconColor }}>{isAr ? 'شائع' : 'Popular'}</span>
+                      <span className={`shrink-0 border border-[rgba(0,168,150,.3)] bg-[rgba(0,168,150,.06)] text-wg-teal rounded-full py-1 px-2.5 text-[10px] font-semibold ${isAr ? 'tracking-normal' : 'tracking-[0.14em] uppercase'}`}>
+                        {isAr ? 'شائع' : 'Popular'}
+                      </span>
                     )}
                   </div>
-  
-                  <h3 className={`text-[22px] font-extrabold text-slate-900 mb-3 tracking-[-0.02em] ${isAr ? 'font-cairo' : 'font-sora'}`}>{s.title}</h3>
-                  <p className="text-[15px] text-slate-600 leading-[1.6] flex-grow m-0">{s.desc}</p>
-  
+
+                  {/* title: Space Grotesk 600, 17px / 25.5px */}
+                  <h3 className={`${heading} text-[17px] font-semibold leading-[25.5px] tracking-normal text-wg-text mb-2`}>{s.title}</h3>
+                  {/* desc: Inter 14px / 1.55, --muted */}
+                  <p className="text-[14px] leading-[1.55] text-wg-muted m-0">{s.desc}</p>
+
                 </div>
-                );
-              })
-            )}
-          </div>
+              ))}
+            </div>
+          )}
 
         </div>
       </section>

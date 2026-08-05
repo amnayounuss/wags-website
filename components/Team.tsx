@@ -1,93 +1,81 @@
 'use client';
 import React from 'react';
 import Image from 'next/image';
-import { Mail } from 'lucide-react';
-import { FaLinkedin } from 'react-icons/fa';
 import { useLanguage } from '@/context/LanguageContext';
+
+const MEMBERS = [
+  { key: 'm1', initials: 'AA', photo: '/Abdullatif-Alwshigry.jpg' },
+  { key: 'm2', initials: 'HH', photo: '/haroon-bhai.png' },
+  { key: 'm3', initials: 'SD', photo: '/danish-bhai.png' },
+];
 
 export default function Team() {
   const { t, language } = useLanguage();
   const isAr = language === 'ar';
-
-  const team = [
-    {
-      name: isAr ? "عبد اللطيف الوشيقري" : "Abdullatif Alwshigry",
-      title: t('team.al.title'),
-      bio: t('team.al.bio'),
-      email: "Aw@wags.sa",
-      linkedin: "http://linkedin.com/in/abdullatif-alwshigry-msc-ba77a646/",
-      initials: "AL",
-      image: "/Abdullatif-Alwshigry.jpg"
-    },
-    {
-      name: isAr ? "هارون حياة" : "Haroon Hayat",
-      title: t('team.hh.title'),
-      bio: t('team.hh.bio'),
-      email: "haroon@wags.sa",
-      linkedin: "https://www.linkedin.com/in/malikharoon-odoo/",
-      initials: "HH",
-      image: "/haroon-bhai.png"
-    },
-    {
-      name: isAr ? "سيد دانش" : "Syed Danish",
-      title: t('team.sd.title'),
-      bio: t('team.sd.bio'),
-      email: "danish@wags.sa",
-      linkedin: "https://www.linkedin.com/in/muhammad-danish-syed-81513561/",
-      initials: "SD",
-      image: "/danish-bhai.png"
-    }
-  ];
+  const font = isAr ? 'font-arabic' : 'font-inter';
+  const heading = isAr ? 'font-arabic' : 'font-grotesk';
 
   return (
-    <>
-      <section id="team" className={`py-[60px] md:py-[80px] relative ${isAr ? 'font-cairo' : 'font-sora'}`}>
-        <div className="container">
+    <section id="team" className={`relative z-[2] py-[64px] sm:py-[80px] tablet:py-[120px] text-wg-text ${font}`}>
+      <div className="max-w-[1180px] mx-auto px-5 sm:px-6 lg:px-8 relative z-[2]">
 
-          <div className="text-center mb-[80px]">
-            <div className="section-label inline-block mb-6 bg-[#07B98F]/10 border border-[#07B98F]/25 text-[#07B98F] py-[6px] px-4 rounded-full text-[13px] font-bold tracking-[0.1em] uppercase">{t('team.label')}</div>
-            <h2 className={`text-[clamp(36px,5vw,56px)] leading-[1.1] mb-6 font-extrabold text-slate-900 ${isAr ? 'font-cairo' : 'font-sora'}`}>{t('team.title1')}<span className="bg-gradient-to-br from-[#07B98F] to-[#3ECEB0] bg-clip-text text-transparent">{t('team.title2')}</span></h2>
-            <p className="text-[18px] text-slate-600 leading-[1.6] max-w-[600px] mx-auto">{t('team.sub')}</p>
+        {/* section-head: max-w 640, mb 56 */}
+        <div className="reveal max-w-[640px] mb-10 sm:mb-[56px]">
+          <div className={`text-[12px] font-semibold leading-[18px] text-wg-teal mb-[14px] ${isAr ? 'tracking-normal' : 'tracking-[0.14em] uppercase'}`}>
+            {t('team.kicker')}
           </div>
-
-          <div className={`flex flex-wrap justify-center gap-[30px]`}>
-            {team.map((member, i) => (
-              <div
-                key={i}
-                className="flex-1 min-w-[280px] max-w-[380px] bg-white/75 backdrop-blur-[20px] border border-slate-200/50 border-t-[#07B98F]/30 rounded-[24px] p-10 shadow-[0_15px_35px_rgba(0,0,0,0.02),_inset_0_1px_0_rgba(255,255,255,0.6)] transition-all duration-300 ease-[cubic-bezier(0.16,1,0.3,1)] flex flex-col items-center text-center hover:-translate-y-2 hover:border-t-[#07B98F] hover:shadow-[0_20px_40px_rgba(7,185,143,0.1)] hover:bg-white group"
-              >
-
-                <div className="w-[90px] h-[90px] rounded-full overflow-hidden bg-[#07B98F]/5 flex items-center justify-center mb-6 border-2 border-[#07B98F]/25 shadow-[0_10px_20px_rgba(0,0,0,0.02)]">
-                  {member.image ? (
-                    <Image src={member.image} alt={member.name} width={90} height={90} className="w-full h-full object-cover" />
-                  ) : (
-                    <span className="text-[28px] font-extrabold text-slate-900 font-sora">{member.initials}</span>
-                  )}
-                </div>
-
-                <h3 className={`text-[22px] font-extrabold text-slate-900 mb-2 tracking-[-0.02em] ${isAr ? 'font-cairo' : 'font-sora'}`}>{member.name}</h3>
-                <div className="text-[13px] font-bold text-[#07B98F] tracking-[0.05em] uppercase mb-4">{member.title}</div>
-
-                <p className="text-[15px] text-slate-600 leading-[1.6] flex-grow mb-6">{member.bio}</p>
-
-                <div className="h-[1px] w-full bg-slate-200/60 mb-6"></div>
-
-                <div className="w-full flex items-center justify-between">
-                  <a href={`mailto:${member.email}`} className={`inline-flex items-center gap-2 text-slate-600 text-[14px] font-semibold no-underline transition-colors duration-300 hover:text-[#07B98F]`}>
-                    <Mail size={16} strokeWidth={2} />
-                    {member.email}
-                  </a>
-                  <a href={member.linkedin} target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-[#0077b5] transition-colors duration-300">
-                    <FaLinkedin size={20} />
-                  </a>
-                </div>
-
-              </div>
-            ))}
-          </div>
-
+          <h2 className={`${heading} text-[clamp(26px,4vw,44px)] font-semibold leading-[1.35] sm:leading-[1.5] tracking-[-0.01em] text-wg-text`}>
+            {t('team.title')}
+          </h2>
+          <p className="mt-[14px] text-[15px] sm:text-[16px] leading-[24px] text-wg-muted">{t('team.sub')}</p>
         </div>
-      </section>
-    </>
+
+        {/* team-grid: 3 cols, gap 24 */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 tablet:grid-cols-3 gap-5 sm:gap-6 max-sm:max-w-[420px] max-sm:mx-auto">
+          {MEMBERS.map((m) => (
+            <div
+              key={m.key}
+              className="reveal bg-wg-panel border border-wg-line rounded-[20px] overflow-hidden shadow-[0_2px_18px_rgba(20,10,20,0.04)] transition-[transform,box-shadow] duration-300 hover:-translate-y-1.5 hover:shadow-[0_18px_36px_rgba(113,75,103,.14)]"
+            >
+              {/* team-photo: purple → teal gradient plate with a round portrait
+                  (two of the three source files are already circular cut-outs,
+                  so a circular frame is what keeps all three consistent) */}
+              <div className="relative h-[200px] tablet:h-[220px] bg-gradient-to-br from-wg-purple to-wg-teal flex items-center justify-center">
+                <div className="relative w-[130px] h-[130px] tablet:w-[146px] tablet:h-[146px] rounded-full overflow-hidden ring-4 ring-white/35 shadow-[0_10px_30px_rgba(20,10,20,0.22)]">
+                  {/* Initials sit underneath as the fallback if the portrait fails to load */}
+                  <span
+                    className="absolute inset-0 flex items-center justify-center bg-wg-purple font-grotesk font-bold text-[34px] leading-[51px] text-white/90"
+                    dir="ltr"
+                    aria-hidden="true"
+                  >
+                    {m.initials}
+                  </span>
+                  <Image
+                    src={m.photo}
+                    alt={t(`team.${m.key}.name`)}
+                    fill
+                    sizes="160px"
+                    className="relative object-cover object-top"
+                  />
+                </div>
+              </div>
+
+              {/* team-info: padding 22 */}
+              <div className="p-5 sm:p-[22px]">
+                {/* h3: Space Grotesk 700, 17px / 25.5px, mb 4 */}
+                <h3 className={`${heading} text-[17px] font-bold leading-[25.5px] tracking-normal text-wg-text mb-1`}>
+                  {t(`team.${m.key}.name`)}
+                </h3>
+                {/* role: Inter 400, 13px / 19.5px, --teal, mb 10 */}
+                <div className="text-[13px] leading-[19.5px] text-wg-teal mb-2.5">{t(`team.${m.key}.role`)}</div>
+                {/* p: Inter 400, 13px / 19.5px, --muted */}
+                <p className="text-[13px] leading-[19.5px] text-wg-muted">{t(`team.${m.key}.bio`)}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
   );
 }

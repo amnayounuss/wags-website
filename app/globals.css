@@ -79,7 +79,8 @@ button {
   position: fixed;
   bottom: 32px;
   right: 32px;
-  z-index: 99996;
+  /* below the header (100) and the mobile drawer (102) */
+  z-index: 90;
   width: 52px;
   height: 52px;
   border-radius: 50%;
@@ -3964,3 +3965,259 @@ footer::before {
   -webkit-mask-image: radial-gradient(ellipse at 50% 40%, black 30%, transparent 80%);
   mask-image: radial-gradient(ellipse at 50% 40%, black 30%, transparent 80%);
 }
+/* ══════════════════════════════════════════
+   FOOTER — matches reference (light frostedglass)
+   Neutralises the older dark fat-footer overrides.
+   ══════════════════════════════════════════ */
+footer {
+  background: transparent !important;
+  margin-top: 0 !important;
+  /* padding comes from the component's own responsive classes */
+  border-top: 1px solid rgba(20, 10, 20, 0.09) !important;
+  overflow: visible !important;
+}
+
+footer::before {
+  display: none !important;
+}
+
+/* ══════════════════════════════════════════
+   CONTACT HEADING — reference uses Space Grotesk 700 / 32px / 48px
+   (overrides the global `h1..h4 { font-family: Sora !important }` rule)
+   ══════════════════════════════════════════ */
+#contact h2 {
+  font-family: 'Space Grotesk', sans-serif !important;
+  letter-spacing: normal !important;
+}
+
+#faq h2 {
+  font-family: 'Space Grotesk', sans-serif !important;
+  letter-spacing: -0.01em !important;
+}
+
+[dir='rtl'] #contact h2,
+[dir='rtl'] #faq h2 {
+  font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+}
+
+/* ══════════════════════════════════════════
+   HERO — reference `.hero-split`: padding 76px 0 40px, natural height.
+   Neutralises the older full-viewport dark-gradient hero rules.
+   ══════════════════════════════════════════ */
+#hero {
+  min-height: 0 !important;
+  display: block !important;
+  padding: 84px 0 32px !important;
+  overflow: hidden !important;
+  background: transparent !important;
+}
+
+@media (min-width: 640px) {
+  #hero {
+    padding: 96px 0 40px !important;
+  }
+}
+
+@media (min-width: 900px) {
+  #hero {
+    padding: 116px 0 56px !important;
+  }
+}
+
+/* Reference h1: Space Grotesk 700 (overrides the global Sora !important) */
+#hero h1,
+#about h2 {
+  font-family: 'Space Grotesk', sans-serif !important;
+  letter-spacing: normal !important;
+}
+
+[dir='rtl'] #hero h1,
+[dir='rtl'] #about h2 {
+  font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+}
+
+/* ══════════════════════════════════════════
+   REFERENCE HEADINGS — Space Grotesk with the reference's own tracking.
+   Overrides the global `h1..h4 { font-family: Sora !important }` rule.
+   ══════════════════════════════════════════ */
+#process h2,
+#process h3,
+#team h2,
+#team h3,
+#testimonials h2 {
+  font-family: 'Space Grotesk', sans-serif !important;
+}
+
+#process h2,
+#team h2,
+#testimonials h2 {
+  letter-spacing: -0.01em !important;
+}
+
+#process h3,
+#team h3 {
+  letter-spacing: normal !important;
+}
+
+[dir='rtl'] #process h2,
+[dir='rtl'] #process h3,
+[dir='rtl'] #team h2,
+[dir='rtl'] #team h3,
+[dir='rtl'] #testimonials h2 {
+  font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+}
+
+/* ══════════════════════════════════════════
+   SOLVE — reference `#solve` (white panel + AI-ERP infographic)
+   ══════════════════════════════════════════ */
+#solve {
+  background: #FFFFFF !important;
+}
+
+.sg-node-label {
+  font-family: 'Inter', sans-serif;
+  font-size: 11.5px;
+  font-weight: 600;
+  fill: #1C1420;
+}
+
+.sg-node-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 9.5px;
+  fill: #6E6274;
+}
+
+.sg-core-label {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  fill: #fff;
+}
+
+.sg-core-sub {
+  font-family: 'Inter', sans-serif;
+  font-size: 9px;
+  fill: rgba(255, 255, 255, .85);
+}
+
+.sg-pulse {
+  animation: sgPulse 2.6s ease-in-out infinite;
+}
+
+.sg-dash {
+  stroke-dasharray: 6 7;
+  animation: sgFlow 1.6s linear infinite;
+}
+
+@keyframes sgPulse {
+  0%, 100% { opacity: .55; transform: scale(1); }
+  50%      { opacity: 0;   transform: scale(1.35); }
+}
+
+@keyframes sgFlow {
+  to { stroke-dashoffset: -26; }
+}
+
+/* Reference headings for these two sections */
+#why h2,
+#why h3,
+#solve h2,
+#solve h4 {
+  font-family: 'Space Grotesk', sans-serif !important;
+}
+
+#why h2,
+#solve h2 {
+  letter-spacing: -0.01em !important;
+}
+
+#why h3,
+#solve h4 {
+  letter-spacing: normal !important;
+}
+
+[dir='rtl'] #why h2,
+[dir='rtl'] #why h3,
+[dir='rtl'] #solve h2,
+[dir='rtl'] #solve h4 {
+  font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+}
+
+/* Integrations column headings — reference uses Space Grotesk 700 / .02em */
+#integrations h2,
+#integrations h4 {
+  font-family: 'Space Grotesk', sans-serif !important;
+}
+
+#integrations h2 {
+  letter-spacing: -0.01em !important;
+}
+
+#integrations h4 {
+  letter-spacing: 0.02em !important;
+}
+
+[dir='rtl'] #integrations h2,
+[dir='rtl'] #integrations h4 {
+  font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+}
+
+/* Services headings — reference uses Space Grotesk */
+#services h2,
+#services h3 {
+  font-family: 'Space Grotesk', sans-serif !important;
+}
+
+#services h2 {
+  letter-spacing: -0.01em !important;
+}
+
+#services h3 {
+  letter-spacing: normal !important;
+}
+
+[dir='rtl'] #services h2,
+[dir='rtl'] #services h3 {
+  font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+}
+
+/* ══════════════════════════════════════════
+   ARABIC (RTL) — IBM Plex Sans Arabic across the whole document.
+   Overrides the global `body { font-family: 'DM Sans' !important }` and
+   `h1..h4 { font-family: 'Sora' !important }` rules above so that any
+   element without its own font class still renders in the Arabic face.
+   Also resets letter-spacing (tracking) which breaks connected Arabic glyphs.
+   ══════════════════════════════════════════ */
+html[dir='rtl'],
+html[dir='rtl'] body,
+html[dir='rtl'] h1,
+html[dir='rtl'] h2,
+html[dir='rtl'] h3,
+html[dir='rtl'] h4,
+html[dir='rtl'] h5,
+html[dir='rtl'] h6,
+html[dir='rtl'] span,
+html[dir='rtl'] div,
+html[dir='rtl'] p,
+html[dir='rtl'] button,
+html[dir='rtl'] a,
+html[dir='rtl'] label,
+html[dir='rtl'] input,
+html[dir='rtl'] select,
+html[dir='rtl'] textarea,
+html[dir='rtl'] .section-label,
+html[dir='rtl'] .btn-primary,
+html[dir='rtl'] .btn-ghost,
+html[dir='rtl'] .sg-node-label,
+html[dir='rtl'] .sg-node-sub,
+html[dir='rtl'] .sg-core-label,
+html[dir='rtl'] .sg-core-sub {
+  font-family: 'IBM Plex Sans Arabic', sans-serif !important;
+  letter-spacing: normal !important;
+}
+
+html[dir='rtl'] #back-to-top {
+  right: auto;
+  left: 32px;
+}
+

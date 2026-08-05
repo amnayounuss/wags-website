@@ -4,11 +4,13 @@ import Hero from '@/components/Hero'
 import Clients from '@/components/Clients'
 import About from '@/components/About'
 import WhyChoose from '@/components/WhyChoose'
+import Solve from '@/components/Solve'
 import Process from '@/components/Process'
 import Services from '@/components/Services'
 import Integrations from '@/components/Integrations'
 import Team from '@/components/Team'
-import CTABand from '@/components/CTABand'
+import Testimonials from '@/components/Testimonials'
+import FAQ from '@/components/FAQ'
 import Contact from '@/components/Contact'
 import Footer from '@/components/Footer'
 import SiteScripts from '@/components/SiteScripts'
@@ -28,11 +30,13 @@ export default function Page() {
       <Clients />
       <About />
       <WhyChoose />
+      <Solve />
       <Process />
-      <CTABand />
       <Services />
       <Integrations />
       <Team />
+      <Testimonials />
+      <FAQ />
       <Contact />
       <Footer />
     </>

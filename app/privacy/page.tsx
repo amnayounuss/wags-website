@@ -10,10 +10,10 @@ export default function PrivacyPolicy() {
   return (
     <>
       <Navbar />
-      <main className={`pt-[140px] pb-[100px] min-h-screen bg-[#050B1A] ${isAr ? 'font-cairo text-right' : 'font-sora text-left'}`}>
+      <main className={`pt-[140px] pb-[100px] min-h-screen bg-[#050B1A] ${isAr ? 'font-arabic text-right' : 'font-sora text-left'}`}>
         <div className="container mx-auto text-white/85" style={{ maxWidth: '800px' }}>
         
-          <h1 className={`text-[clamp(32px,5vw,48px)] font-extrabold text-white mb-[40px] tracking-[-0.02em] ${isAr ? 'font-cairo' : 'font-sora'}`}>
+          <h1 className={`text-[clamp(32px,5vw,48px)] font-extrabold text-white mb-[40px] tracking-[-0.02em] ${isAr ? 'font-arabic' : 'font-sora'}`}>
             {t('privacy.title')}
           </h1>
           

@@ -1,75 +1,62 @@
 'use client';
 import React from 'react';
-import { Layers, FileCheck, Handshake, MapPin, Users, Rocket } from 'lucide-react';
+import { SlidersHorizontal, ShieldCheck, TrendingUp, MapPin, UserCheck, Rocket } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
+
+// One icon per reason — order matches why.f1 … why.f6 in the locale files
+const CARDS = [
+  { n: 1, Icon: SlidersHorizontal }, // Built for your business
+  { n: 2, Icon: ShieldCheck },       // Avoid fines, completely
+  { n: 3, Icon: TrendingUp },        // We grow with you
+  { n: 4, Icon: MapPin },            // Riyadh-based team
+  { n: 5, Icon: UserCheck },         // Dedicated point of contact
+  { n: 6, Icon: Rocket },            // Live in 6 weeks
+];
 
 export default function WhyChoose() {
   const { t, language } = useLanguage();
   const isAr = language === 'ar';
-
-  const features = [
-    {
-      title: t('why.f1.title'),
-      desc: t('why.f1.desc'),
-      icon: <Layers size={24} strokeWidth={2} />
-    },
-    {
-      title: t('why.f2.title'),
-      desc: t('why.f2.desc'),
-      icon: <FileCheck size={24} strokeWidth={2} />
-    },
-    {
-      title: t('why.f3.title'),
-      desc: t('why.f3.desc'),
-      icon: <Handshake size={24} strokeWidth={2} />
-    },
-    {
-      title: t('why.f4.title'),
-      desc: t('why.f4.desc'),
-      icon: <MapPin size={24} strokeWidth={2} />
-    },
-    {
-      title: t('why.f5.title'),
-      desc: t('why.f5.desc'),
-      icon: <Users size={24} strokeWidth={2} />
-    },
-    {
-      title: t('why.f6.title'),
-      desc: t('why.f6.desc'),
-      icon: <Rocket size={24} strokeWidth={2} />
-    }
-  ];
+  const font = isAr ? 'font-arabic' : 'font-inter';
+  const heading = isAr ? 'font-arabic' : 'font-grotesk';
 
   return (
-    <>
-      <section id="why" className={`py-[60px] md:py-[80px] relative ${isAr ? 'font-cairo text-right' : 'font-sora'}`}>
-        <div className="container">
+    <section id="why" className={`relative z-[2] py-[64px] sm:py-[80px] tablet:py-[120px] text-wg-text ${font}`}>
+      <div className="max-w-[1180px] mx-auto px-5 sm:px-6 lg:px-8 relative z-[2]">
 
-          <div className="text-center mb-[80px]">
-            <div className="section-label inline-block mb-6 bg-[#07B98F]/10 border border-[#07B98F]/25 text-[#07B98F] py-[6px] px-4 rounded-full text-[13px] font-bold tracking-[0.1em] uppercase">{t('why.label')}</div>
-            <h2 className={`text-[clamp(36px,5vw,56px)] leading-[1.1] mb-6 font-extrabold text-slate-900 ${isAr ? 'font-cairo' : 'font-sora'}`}>{t('why.title1')}<span className="bg-gradient-to-br from-[#07B98F] to-[#3ECEB0] bg-clip-text text-transparent">{t('why.title2')}</span></h2>
-            <p className="text-[18px] md:text-[20px] text-slate-600 leading-[1.7] max-w-[800px] mx-auto font-medium">{t('why.sub')}</p>
+        {/* section-head: max-w 640, mb 56 */}
+        <div className="reveal max-w-[640px] mb-10 sm:mb-[56px]">
+          <div className={`text-[12px] font-semibold leading-[18px] text-wg-teal mb-[14px] ${isAr ? 'tracking-normal' : 'tracking-[0.14em] uppercase'}`}>
+            {t('why.kicker')}
           </div>
-
-          <div className="flex flex-wrap justify-center gap-[24px]">
-            {features.map((feature, i) => (
-              <div
-                key={i}
-                className={`group flex-1 min-w-[300px] max-w-[380px] bg-white/80 backdrop-blur-[24px] border border-slate-200/60 rounded-[20px] p-6 shadow-[0_10px_30px_rgba(0,0,0,0.03),_inset_0_1px_0_rgba(255,255,255,0.8)] transition-all duration-400 ease-[cubic-bezier(0.16,1,0.3,1)] cursor-pointer hover:-translate-y-1.5 hover:shadow-[0_20px_40px_rgba(7,185,143,0.08)] hover:bg-white hover:border-[#07B98F]/30 flex items-center gap-5 overflow-hidden relative ${isAr ? 'text-right flex-row-reverse' : ''}`}
-              >
-                {/* Subtle highlight gradient on hover */}
-                <div className="absolute inset-0 bg-gradient-to-r from-[#07B98F]/0 via-[#07B98F]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none"></div>
-
-                <div className="w-[56px] h-[56px] shrink-0 rounded-[16px] bg-[#07B98F]/10 border border-[#07B98F]/20 flex items-center justify-center text-[#07B98F] transition-all duration-500 group-hover:scale-110 group-hover:bg-[#07B98F] group-hover:text-white shadow-inner relative z-10">
-                  {feature.icon}
-                </div>
-                <h3 className={`text-[18px] md:text-[19px] font-bold text-slate-900 m-0 relative z-10 transition-colors duration-300 ${isAr ? 'font-cairo' : 'font-sora'}`}>{feature.title}</h3>
-              </div>
-            ))}
-          </div>
-
+          <h2 className={`${heading} text-[clamp(26px,4vw,44px)] font-semibold leading-[1.35] sm:leading-[1.5] tracking-[-0.01em] text-wg-text`}>
+            {t('why.title')}
+          </h2>
+          <p className="mt-[14px] text-[15px] sm:text-[16px] leading-[24px] text-wg-muted">{t('why.sub')}</p>
         </div>
-      </section>
-    </>
+
+        {/* why-grid: 3 cols, gap 20 */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 tablet:grid-cols-3 gap-4 sm:gap-5">
+          {CARDS.map(({ n, Icon }) => (
+            // why-card: white, radius 18, padding 30, hover → purple border + lifted shadow
+            <div
+              key={n}
+              className="reveal group bg-wg-panel border border-wg-line rounded-[18px] p-6 sm:p-[30px] shadow-[0_2px_18px_rgba(20,10,20,0.04)] transition-[transform,border-color,box-shadow] duration-[250ms] will-change-transform hover:border-wg-purple-bright hover:shadow-[0_18px_36px_rgba(113,75,103,.16)]"
+            >
+              {/* ico: 44px, radius 12, purple → teal gradient, mb 18 */}
+              <div className="w-11 h-11 rounded-[12px] bg-gradient-to-br from-wg-purple to-wg-teal mb-4 sm:mb-[18px] flex items-center justify-center text-white transition-transform duration-300 group-hover:scale-105">
+                <Icon size={22} strokeWidth={2} aria-hidden="true" />
+              </div>
+              {/* h3: Space Grotesk 600, 18px / 27px, mb 10 */}
+              <h3 className={`${heading} text-[17px] sm:text-[18px] font-semibold leading-[27px] tracking-normal text-wg-text mb-2.5`}>
+                {t(`why.f${n}.t`)}
+              </h3>
+              {/* p: Inter 400, 14px / 21px, --muted */}
+              <p className="text-[14px] leading-[21px] text-wg-muted">{t(`why.f${n}.d`)}</p>
+            </div>
+          ))}
+        </div>
+
+      </div>
+    </section>
   );
 }

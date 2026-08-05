@@ -34,6 +34,8 @@ next-env.d.ts
 
 WAGS_Revamp (1).html
 
+# tunnel watchdog logs
+.tunnel-logs/
+
 # unused files
-components/CTABand.tsx
 app/globals.backup.css
