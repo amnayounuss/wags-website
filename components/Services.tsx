@@ -102,8 +102,8 @@ export default function Services() {
                   onClick={() => setActiveFilter(f.id)}
                   className={`${card} px-4 py-5 sm:px-[18px] sm:py-[22px] text-center cursor-pointer`}
                 >
-                  {/* n: Space Grotesk 700, 26px, --purple-bright */}
-                  <div className="font-grotesk text-[22px] leading-[33px] sm:text-[26px] sm:leading-[39px] font-bold text-wg-purple-bright" dir="ltr">
+                  {/* n: Space Grotesk 700, 26px, accent teal color */}
+                  <div className="font-grotesk text-[22px] leading-[33px] sm:text-[26px] sm:leading-[39px] font-bold text-wg-teal" dir="ltr">
                     {String(f.count).padStart(2, '0')}
                   </div>
                   {/* t: Inter 13px, --muted, mt 6 */}
