@@ -35,7 +35,7 @@ export default function Page() {
       <Services />
       <Integrations />
       <Team />
-      <Testimonials />
+      {/* <Testimonials /> */}
       <FAQ />
       <Contact />
       <Footer />
