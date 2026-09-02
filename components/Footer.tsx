@@ -27,9 +27,12 @@ export default function Footer() {
 
         <div className="order-3 tablet:order-none">{t('footer.copy')}</div>
 
+        {/* /en/policy and /ar/policy are the URLs registered with Google as our
+            privacy policy and terms of service, so they must stay reachable. */}
         <div className="flex flex-wrap justify-center gap-x-6 gap-y-2">
-          <Link href="/privacy" className="transition-colors duration-200 hover:text-wg-text">{t('footer.privacy')}</Link>
-          <Link href="#" className="transition-colors duration-200 hover:text-wg-text">{t('footer.terms')}</Link>
+          <Link href="/#google-reviews" className="transition-colors duration-200 hover:text-wg-text">{t('footer.reviews')}</Link>
+          <Link href={`/${language}/policy`} className="transition-colors duration-200 hover:text-wg-text">{t('footer.privacy')}</Link>
+          <Link href={`/${language}/policy`} className="transition-colors duration-200 hover:text-wg-text">{t('footer.terms')}</Link>
         </div>
 
       </div>

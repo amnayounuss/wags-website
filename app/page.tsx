@@ -8,6 +8,7 @@ import Solve from '@/components/Solve'
 import Process from '@/components/Process'
 import Services from '@/components/Services'
 import Integrations from '@/components/Integrations'
+import GoogleReviews from '@/components/GoogleReviews'
 import Team from '@/components/Team'
 import Testimonials from '@/components/Testimonials'
 import FAQ from '@/components/FAQ'
@@ -34,6 +35,7 @@ export default function Page() {
       <Process />
       <Services />
       <Integrations />
+      <GoogleReviews />
       <Team />
       {/* <Testimonials /> */}
       <FAQ />
