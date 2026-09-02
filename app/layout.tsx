@@ -31,9 +31,13 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
         {/* Arabic typeface — used for every RTL string on the site */}
         <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet" />
+        {/* Armory type system: Inter (variable, optical-size axis = "Inter Display"),
+            Geist Mono for eyebrows and card titles, IBM Plex Mono for meta text */}
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,200..700&family=Geist+Mono:wght@200..700&family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
         <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
       </head>
-      <body suppressHydrationWarning>
+      <body className="am" suppressHydrationWarning>
         <LanguageProvider>
           {children}
         </LanguageProvider>

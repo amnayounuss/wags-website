@@ -1,83 +1,82 @@
 'use client';
 import React, { useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
+import { GridLines, Eyebrow, AmButton } from '@/components/armory/Primitives';
+
+/**
+ * FAQ, rebuilt as the reference's split: a sticky heading column on one side,
+ * an icon-led accordion on the other. Existing q/a keys, unchanged.
+ */
+
+const QA = [
+  { q: 'faq.q1', a: 'faq.a1' },
+  { q: 'faq.q2', a: 'faq.a2' },
+  { q: 'faq.q3', a: 'faq.a3' },
+  { q: 'faq.q4', a: 'faq.a4' },
+  { q: 'faq.q5', a: 'faq.a5' },
+];
 
 export default function FAQ() {
   const { t, language } = useLanguage();
   const isAr = language === 'ar';
-  const font = isAr ? 'font-arabic' : 'font-inter';
-  const heading = isAr ? 'font-arabic' : 'font-grotesk';
-
-  // Reference behaviour: single-open accordion — clicking an open item closes it.
-  const [open, setOpen] = useState<number | null>(null);
-
-  const items = [1, 2, 3, 4, 5].map((i) => ({
-    q: t(`faq.q${i}`),
-    a: t(`faq.a${i}`),
-  }));
+  const [open, setOpen] = useState(0);
 
   return (
-    <section id="faq" className={`relative z-[2] py-[64px] sm:py-[80px] tablet:py-[120px] text-wg-text ${font}`}>
-      <div className="max-w-[1180px] mx-auto px-5 sm:px-6 lg:px-8 relative z-[2]">
+    <section id="faq" className="relative isolate overflow-hidden bg-paper text-ink">
+      <GridLines tone="light" />
 
-        {/* Section head — centered, max 640px, 56px bottom gap */}
-        <div className="reveal max-w-[640px] mx-auto text-center mb-10 sm:mb-[56px]">
-          {/* Inter 600, 12px / 18px, ls .14em, uppercase, --teal */}
-          <div className={`text-[12px] font-semibold leading-[18px] text-wg-teal mb-[14px] ${isAr ? 'tracking-normal' : 'tracking-[0.14em] uppercase'}`}>
-            {t('faq.kicker')}
+      <div className="relative z-[2] mx-auto max-w-[1440px] tablet:grid tablet:grid-cols-[0.85fr_1.15fr]">
+        {/* sticky heading */}
+        <div className="px-6 pt-24 sm:px-10 tablet:pb-24 tablet:pt-32">
+          <div className="tablet:sticky tablet:top-32">
+            <Eyebrow tone="light">{t('faq.kicker')}</Eyebrow>
+            <h2 className="am-h2 mt-6">{t('faq.title')}</h2>
+            <p className="am-body-lg mt-8 max-w-[400px] text-ink/65">{t('faq.sub')}</p>
+            <div className="mt-9">
+              <AmButton href="#contact" tone="light" variant="solid" flip={isAr}>
+                {t('hero.cta1')}
+              </AmButton>
+            </div>
           </div>
-          {/* Space Grotesk 600, clamp(28px,4vw,44px) / 1.5, ls -.01em */}
-          <h2 className={`${heading} text-[clamp(26px,4vw,44px)] font-semibold leading-[1.35] sm:leading-[1.5] tracking-[-0.01em] text-wg-text`}>
-            {t('faq.title')}
-          </h2>
-          {/* Inter 400, 16px / 24px, --muted */}
-          <p className="mt-[14px] text-[15px] sm:text-[16px] leading-[24px] text-wg-muted">{t('faq.sub')}</p>
         </div>
 
-        {/* FAQ list — max 760px, centered */}
-        <div className="reveal max-w-[760px] mx-auto">
-          {items.map((item, i) => {
+        {/* accordion */}
+        <div className="mt-10 tablet:mt-0 border-t border-ink/[0.09] ltr:border-l rtl:border-r border-ink/[0.09] tablet:mt-32 tablet:mb-32">
+          {QA.map((item, i) => {
             const isOpen = open === i;
             return (
-              <div key={i} className="border-b border-wg-line">
+              <div key={item.q} className="border-b border-ink/[0.09]">
                 <button
                   type="button"
-                  onClick={() => setOpen(isOpen ? null : i)}
+                  onClick={() => setOpen(isOpen ? -1 : i)}
                   aria-expanded={isOpen}
-                  aria-controls={`faq-a-${i}`}
-                  className={`w-full flex justify-between items-center gap-4 py-5 sm:py-6 px-1 cursor-pointer bg-transparent border-none ${
-                    isAr ? 'text-right font-arabic' : 'text-left font-grotesk'
-                  } font-semibold text-[15px] sm:text-[16px] leading-[24px] text-wg-text`}
+                  className="flex w-full items-center gap-4 px-6 py-6 ltr:text-left rtl:text-right transition-colors duration-200 hover:bg-ink/[0.03] tablet:px-10"
                 >
-                  <span>{item.q}</span>
-
-                  {/* plus / minus — 22x22, bars 14x2 & 2x14 */}
-                  <span className="relative w-[22px] h-[22px] shrink-0">
-                    <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[14px] h-[2px] bg-wg-text" />
-                    <span
-                      className={`absolute top-1/2 left-1/2 w-[2px] h-[14px] bg-wg-text transition-[transform,opacity] duration-300 ${
-                        isOpen
-                          ? '-translate-x-1/2 -translate-y-1/2 rotate-90 opacity-0'
-                          : '-translate-x-1/2 -translate-y-1/2 opacity-100'
-                      }`}
-                    />
+                  <span className="am-meta shrink-0 text-ink/40">{`0${i + 1}`}</span>
+                  <span className="flex-1 text-[16px] font-normal leading-[24px]">{t(item.q)}</span>
+                  <span
+                    aria-hidden="true"
+                    className={`grid h-7 w-7 shrink-0 place-items-center rounded-full border border-ink/20 transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`}
+                  >
+                    <svg width="11" height="11" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" fill="none">
+                      <path d="M12 5v14M5 12h14" />
+                    </svg>
                   </span>
                 </button>
-
-                {/* Answer — Inter 400, 14.5px / 1.6, --muted; max-height 0 → 200px */}
                 <div
-                  id={`faq-a-${i}`}
-                  className={`overflow-hidden px-1 text-[14.5px] leading-[1.6] text-wg-muted transition-[max-height,padding] duration-[350ms] ease-in-out ${
-                    isOpen ? 'max-h-[420px] pb-[22px]' : 'max-h-0 pb-0'
-                  }`}
+                  className="grid overflow-hidden transition-[grid-template-rows] duration-[400ms] ease-[cubic-bezier(.22,1,.36,1)]"
+                  style={{ gridTemplateRows: isOpen ? '1fr' : '0fr' }}
                 >
-                  {item.a}
+                  <div className="min-h-0">
+                    <p className="am-body px-6 pb-7 text-ink/65 ltr:pl-[62px] rtl:pr-[62px] tablet:px-10 tablet:ltr:pl-[86px] tablet:rtl:pr-[86px]">
+                      {t(item.a)}
+                    </p>
+                  </div>
                 </div>
               </div>
             );
           })}
         </div>
-
       </div>
     </section>
   );

@@ -2,67 +2,66 @@
 import React from 'react';
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
+import { GridLines, Eyebrow, ScrollRevealText } from '@/components/armory/Primitives';
 
-// Reference marquee order (names replaced by logos as requested)
+/**
+ * Clients, rebuilt as the reference's integrations block: the headline is a
+ * word-by-word scroll reveal, and the logos sit in a hairline cell grid rather
+ * than a marquee. Same client list, same copy key.
+ */
+
+// Logos that are clean marks on transparency, so a brightness-0 invert renders
+// them as the reference's uniform white wall. Five had an opaque plate baked in
+// and were keyed out to *-cut.png; codeco, okawa, reeq and tryorders resisted
+// the key and are left out until transparent versions exist.
 const CLIENTS = [
   { name: 'Camel Step', logo: '/icons/camelstep.png' },
-  { name: 'Peacock Roaster', logo: '/icons/peacock.png' },
-  { name: 'Codeco', logo: '/icons/codeco.png' },
+  { name: 'Peacock Roaster', logo: '/icons/peacock-cut.png' },
   { name: 'Anoosh', logo: '/icons/anoosh.png' },
   { name: 'Breehant', logo: '/icons/breehant.png' },
-  { name: 'CST', logo: '/icons/cst.jpg' },
+  { name: 'CST', logo: '/icons/cst-cut.png' },
   { name: 'Namaq', logo: '/icons/namaq.png' },
-  { name: 'Okawa', logo: '/icons/okawa.png' },
-  { name: 'Reeq', logo: '/icons/reeq.png' },
-  { name: 'Rowad', logo: '/icons/rowad.png' },
+  { name: 'Rowad', logo: '/icons/rowad-cut.png' },
   { name: 'Shovel', logo: '/icons/shovel.png' },
   { name: 'Zuma', logo: '/icons/zuma.avif' },
+  { name: 'Bonat', logo: '/icons/bonat.png' },
+  { name: 'Miles Speed', logo: '/icons/milesspeed-cut.png' },
+  { name: 'Zid', logo: '/icons/zid-cut.png' },
 ];
 
 export default function Clients() {
   const { t, language } = useLanguage();
   const isAr = language === 'ar';
-  const font = isAr ? 'font-arabic' : 'font-inter';
-
-  // Duplicated once — the track scrolls 0 → -50% for a seamless loop
-  const track = [...CLIENTS, ...CLIENTS];
 
   return (
-    // trust-section: padding 64px 0 40px
-    <section id="clients" className={`relative z-[2] pt-12 pb-8 sm:pt-16 sm:pb-10 text-wg-text ${font}`}>
-      <div className="max-w-[1180px] mx-auto px-5 sm:px-6 lg:px-8 relative z-[2]">
+    <section id="clients" className="relative isolate overflow-hidden bg-ink text-white">
+      <GridLines tone="dark" dots />
 
-        {/* label: Inter 400, 12px / 18px, ls .1em, uppercase, --muted, mb 18px */}
-        <div className={`text-[12px] leading-[18px] text-wg-muted mb-[18px] ${isAr ? 'tracking-normal' : 'tracking-[0.1em] uppercase'}`}>
-          {t('clients.title')}
-        </div>
+      <div className="relative z-[2] mx-auto max-w-[1440px] px-6 pt-24 sm:px-10 tablet:pt-32">
+        <Eyebrow tone="dark">{isAr ? 'عملاؤنا' : 'Clients'}</Eyebrow>
+        <ScrollRevealText
+          tone="dark"
+          className="mt-7 max-w-[900px]"
+          text={t('clients.title')}
+        />
+      </div>
 
-        {/* marquee: overflow hidden + edge fade mask */}
-        <div
-          className="overflow-hidden"
-          style={{
-            maskImage: 'linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)',
-            WebkitMaskImage: 'linear-gradient(90deg,transparent,#000 10%,#000 90%,transparent)',
-          }}
-          dir="ltr"
-        >
-          {/* track: flex, gap 64px, width max-content, 26s linear infinite */}
-          <div className="flex gap-10 sm:gap-14 lg:gap-16 w-max animate-wg-marquee">
-            {track.map((c, i) => (
-              // Reference row is 30px of 20px text; logos need a little more room to stay legible
-              <div key={i} className="flex items-center h-[32px] sm:h-[40px] shrink-0 opacity-70 transition-opacity duration-300 hover:opacity-100">
-                <Image
-                  src={c.logo}
-                  alt={c.name}
-                  width={180}
-                  height={40}
-                  className="h-[32px] sm:h-[40px] w-auto max-w-[120px] sm:max-w-[160px] object-contain"
-                />
-              </div>
-            ))}
+      {/* logo cells - full bleed so the rules meet the viewport edges */}
+      <div className="relative z-[2] mt-16 tablet:mt-24 grid grid-cols-2 sm:grid-cols-3 tablet:grid-cols-4 border-t border-white/[0.09]">
+        {CLIENTS.map((c) => (
+          <div
+            key={c.name}
+            className="group flex h-[132px] items-center justify-center border-b border-white/[0.09] ltr:border-r rtl:border-l border-white/[0.09] px-6"
+          >
+            <Image
+              src={c.logo}
+              alt={c.name}
+              width={150}
+              height={44}
+              className="h-[30px] w-auto max-w-[130px] object-contain opacity-45 brightness-0 invert transition-opacity duration-300 group-hover:opacity-90"
+            />
           </div>
-        </div>
-
+        ))}
       </div>
     </section>
   );

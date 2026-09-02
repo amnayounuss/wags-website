@@ -2,93 +2,123 @@
 import React, { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { useLanguage } from '@/context/LanguageContext';
+import { GridLines, AmButton } from '@/components/armory/Primitives';
+
+/**
+ * Hero, rebuilt to the reference's layout:
+ *   full-bleed darkened media, a 4-column hairline grid over it, a service list
+ *   and client logos in the upper right, and the headline block anchored to the
+ *   lower left at 100px/100px with -3px tracking.
+ *
+ * All copy still comes from the existing locale keys - nothing was reworded.
+ */
+
+const SERVICES = ['services.filter.sales', 'services.filter.pos', 'services.filter.finance', 'services.filter.ops'];
+const LOGOS = ['/icons/camelstep.png', '/icons/namaq.png', '/icons/anoosh.png', '/icons/bonat.png'];
 
 export default function Hero() {
   const { t, language } = useLanguage();
   const isAr = language === 'ar';
-  const font = isAr ? 'font-arabic' : 'font-inter';
-  const heading = isAr ? 'font-arabic' : 'font-grotesk';
-
-  const [loaded, setLoaded] = useState(false);
-  const [badgeIn, setBadgeIn] = useState(false);
+  const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    const id = setTimeout(() => setBadgeIn(true), 100);
+    const id = setTimeout(() => setReady(true), 80);
     return () => clearTimeout(id);
   }, []);
 
   return (
-    <section id="hero" className={`relative z-[2] text-wg-text ${font}`}>
-      {/* wrap: max-width 1180, padding 0 24 */}
-      <div className="max-w-[1180px] mx-auto px-5 sm:px-6 lg:px-8 relative z-[2]">
-        {/* hero-grid: 1.05fr 1fr, gap 64px, align center, min-height 70vh */}
-        <div className="grid grid-cols-1 tablet:grid-cols-[1.05fr_1fr] gap-9 sm:gap-10 tablet:gap-12 lg:gap-16 items-center tablet:min-h-[70vh]">
+    <section id="hero" className="relative isolate overflow-hidden bg-ink text-white">
+      {/* ── full-bleed media, pushed right so the headline sits on clean ground ── */}
+      <div aria-hidden="true" className="absolute inset-0 z-0">
+        <Image
+          src="/hero-pos.jpg"
+          alt=""
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover object-center opacity-[0.34] grayscale"
+        />
+        {/* pull the left half down so the 100px headline keeps its contrast */}
+        <div className={`absolute inset-0 ${isAr
+          ? 'bg-[linear-gradient(270deg,#060606_0%,rgba(6,6,6,.86)_38%,rgba(6,6,6,.35)_72%,rgba(6,6,6,.7)_100%)]'
+          : 'bg-[linear-gradient(90deg,#060606_0%,rgba(6,6,6,.86)_38%,rgba(6,6,6,.35)_72%,rgba(6,6,6,.7)_100%)]'}`} />
+        <div className="absolute inset-x-0 bottom-0 h-40 bg-gradient-to-t from-ink to-transparent" />
+      </div>
 
-          {/* ── Copy ── */}
-          <div className="reveal">
-            {/* kicker: Inter 600, 12px / 18px, ls .14em, uppercase, --teal */}
-            <div className={`text-[12px] font-semibold leading-[18px] text-wg-teal mb-[14px] ${isAr ? 'tracking-normal' : 'tracking-[0.14em] uppercase'}`}>
-              {t('hero.kicker')}
-            </div>
+      <GridLines tone="dark" />
 
-            {/* h1: Space Grotesk 700, 32px / 48px (scaled down on phones, up on wide desktops) */}
-            <h1 className={`${heading} font-bold tracking-normal text-wg-text text-[26px] leading-[38px] sm:text-[30px] sm:leading-[44px] tablet:text-[32px] tablet:leading-[48px] xl:text-[38px] xl:leading-[56px]`}>
-              {t('hero.h1')}
-            </h1>
+      <div className="relative z-[2] mx-auto flex min-h-[88vh] max-w-[1440px] flex-col px-6 pb-16 pt-28 sm:px-10 tablet:pb-24 tablet:pt-32">
 
-            {/* sub: Inter 400, 16px / 24px, --muted, max-w 480, margin 18px 0 30px */}
-            <p className="mt-4 mb-7 sm:mt-[18px] sm:mb-[30px] max-w-[480px] text-[15px] sm:text-[16px] leading-[24px] text-wg-muted">
-              {t('hero.sub')}
-            </p>
+        {/* ── upper block: service list + client logos, on the half opposite the headline ── */}
+        <div className={`flex ${isAr ? 'justify-start' : 'justify-end'}`}>
+          <div
+            className={`w-full max-w-[520px] transition-[opacity,transform] duration-[900ms] ease-out ${
+              ready ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
+            }`}
+          >
+            <ul className="space-y-1">
+              {SERVICES.map((key, i) => (
+                <li
+                  key={key}
+                  className="am-lead text-white transition-[opacity,transform] duration-[900ms] ease-out"
+                  style={{
+                    transitionDelay: `${140 + i * 90}ms`,
+                    opacity: ready ? 1 : 0,
+                    transform: ready ? 'none' : 'translateY(14px)',
+                  }}
+                >
+                  {t(key)}
+                </li>
+              ))}
+            </ul>
 
-            {/* hero-cta: flex, gap 16, wrap */}
-            <div className="flex flex-wrap gap-3 sm:gap-4">
-              <a
-                href="#contact"
-                className="inline-flex justify-center items-center gap-2 max-[380px]:w-full bg-wg-teal text-[#0B0710] font-semibold text-[14px] leading-[21px] px-[22px] py-[12px] rounded-full transition-[transform,box-shadow] duration-[250ms] ease-[cubic-bezier(.2,.8,.2,1)] hover:-translate-y-[2px] hover:shadow-[0_8px_24px_rgba(0,217,192,.35)]"
-              >
-                {t('hero.cta1')}
-              </a>
-              <a
-                href="#services"
-                className="inline-flex justify-center items-center gap-2 max-[380px]:w-full bg-transparent border border-wg-line text-wg-text font-semibold text-[14px] leading-[21px] px-[22px] py-[12px] rounded-full transition-[transform,border-color] duration-[250ms] ease-[cubic-bezier(.2,.8,.2,1)] hover:-translate-y-[2px] hover:border-wg-teal"
-              >
-                {t('hero.cta2')}
-              </a>
-            </div>
-          </div>
-
-          {/* ── Photo ── */}
-          <div className="reveal relative max-tablet:order-first max-tablet:mb-2">
-            {/* frame: radius 28, aspect 16/10.5, shadow 0 30px 70px rgba(20,10,20,.18) */}
-            <div className="relative overflow-hidden rounded-[20px] sm:rounded-[28px] aspect-[16/10.5] shadow-[0_18px_44px_rgba(20,10,20,.14)] sm:shadow-[0_30px_70px_rgba(20,10,20,.18)]">
-              <Image
-                src="/hero-pos.jpg"
-                alt={t('hero.photo.alt')}
-                fill
-                priority
-                sizes="(max-width: 900px) 100vw, 521px"
-                onLoad={() => setLoaded(true)}
-                className={`object-cover object-center transition-[opacity,transform,filter] duration-[1300ms] ease-out ${
-                  loaded ? 'opacity-100 scale-100 blur-0' : 'opacity-0 scale-[1.08] blur-[6px]'
-                }`}
-                style={{ transitionDuration: '1300ms, 2200ms, 1300ms' }}
-              />
-            </div>
-
-            {/* badge: absolute -22px, frosted glass */}
             <div
-              className={`absolute bottom-[-16px] sm:bottom-[-22px] ${isAr ? 'right-[-8px] sm:right-[-22px]' : 'left-[-8px] sm:left-[-22px]'} px-4 py-3 sm:px-5 sm:py-4 rounded-[16px] sm:rounded-[18px] bg-white/70 backdrop-blur-[18px] backdrop-saturate-[180%] border border-white/60 shadow-[0_18px_40px_rgba(20,10,20,.14)] transition-[opacity,transform] duration-[800ms] delay-[400ms] ${
-                badgeIn ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
-              }`}
+              className="mt-9 flex flex-wrap items-center gap-x-9 gap-y-5 transition-opacity duration-[900ms] delay-[620ms]"
+              style={{ opacity: ready ? 1 : 0 }}
             >
-              {/* num: Space Grotesk 700, 22px / 33px, --teal */}
-              <div className="font-grotesk font-bold text-[22px] leading-[33px] text-wg-teal" dir="ltr">{t('hero.badge.num')}</div>
-              {/* lbl: Inter 400, 12px / 18px, --muted */}
-              <div className="text-[12px] leading-[18px] text-wg-muted">{t('hero.badge.lbl')}</div>
+              {LOGOS.map((src) => (
+                <Image
+                  key={src}
+                  src={src}
+                  alt=""
+                  width={120}
+                  height={34}
+                  aria-hidden="true"
+                  className="h-[24px] w-auto opacity-70 brightness-0 invert"
+                />
+              ))}
             </div>
           </div>
+        </div>
 
+        {/* ── headline block, anchored to the bottom ── */}
+        <div className="mt-auto max-w-[900px] pt-16 tablet:pt-24">
+          <h1
+            className={`am-h1 transition-[opacity,transform] duration-[1100ms] ease-out ${
+              ready ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'
+            }`}
+          >
+            {t('hero.h1')}
+          </h1>
+
+          <p
+            className="am-body mt-7 max-w-[520px] text-[color:var(--am-dim)] transition-[opacity,transform] duration-[900ms] delay-[260ms] ease-out"
+            style={{ opacity: ready ? 1 : 0, transform: ready ? 'none' : 'translateY(14px)' }}
+          >
+            {t('hero.sub')}
+          </p>
+
+          <div
+            className="mt-9 flex flex-wrap gap-3 transition-[opacity,transform] duration-[900ms] delay-[400ms] ease-out"
+            style={{ opacity: ready ? 1 : 0, transform: ready ? 'none' : 'translateY(14px)' }}
+          >
+            <AmButton href="#contact" tone="dark" variant="solid" flip={isAr}>
+              {t('hero.cta1')}
+            </AmButton>
+            <AmButton href="#services" tone="dark" variant="ghost" flip={isAr}>
+              {t('hero.cta2')}
+            </AmButton>
+          </div>
         </div>
       </div>
     </section>

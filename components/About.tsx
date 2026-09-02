@@ -1,111 +1,87 @@
 'use client';
 import React, { useEffect, useRef, useState } from 'react';
 import { useLanguage } from '@/context/LanguageContext';
+import { Section, Eyebrow, CornerTicks } from '@/components/armory/Primitives';
 
-type Stat = { target: number; suffix: string; capKey: string };
+/**
+ * About, rebuilt as the reference's statistics block: a left copy column and a
+ * row of oversized mono figures that count up once they enter the viewport.
+ * Existing copy keys only.
+ */
 
-// Reference: 50+ / 100% / 6 / 29
-const STATS: Stat[] = [
-  { target: 50, suffix: '+', capKey: 'about.stat1' },
-  { target: 100, suffix: '%', capKey: 'about.stat2' },
-  { target: 6, suffix: '', capKey: 'about.stat3' },
-  { target: 29, suffix: '', capKey: 'about.stat4' },
+const STATS = [
+  { to: 50, suffix: '+', label: 'about.stat1' },
+  { to: 100, suffix: '%', label: 'about.stat2' },
+  { to: 6, suffix: '', label: 'about.stat3' },
+  { to: 29, suffix: '', label: 'about.stat4' },
 ];
 
-export default function About() {
-  const { t, language } = useLanguage();
-  const isAr = language === 'ar';
-  const font = isAr ? 'font-arabic' : 'font-inter';
-  const heading = isAr ? 'font-arabic' : 'font-grotesk';
-
-  // Count-up on scroll — reference: threshold .5, step = target/40, 30ms tick
-  const cardsRef = useRef<HTMLDivElement>(null);
-  const [values, setValues] = useState<number[]>(STATS.map(() => 0));
+/** Counts from 0 to `to` the first time it scrolls into view. */
+function Counter({ to, suffix }: { to: number; suffix: string }) {
+  const ref = useRef<HTMLSpanElement>(null);
+  const [n, setN] = useState(0);
 
   useEffect(() => {
-    const node = cardsRef.current;
-    if (!node) return;
-    const timers: ReturnType<typeof setInterval>[] = [];
+    const el = ref.current;
+    if (!el) return;
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) { setN(to); return; }
 
-    const io = new IntersectionObserver(
-      (entries) => {
-        if (!entries[0].isIntersecting) return;
-        io.unobserve(node);
-
-        STATS.forEach((s, i) => {
-          const step = Math.max(1, Math.round(s.target / 40));
-          let cur = 0;
-          const timer = setInterval(() => {
-            cur += step;
-            if (cur >= s.target) {
-              cur = s.target;
-              clearInterval(timer);
-            }
-            setValues((prev) => {
-              const next = [...prev];
-              next[i] = cur;
-              return next;
-            });
-          }, 30);
-          timers.push(timer);
-        });
-      },
-      { threshold: 0.5 }
-    );
-
-    io.observe(node);
-    return () => {
+    const io = new IntersectionObserver((entries) => {
+      if (!entries[0].isIntersecting) return;
       io.disconnect();
-      timers.forEach(clearInterval);
-    };
-  }, []);
+      const start = performance.now();
+      const dur = 1400;
+      const tick = (now: number) => {
+        const p = Math.min(1, (now - start) / dur);
+        // ease-out cubic, so it decelerates into the final figure
+        setN(Math.round(to * (1 - Math.pow(1 - p, 3))));
+        if (p < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+    }, { threshold: 0.4 });
+
+    io.observe(el);
+    return () => io.disconnect();
+  }, [to]);
 
   return (
-    // section: padding 120px 0
-    <section id="about" className={`relative z-[2] py-[64px] sm:py-[80px] tablet:py-[120px] text-wg-text ${font}`}>
-      <div className="max-w-[1180px] mx-auto px-5 sm:px-6 lg:px-8 relative z-[2]">
-        {/* about-grid: 1.1fr .9fr, gap 60px, align center */}
-        <div className="grid grid-cols-1 tablet:grid-cols-[1.1fr_.9fr] gap-9 sm:gap-10 tablet:gap-[60px] items-center">
+    <span ref={ref} dir="ltr">
+      {n}
+      {suffix}
+    </span>
+  );
+}
 
-          {/* ── Copy ── */}
-          <div className="reveal">
-            {/* kicker: Inter 600, 12px / 18px, ls .14em, uppercase, --teal */}
-            <div className={`text-[12px] font-semibold leading-[18px] text-wg-teal mb-[14px] ${isAr ? 'tracking-normal' : 'tracking-[0.14em] uppercase'}`}>
-              {t('about.kicker')}
-            </div>
+export default function About() {
+  const { t } = useLanguage();
 
-            {/* h2: Space Grotesk 600, clamp(26px,3.6vw,38px) / 1.5, mb 20px */}
-            <h2 className={`${heading} text-[clamp(24px,3.6vw,38px)] font-semibold leading-[1.35] sm:leading-[1.5] tracking-normal text-wg-text mb-4 sm:mb-5`}>
-              {t('about.title')}
-            </h2>
-
-            {/* p: Inter 400, 16px / 24px, --muted, mb 16px */}
-            <p className="text-[15px] sm:text-[16px] leading-[24px] text-wg-muted mb-4">{t('about.p1')}</p>
-
-            {/* p (vision): italic, --text @ 80% */}
-            <p className="text-[15px] sm:text-[16px] leading-[24px] italic text-wg-text/80 mb-4">{t('about.p2')}</p>
-          </div>
-
-          {/* ── Stat cards: 2 × 2, gap 16px ── */}
-          <div ref={cardsRef} className="reveal grid grid-cols-2 gap-3 sm:gap-4">
-            {STATS.map((s, i) => (
-              <div
-                key={s.capKey}
-                className="bg-wg-panel border border-wg-line rounded-[18px] px-5 py-6 sm:px-6 sm:py-7 shadow-[0_2px_18px_rgba(20,10,20,0.04)] transition-[border-color,transform,box-shadow] duration-300 hover:border-[rgba(0,168,150,.4)] hover:-translate-y-1 hover:shadow-[0_14px_32px_rgba(0,168,150,.14)]"
-              >
-                {/* num: Space Grotesk 700, 40px / 60px, --teal */}
-                <div className="inline-block font-grotesk font-bold text-[32px] leading-[46px] sm:text-[40px] sm:leading-[60px] text-wg-teal" dir="ltr">
-                  {values[i]}
-                  {s.suffix}
-                </div>
-                {/* cap: Inter 400, 13px / 19.5px, --muted, mt 6px */}
-                <div className="text-[13px] leading-[19.5px] text-wg-muted mt-1.5">{t(s.capKey)}</div>
-              </div>
-            ))}
-          </div>
-
+  return (
+    <Section id="about" tone="dark" dots>
+      <div className="tablet:grid tablet:grid-cols-[1fr_1fr] tablet:gap-20">
+        <div>
+          <Eyebrow tone="dark">{t('about.kicker')}</Eyebrow>
+          <h2 className="am-h2 mt-6">{t('about.title')}</h2>
+        </div>
+        <div className="mt-8 tablet:mt-0 tablet:pt-4">
+          <p className="am-body-lg text-white/85">{t('about.p1')}</p>
+          <p className="am-body-lg mt-6 text-white/55">{t('about.p2')}</p>
         </div>
       </div>
-    </section>
+
+      <div className="mt-16 tablet:mt-24 grid grid-cols-2 tablet:grid-cols-4 border-t border-white/[0.09]">
+        {STATS.map((s) => (
+          <div
+            key={s.label}
+            className="relative border-b border-white/[0.09] ltr:border-r rtl:border-l border-white/[0.09] px-6 py-10 tablet:px-8 tablet:py-14"
+          >
+            <CornerTicks tone="dark" />
+            <div className="font-geist-mono text-[52px] font-light leading-none tracking-[-2px] tablet:text-[76px]">
+              <Counter to={s.to} suffix={s.suffix} />
+            </div>
+            <div className="am-meta mt-5 text-white/50">{t(s.label)}</div>
+          </div>
+        ))}
+      </div>
+    </Section>
   );
 }

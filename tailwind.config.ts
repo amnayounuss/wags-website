@@ -31,6 +31,12 @@ const config: Config = {
         'wg-text': '#1C1420',
         'wg-muted': '#6E6274',
         'wg-gold': '#C4841C',
+        // ── Armory reference palette ──
+        ink: '#060606',          // dark section background
+        'ink-2': '#0D0D0D',      // raised panel on dark
+        'ink-3': '#1A1A1A',
+        paper: '#FFFFFF',        // light section background
+        'paper-2': '#EAEAEA',    // light section, second tone
       },
       fontFamily: {
         sora: ['Sora', 'sans-serif'],
@@ -39,6 +45,10 @@ const config: Config = {
         inter: ['Inter', 'sans-serif'],
         // Arabic typeface for the whole RTL side of the site
         arabic: ['IBM Plex Sans Arabic', 'sans-serif'],
+        // ── Armory reference type ──
+        display: ['Inter', 'system-ui', 'sans-serif'],
+        'geist-mono': ['"Geist Mono"', 'ui-monospace', 'monospace'],
+        'plex-mono': ['"IBM Plex Mono"', 'ui-monospace', 'monospace'],
       },
       animation: {
         pulse: 'pulse 2s ease-in-out infinite',

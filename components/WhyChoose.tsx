@@ -1,61 +1,71 @@
 'use client';
 import React from 'react';
-import { SlidersHorizontal, ShieldCheck, TrendingUp, MapPin, UserCheck, Rocket } from 'lucide-react';
 import { useLanguage } from '@/context/LanguageContext';
+import { GridLines, Eyebrow, AmButton } from '@/components/armory/Primitives';
 
-// One icon per reason — order matches why.f1 … why.f6 in the locale files
-const CARDS = [
-  { n: 1, Icon: SlidersHorizontal }, // Built for your business
-  { n: 2, Icon: ShieldCheck },       // Avoid fines, completely
-  { n: 3, Icon: TrendingUp },        // We grow with you
-  { n: 4, Icon: MapPin },            // Riyadh-based team
-  { n: 5, Icon: UserCheck },         // Dedicated point of contact
-  { n: 6, Icon: Rocket },            // Live in 6 weeks
+/**
+ * WhyChoose, rebuilt as the reference's "approach" split: the heading column
+ * sticks while the feature cells scroll past it on the other half. Light
+ * section, so it breaks up the run of dark ones exactly as the reference does.
+ */
+
+const FEATURES = [
+  { t: 'why.f1.t', d: 'why.f1.d' },
+  { t: 'why.f2.t', d: 'why.f2.d' },
+  { t: 'why.f3.t', d: 'why.f3.d' },
+  { t: 'why.f4.t', d: 'why.f4.d' },
+  { t: 'why.f5.t', d: 'why.f5.d' },
+  { t: 'why.f6.t', d: 'why.f6.d' },
+];
+
+const MARKS = [
+  <g key="1"><path d="M6 12l12-6 12 6-12 6-12-6z" /><path d="M6 12v10l12 6 12-6V12" /></g>,
+  <g key="2"><path d="M18 4l12 5v9c0 7-5 12-12 15C11 30 6 25 6 18V9l12-5z" /><path d="M13 18l3.5 3.5L24 14" /></g>,
+  <g key="3"><path d="M5 26l6-8 5 5 8-11 5 6" /><path d="M5 30h24" /></g>,
+  <g key="4"><circle cx="18" cy="14" r="6" /><path d="M7 30c1.5-5.5 6-8.5 11-8.5S27.5 24.5 29 30" /></g>,
+  <g key="5"><circle cx="18" cy="18" r="12" /><path d="M18 10v8l6 4" /></g>,
+  <g key="6"><path d="M6 24h7l4-13 5 20 4-9h4" /></g>,
 ];
 
 export default function WhyChoose() {
   const { t, language } = useLanguage();
   const isAr = language === 'ar';
-  const font = isAr ? 'font-arabic' : 'font-inter';
-  const heading = isAr ? 'font-arabic' : 'font-grotesk';
 
   return (
-    <section id="why" className={`relative z-[2] py-[64px] sm:py-[80px] tablet:py-[120px] text-wg-text ${font}`}>
-      <div className="max-w-[1180px] mx-auto px-5 sm:px-6 lg:px-8 relative z-[2]">
+    <section id="why" className="relative isolate overflow-hidden bg-paper text-ink">
+      <GridLines tone="light" />
 
-        {/* section-head: max-w 640, mb 56 */}
-        <div className="reveal max-w-[640px] mb-10 sm:mb-[56px]">
-          <div className={`text-[12px] font-semibold leading-[18px] text-wg-teal mb-[14px] ${isAr ? 'tracking-normal' : 'tracking-[0.14em] uppercase'}`}>
-            {t('why.kicker')}
+      <div className="relative z-[2] mx-auto max-w-[1440px] tablet:grid tablet:grid-cols-[0.9fr_1.1fr]">
+        {/* sticky heading column */}
+        <div className="px-6 pt-24 sm:px-10 tablet:pb-24 tablet:pt-32">
+          <div className="tablet:sticky tablet:top-32">
+            <Eyebrow tone="light">{t('why.kicker')}</Eyebrow>
+            <h2 className="am-h2 mt-6">{t('why.title')}</h2>
+            <p className="am-body-lg mt-6 max-w-[420px] text-ink/70">{t('why.sub')}</p>
+            <div className="mt-9">
+              <AmButton href="#contact" tone="light" variant="solid" flip={isAr}>
+                {t('hero.cta1')}
+              </AmButton>
+            </div>
           </div>
-          <h2 className={`${heading} text-[clamp(26px,4vw,44px)] font-semibold leading-[1.35] sm:leading-[1.5] tracking-[-0.01em] text-wg-text`}>
-            {t('why.title')}
-          </h2>
-          <p className="mt-[14px] text-[15px] sm:text-[16px] leading-[24px] text-wg-muted">{t('why.sub')}</p>
         </div>
 
-        {/* why-grid: 3 cols, gap 20 */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 tablet:grid-cols-3 gap-4 sm:gap-5">
-          {CARDS.map(({ n, Icon }) => (
-            // why-card: white, radius 18, padding 30, hover → purple border + lifted shadow
-            <div
-              key={n}
-              className="reveal group bg-wg-panel border border-wg-line rounded-[18px] p-6 sm:p-[30px] shadow-[0_2px_18px_rgba(20,10,20,0.04)] transition-[transform,border-color,box-shadow] duration-[250ms] will-change-transform hover:border-wg-purple-bright hover:shadow-[0_18px_36px_rgba(113,75,103,.16)]"
-            >
-              {/* ico: 44px, radius 12, purple → teal gradient, mb 18 */}
-              <div className="w-11 h-11 rounded-[12px] bg-gradient-to-br from-wg-purple to-wg-teal mb-4 sm:mb-[18px] flex items-center justify-center text-white transition-transform duration-300 group-hover:scale-105">
-                <Icon size={22} strokeWidth={2} aria-hidden="true" />
-              </div>
-              {/* h3: Space Grotesk 600, 18px / 27px, mb 10 */}
-              <h3 className={`${heading} text-[17px] sm:text-[18px] font-semibold leading-[27px] tracking-normal text-wg-text mb-2.5`}>
-                {t(`why.f${n}.t`)}
-              </h3>
-              {/* p: Inter 400, 14px / 21px, --muted */}
-              <p className="text-[14px] leading-[21px] text-wg-muted">{t(`why.f${n}.d`)}</p>
+        {/* feature cells */}
+        <div className="mt-14 tablet:mt-0 grid grid-cols-1 sm:grid-cols-2 border-t border-ink/[0.09] ltr:border-l rtl:border-r border-ink/[0.09]">
+          {FEATURES.map((f, i) => (
+            <div key={f.t} className="border-b border-ink/[0.09] ltr:border-r rtl:border-l border-ink/[0.09] p-7 tablet:p-10">
+              <svg
+                width="36" height="36" viewBox="0 0 36 36" fill="none"
+                stroke="currentColor" strokeWidth="1.3" strokeLinecap="round" strokeLinejoin="round"
+                aria-hidden="true" className="mb-8 text-ink/65"
+              >
+                {MARKS[i]}
+              </svg>
+              <h3 className="am-card-title">{t(f.t)}</h3>
+              <p className="am-body mt-4 text-ink/65">{t(f.d)}</p>
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );
