@@ -2,11 +2,9 @@
 const nextConfig = {
   reactStrictMode: true,
   outputFileTracingRoot: __dirname,
-  // Static export: Apache/shared hosting serves plain files. trailingSlash makes
-  // every route a directory with index.html (e.g. /privacy/ -> privacy/index.html)
-  // so nested routes like /privacy and /ar/policy resolve instead of 404-ing.
-  output: 'export',
-  trailingSlash: true,
+  // Served by a Next.js node server (next start) behind nginx on :3000.
+  // Do NOT use output:'export' here — it produces a static out/ folder that
+  // the running server can't serve (assets 400), which strips all styling.
   images: {
     unoptimized: true,
     dangerouslyAllowSVG: true,
