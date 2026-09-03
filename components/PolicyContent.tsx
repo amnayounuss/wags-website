@@ -1,22 +1,18 @@
 'use client';
 import React from 'react';
-import { notFound, useParams } from 'next/navigation';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import en from '@/locales/en.json';
 import ar from '@/locales/ar.json';
 
-// /en/policy and /ar/policy are the URLs registered with Google as our privacy
-// policy and terms of service, so they render in the URL's language regardless
-// of the language the visitor has toggled the rest of the site into.
-// (Metadata and static params live in the sibling layout.tsx.)
+// Shared body for /en/policy and /ar/policy. Each of those is a real route
+// folder (app/en/policy, app/ar/policy) so the URLs resolve identically in dev,
+// `next start`, and behind the tunnel — no dynamic [locale] segment involved.
+// The page renders in its own URL's language regardless of the site toggle.
 const DICTS: Record<string, Record<string, string>> = { en, ar };
 
-export default function PolicyPage() {
-  const { locale } = useParams<{ locale: string }>();
-  const dict = DICTS[locale];
-  if (!dict) notFound();
-
+export default function PolicyContent({ locale }: { locale: 'en' | 'ar' }) {
+  const dict = DICTS[locale] ?? DICTS.en;
   const isAr = locale === 'ar';
   const t = (key: string) => dict[key] ?? key;
 
