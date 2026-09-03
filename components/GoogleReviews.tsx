@@ -59,7 +59,7 @@ export default function GoogleReviews() {
         <div className="reveal mt-6 sm:mt-8 bg-wg-panel border border-wg-line rounded-[18px] p-6 sm:p-[30px] shadow-[0_2px_18px_rgba(20,10,20,0.04)]">
           <p className="text-[14px] leading-[22px] text-wg-muted">{t('gr.note')}</p>
           <Link
-            href={`/${language}/policy`}
+            href="/privacy"
             className={`${heading} inline-flex items-center gap-2 mt-4 text-[14px] font-semibold text-wg-purple-bright no-underline transition-colors duration-200 hover:text-wg-teal`}
           >
             {t('gr.cta')}
