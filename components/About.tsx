@@ -4,9 +4,9 @@ import { useLanguage } from '@/context/LanguageContext';
 
 type Stat = { target: number; suffix: string; capKey: string };
 
-// Reference: 50+ / 100% / 6 / 29
+// Reference: 20+ / 100% / 6 / 29
 const STATS: Stat[] = [
-  { target: 50, suffix: '+', capKey: 'about.stat1' },
+  { target: 20, suffix: '+', capKey: 'about.stat1' },
   { target: 100, suffix: '%', capKey: 'about.stat2' },
   { target: 6, suffix: '', capKey: 'about.stat3' },
   { target: 29, suffix: '', capKey: 'about.stat4' },
