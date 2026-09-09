@@ -8,7 +8,7 @@ const CARDS = [
   { n: 1, Icon: SlidersHorizontal }, // Built for your business
   { n: 2, Icon: ShieldCheck },       // Avoid fines, completely
   { n: 3, Icon: TrendingUp },        // We grow with you
-  { n: 4, Icon: MapPin },            // Riyadh-based team
+  { n: 4, Icon: MapPin },            // Saudi-based team
   { n: 5, Icon: UserCheck },         // Dedicated point of contact
   { n: 6, Icon: Rocket },            // Live in 6 weeks
 ];
