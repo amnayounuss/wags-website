@@ -76,7 +76,7 @@ export default function Hero() {
               />
             </div>
 
-            {/* badge: absolute -22px, frosted glass */}
+            {/* badge 1: bottom corner */}
             <div
               className={`absolute bottom-[-16px] sm:bottom-[-22px] ${isAr ? 'right-[-8px] sm:right-[-22px]' : 'left-[-8px] sm:left-[-22px]'} px-4 py-3 sm:px-5 sm:py-4 rounded-[16px] sm:rounded-[18px] bg-white/70 backdrop-blur-[18px] backdrop-saturate-[180%] border border-white/60 shadow-[0_18px_40px_rgba(20,10,20,.14)] transition-[opacity,transform] duration-[800ms] delay-[400ms] ${
                 badgeIn ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
@@ -86,6 +86,16 @@ export default function Hero() {
               <div className="font-grotesk font-bold text-[22px] leading-[33px] text-wg-teal" dir="ltr">{t('hero.badge.num')}</div>
               {/* lbl: Inter 400, 12px / 18px, --muted */}
               <div className="text-[12px] leading-[18px] text-wg-muted">{t('hero.badge.lbl')}</div>
+            </div>
+
+            {/* badge 2: top opposite corner */}
+            <div
+              className={`absolute top-[-16px] sm:top-[-22px] ${isAr ? 'left-[-8px] sm:left-[-22px]' : 'right-[-8px] sm:right-[-22px]'} px-4 py-3 sm:px-5 sm:py-4 rounded-[16px] sm:rounded-[18px] bg-white/70 backdrop-blur-[18px] backdrop-saturate-[180%] border border-white/60 shadow-[0_18px_40px_rgba(20,10,20,.14)] transition-[opacity,transform] duration-[800ms] delay-[600ms] ${
+                badgeIn ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-4'
+              }`}
+            >
+              <div className="font-grotesk font-bold text-[22px] leading-[33px] text-wg-teal" dir="ltr">{t('hero.badge2.num')}</div>
+              <div className="text-[12px] leading-[18px] text-wg-muted">{t('hero.badge2.lbl')}</div>
             </div>
           </div>
 
